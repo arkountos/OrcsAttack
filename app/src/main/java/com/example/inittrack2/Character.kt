@@ -12,7 +12,7 @@ class Character (input_name: String, input_initiative: Int){
     }
 
     fun rollInitiative(){
-        initiative = (0..20).random() + initiative_modifier
+        initiative = (1..20).random() + initiative_modifier
     }
 }
 
