@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
-    tools:context=".AddCharActivity">
+    tools:context=".AddCharActivity"
+    android:id="@+id/mylayout">
 
     <TextView
         android:id="@+id/textViewName"
@@ -55,6 +56,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewInitiative" />
 
+<!--    <RadioGroup-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/radio_PC"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="PC/NPC"-->
+<!--            android:onClick="checkButton"-->
+<!--            android:checked="true"/>-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/radio_Monster"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Monster"-->
+<!--            android:onClick="checkButton"/>-->
+
+<!--    </RadioGroup>-->
+    
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"

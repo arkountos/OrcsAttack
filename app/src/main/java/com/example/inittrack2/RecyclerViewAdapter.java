@@ -1,6 +1,7 @@
 package com.example.inittrack2;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,12 +45,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.image_name.setText(mcharacters.get(position).getName());
         Log.d(TAG, "" + mcharacters.get(position).getInitiative_modifier());
-        holder.initiative_rolled.setText(("" + mcharacters.get(position).getInitiative()));
+        holder.initiative_rolled.setText(("Initiative: " + mcharacters.get(position).getInitiative()));
 
         String res = "ic_" + mcharacters.get(position).getMyclass().toLowerCase();
         int id = mContext.getResources().getIdentifier(res, "drawable", mContext.getPackageName());
-        Log.d(TAG, "id is " + id);
         holder.image.setImageResource(id);
+        Log.d(TAG, "class is" + mcharacters.get(position).getMyclass());
+        if(mcharacters.get(position).getMyclass().equals("Monster")){
+            Log.d(TAG, "INSIDE COLOUR CHANGE");
+            holder.parent_layout.setBackgroundColor(Color.parseColor("#d7263d"));
+        }
     }
 
     @Override

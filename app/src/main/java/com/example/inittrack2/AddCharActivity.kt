@@ -1,11 +1,13 @@
 package com.example.inittrack2
 
 import android.R
+import android.app.ActionBar
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,9 +18,10 @@ class AddCharActivity : AppCompatActivity() {
 //    public val EXTRA_NAME = "com.example.inittrack2.EXTRA_NAME"
 //    public val EXTRA_INITIATIVE = "com.example.inittrack.EXTRA_INITIATIVE"
 
+
+
+
     lateinit var option : Spinner
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -28,14 +31,33 @@ class AddCharActivity : AppCompatActivity() {
 
         var editTextName = findViewById<EditText>(com.example.inittrack2.R.id.editTextName)
         var editTextInitiative = findViewById<EditText>(com.example.inittrack2.R.id.editTextInitiative)
+        var result: String = "Default"
+
+
+
+        // Class choosing Spinner
+
         option = findViewById(com.example.inittrack2.R.id.spinner)
+        val classes = arrayOf(
+            "Monster",
+            "Barbarian",
+            "Bard",
+            "Cleric",
+            "Druid",
+            "Fighter",
+            "Monk",
+            "Paladin",
+            "Ranger",
+            "Rogue",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        )
 
-        val classes = arrayOf("Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard")
-        var result : String = "Default"
+        option.adapter =
+            ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, classes)
 
-        option.adapter = ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, classes)
-
-        option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 result = "Default"
             }
@@ -47,8 +69,12 @@ class AddCharActivity : AppCompatActivity() {
                 id: Long
             ) {
                 result = classes[position]
+
             }
         }
+
+
+
 
         println("##############")
         println(result)
