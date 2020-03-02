@@ -13,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+//import static androidx.core.graphics.drawable.IconCompat.getResources;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     private static final String TAG = "RecyclerViewAdapter";
@@ -42,6 +45,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.image_name.setText(mcharacters.get(position).getName());
         Log.d(TAG, "" + mcharacters.get(position).getInitiative_modifier());
         holder.initiative_rolled.setText(("" + mcharacters.get(position).getInitiative()));
+
+        String res = "ic_" + mcharacters.get(position).getMyclass().toLowerCase();
+        int id = mContext.getResources().getIdentifier(res, "drawable", mContext.getPackageName());
+        Log.d(TAG, "id is " + id);
+        holder.image.setImageResource(id);
     }
 
     @Override

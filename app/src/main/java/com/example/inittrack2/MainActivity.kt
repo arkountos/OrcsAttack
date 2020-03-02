@@ -51,12 +51,13 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == RESULT_OK){
                 var result_name = data?.getStringExtra("EXTRA_NAME")
                 var result_initiative = data?.getIntExtra("EXTRA_INITIATIVE", 0)
+                var result_class = data?.getStringExtra("EXTRA_CLASS")
 
                 // With the returned data create a new Character and add him to the list!
-                if (result_name == null || result_initiative == null) {
+                if (result_name == null || result_initiative == null || result_class == null) {
                     throw Exception("Oh no! Intent returned a null value.")
                 }
-                addToCharacters(result_name, result_initiative)
+                addToCharacters(result_name, result_initiative, result_class)
                 initList()
                 Log.d(TAG, "on ActivityResult called")
                 Log.d(TAG, "Initiative is $result_initiative")
@@ -65,8 +66,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addToCharacters(result_name: String, result_initiative: Int){
-        var new_char: Character = Character(result_name, result_initiative)
+    private fun addToCharacters(result_name: String, result_initiative: Int, result_class: String){
+        var new_char: Character = Character(result_name, result_initiative, result_class)
         characters.add(new_char)
     }
 

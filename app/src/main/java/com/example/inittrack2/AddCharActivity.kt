@@ -72,6 +72,7 @@ class AddCharActivity : AppCompatActivity() {
             val resultIntent = Intent()
             resultIntent.putExtra("EXTRA_NAME", editTextNameValue)
             resultIntent.putExtra("EXTRA_INITIATIVE", editTextInitiativeValue)
+            resultIntent.putExtra("EXTRA_CLASS", result)
 
             setResult(Activity.RESULT_OK, resultIntent)
             finish()

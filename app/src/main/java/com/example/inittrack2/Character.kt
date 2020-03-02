@@ -1,14 +1,16 @@
 package com.example.inittrack2
 
-class Character (input_name: String, input_initiative: Int){
+class Character (input_name: String, input_initiative: Int, input_myclass: String){
     var name: String
     var initiative_modifier: Int
     var initiative: Int
-    //private var icon : ??? (maybe String as bitmap)
+    var myclass: String
+
     init {
         name = input_name
         initiative_modifier = input_initiative
         initiative = 0
+        myclass = input_myclass
     }
 
     fun rollInitiative(){
