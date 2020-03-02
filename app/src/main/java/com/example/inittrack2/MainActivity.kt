@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity() {
         Collections.sort(characters, CharComparator())
         for (i in characters){
             println("########################### In sortByRolledInititative and :${i.name}")
+
         }
     }
 
