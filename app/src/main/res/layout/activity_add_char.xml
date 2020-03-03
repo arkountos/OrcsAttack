@@ -106,5 +106,13 @@
         app:layout_constraintStart_toStartOf="@+id/editTextInitiative"
         app:layout_constraintTop_toBottomOf="@+id/editTextInitiative" />
 
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 // TODO: Save characters for quick selection when adding
+// TODO: Choose to add multiple monsters at once
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MAIN"
@@ -53,12 +54,23 @@ class MainActivity : AppCompatActivity() {
                 var result_name = data?.getStringExtra("EXTRA_NAME")
                 var result_initiative = data?.getIntExtra("EXTRA_INITIATIVE", 0)
                 var result_class = data?.getStringExtra("EXTRA_CLASS")
+                var result_amount = data?.getStringExtra("EXTRA_AMOUNT") // Is a string!
+
 
                 // With the returned data create a new Character and add him to the list!
-                if (result_name == null || result_initiative == null || result_class == null) {
+                if (result_name == null || result_initiative == null || result_class == null || result_amount == null) {
                     throw Exception("Oh no! Intent returned a null value.")
                 }
-                addToCharacters(result_name, result_initiative, result_class)
+                for (i in 0 until result_amount.toInt()) {
+                    if (i >= 1){
+                        var newName : String
+                        newName = result_name + " " + i.toString()
+                        addToCharacters(newName, result_initiative, result_class)
+                    }
+                    else {
+                        addToCharacters(result_name, result_initiative, result_class)
+                    }
+                }
                 initList()
                 Log.d(TAG, "on ActivityResult called")
                 Log.d(TAG, "Initiative is $result_initiative")

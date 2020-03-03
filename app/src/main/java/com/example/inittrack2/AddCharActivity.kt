@@ -1,13 +1,9 @@
 package com.example.inittrack2
 
-import android.R
-import android.app.ActionBar
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -21,7 +17,8 @@ class AddCharActivity : AppCompatActivity() {
 
 
 
-    lateinit var option : Spinner
+    lateinit var class_option : Spinner
+    lateinit var amount_option : Spinner
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -31,13 +28,8 @@ class AddCharActivity : AppCompatActivity() {
 
         var editTextName = findViewById<EditText>(com.example.inittrack2.R.id.editTextName)
         var editTextInitiative = findViewById<EditText>(com.example.inittrack2.R.id.editTextInitiative)
-        var result: String = "Default"
-
-
-
-        // Class choosing Spinner
-
-        option = findViewById(com.example.inittrack2.R.id.spinner)
+        var class_result: String = "Default"
+        var amount_result: String = "1"
         val classes = arrayOf(
             "Monster",
             "Barbarian",
@@ -53,13 +45,24 @@ class AddCharActivity : AppCompatActivity() {
             "Warlock",
             "Wizard"
         )
+        val quantities = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
 
-        option.adapter =
+
+
+        // Class choosing Spinner
+        class_option = findViewById(com.example.inittrack2.R.id.spinner)
+        // Amount of characters choosing Spinner
+        amount_option = findViewById(com.example.inittrack2.R.id.spinner2)
+
+
+        class_option.adapter =
             ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, classes)
+        amount_option.adapter =
+            ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, quantities)
 
-        option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        class_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                result = "Default"
+                class_result = "Default"
             }
 
             override fun onItemSelected(
@@ -68,16 +71,32 @@ class AddCharActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                result = classes[position]
+                class_result = classes[position]
 
             }
+        }
+        amount_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                amount_result = "1"
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                amount_result = quantities[position]
+            }
+
         }
 
 
 
 
+
         println("##############")
-        println(result)
+        println(class_result)
         println(editTextName)
 
         val btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.doneButton)
@@ -85,7 +104,7 @@ class AddCharActivity : AppCompatActivity() {
 
             var editTextNameValue = editTextName.text.toString()
             var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
-            var spinnerValue = result
+            var spinnerValue = class_result
 
             println("HELLO!!!!!!")
             println("Name is")
@@ -93,12 +112,13 @@ class AddCharActivity : AppCompatActivity() {
             println("And inititative is:")
             println(editTextInitiativeValue)
             println("And result is:")
-            println(result)
+            println(class_result)
 
             val resultIntent = Intent()
             resultIntent.putExtra("EXTRA_NAME", editTextNameValue)
             resultIntent.putExtra("EXTRA_INITIATIVE", editTextInitiativeValue)
-            resultIntent.putExtra("EXTRA_CLASS", result)
+            resultIntent.putExtra("EXTRA_CLASS", class_result)
+            resultIntent.putExtra("EXTRA_AMOUNT", amount_result)
 
             setResult(Activity.RESULT_OK, resultIntent)
             finish()
