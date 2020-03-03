@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/futureActivity">
+
+    <fragment
+        android:id="@+id/testBlankFragment"
+        android:name="com.example.inittrack2.TestBlankFragment"
+        android:label="fragment_test_blank"
+        tools:layout="@layout/fragment_test_blank" />
+    <activity
+        android:id="@+id/futureActivity"
+        android:name="com.example.inittrack2.FutureActivity"
+        android:label="activity_future"
+        tools:layout="@layout/activity_future" />
+    <fragment android:id="@+id/placeholder" />
+</navigation>

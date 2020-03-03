@@ -1,14 +1,19 @@
 package com.example.inittrack2;
 
+import com.example.inittrack2.R;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,7 +24,7 @@ import java.util.ArrayList;
 
 //import static androidx.core.graphics.drawable.IconCompat.getResources;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> /*implements PopupMenu.OnMenuItemClickListener */{
     private static final String TAG = "RecyclerViewAdapter";
 
     private ArrayList<Character> mcharacters = new ArrayList<>();
@@ -40,7 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
         holder.image_name.setText(mcharacters.get(position).getName());
@@ -56,19 +61,51 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.parent_layout.setBackgroundColor(Color.parseColor("#d7263d"));
         }
 
-        holder.parent_layout.setOnClickListener(new View.OnClickListener() {
+        holder.options_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "clicked on " + mcharacters.get(position).getName());
+                PopupMenu popup = new PopupMenu(mContext, holder.options_image); //?
+                popup.inflate(R.menu.item_menu);
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.menu1:
+                                Log.d(TAG, "Clicked!!!");
+                                int newPosition = holder.getAdapterPosition();
+                                mcharacters.remove(newPosition);
+                                notifyItemRemoved(newPosition);
+                                notifyItemRangeChanged(newPosition, mcharacters.size());
 
+
+                                //handle menu1 click
+                                break;
+                            case R.id.menu2:
+                                //handle menu2 click
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                //displaying the popup
+                popup.show();
             }
         });
     }
+
+//    @Override
+//    public boolean onMenuItemClick(MenuItem item) {
+//        Log.d(TAG, "Clicked!");
+//        Toast.makeText(mContext, "Clicked" + item, Toast.LENGTH_SHORT).show();
+//        return false;
+//    }
 
     @Override
     public int getItemCount() {
         return mcharacters.size();
     }
+
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -78,6 +115,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView initiative_rolled;
         ImageView image;
         ConstraintLayout parent_layout;
+        ImageView options_image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,6 +123,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             image = itemView.findViewById(R.id.image);
             image_name = itemView.findViewById(R.id.image_name);
             initiative_rolled = itemView.findViewById(R.id.inititative_rolled);
+            options_image = itemView.findViewById(R.id.options);
         }
     }
 }

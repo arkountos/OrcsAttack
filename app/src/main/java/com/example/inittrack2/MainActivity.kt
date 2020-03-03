@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         val btn_reroll = findViewById<Button>(R.id.reroll)
         btn_reroll.setOnClickListener {
+            Log.d(TAG, "characters has " + characters.size + " and characters_sorted has " + characters_sorted.size)
             rollInitiatives()
             sortByRolledInitiative()
             initList()
@@ -73,10 +74,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initList(){
         // Clear list and add all chars in it
-        characters_sorted.clear()
-        for (character in characters){
-            characters_sorted.add(character)
-        }
+//        characters_sorted.clear()
+//        for (character in characters){
+//            characters_sorted.add(character)
+//        }
         initRecyclerView();
     }
 
@@ -100,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView(){
         val recyclerView: RecyclerView = findViewById(R.id.my_recycler_view)
-        val adapter = RecyclerViewAdapter(this, characters_sorted)
+        val adapter = RecyclerViewAdapter(this, characters)
         recyclerView.setAdapter(adapter);
         recyclerView.layoutManager = LinearLayoutManager(this);
     }
