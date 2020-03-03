@@ -16,7 +16,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 // TODO: Save characters for quick selection when adding
-// TODO: Choose to add multiple monsters at once
+// TODO: Button to clear current Battle on top right
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MAIN"
@@ -63,8 +63,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 for (i in 0 until result_amount.toInt()) {
                     if (i >= 1){
-                        var newName : String
-                        newName = result_name + " " + i.toString()
+                        var newName : String = "$result_name $i"
                         addToCharacters(newName, result_initiative, result_class)
                     }
                     else {
@@ -85,11 +84,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initList(){
-        // Clear list and add all chars in it
-//        characters_sorted.clear()
-//        for (character in characters){
-//            characters_sorted.add(character)
-//        }
         initRecyclerView();
     }
 
@@ -100,10 +94,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sortByRolledInitiative(){
-//        characters_sorted.clear()
-//        for (character in characters){
-//            characters_sorted.add(character)
-//        }
         Collections.sort(characters, CharComparator())
         for (i in characters){
             println("########################### In sortByRolledInititative and :${i.name}")
@@ -114,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView(){
         val recyclerView: RecyclerView = findViewById(R.id.my_recycler_view)
         val adapter = RecyclerViewAdapter(this, characters)
-        recyclerView.setAdapter(adapter);
+        recyclerView.adapter = adapter;
         recyclerView.layoutManager = LinearLayoutManager(this);
     }
 }

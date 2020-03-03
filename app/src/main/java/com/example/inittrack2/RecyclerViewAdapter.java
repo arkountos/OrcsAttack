@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.Array;
@@ -58,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Log.d(TAG, "class is" + mcharacters.get(position).getMyclass());
         if(mcharacters.get(position).getMyclass().equals("Monster")){
             Log.d(TAG, "INSIDE COLOUR CHANGE");
-            holder.parent_layout.setBackgroundColor(Color.parseColor("#d7263d"));
+            holder.parent_layout.setBackgroundColor(ContextCompat.getColor(mContext, R.color.colorEnemy));
         }
 
         holder.options_image.setOnClickListener(new View.OnClickListener() {

@@ -17,8 +17,8 @@ class AddCharActivity : AppCompatActivity() {
 
 
 
-    lateinit var class_option : Spinner
-    lateinit var amount_option : Spinner
+    private lateinit var class_option : Spinner
+    private lateinit var amount_option : Spinner
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -56,9 +56,9 @@ class AddCharActivity : AppCompatActivity() {
 
 
         class_option.adapter =
-            ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, classes)
+            ArrayAdapter<String>(this, R.layout.spinner_item, classes)
         amount_option.adapter =
-            ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, quantities)
+            ArrayAdapter<String>(this, R.layout.spinner_item, quantities)
 
         class_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
