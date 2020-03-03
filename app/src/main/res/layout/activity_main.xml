@@ -25,10 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:clickable="true"
+        app:backgroundTint="#f46036"
         app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/my_recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        android:layout_marginEnd="16dp"
+        android:focusable="true" />
 
     <Button
         android:id="@+id/reroll"
@@ -39,8 +42,25 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:background="#f46036"
         android:text="Reroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="408dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="336dp"
+        android:layout_marginBottom="203dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/my_recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/my_recycler_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph" />
 </androidx.constraintlayout.widget.ConstraintLayout>

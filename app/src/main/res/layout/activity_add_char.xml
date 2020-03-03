@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mylayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#483c46"
     android:clickable="true"
-    tools:context=".AddCharActivity"
-    android:id="@+id/mylayout">
+    tools:context=".AddCharActivity">
 
     <TextView
         android:id="@+id/textViewName"
@@ -16,6 +17,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="Character Name"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,6 +33,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
@@ -41,6 +45,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="Initiative Modifier"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
@@ -53,30 +59,31 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewInitiative" />
 
-<!--    <RadioGroup-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
+    <!--    <RadioGroup-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content">-->
 
-<!--        <RadioButton-->
-<!--            android:id="@+id/radio_PC"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="PC/NPC"-->
-<!--            android:onClick="checkButton"-->
-<!--            android:checked="true"/>-->
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/radio_PC"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="PC/NPC"-->
+    <!--            android:onClick="checkButton"-->
+    <!--            android:checked="true"/>-->
 
-<!--        <RadioButton-->
-<!--            android:id="@+id/radio_Monster"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Monster"-->
-<!--            android:onClick="checkButton"/>-->
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/radio_Monster"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Monster"-->
+    <!--            android:onClick="checkButton"/>-->
 
-<!--    </RadioGroup>-->
-    
+    <!--    </RadioGroup>-->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"
@@ -85,9 +92,10 @@
         android:layout_marginRight="24dp"
         android:layout_marginBottom="24dp"
         android:clickable="true"
+        app:backgroundTint="#f46036"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/ic_done_black_24dp" />
 
     <Spinner
         android:id="@+id/spinner"

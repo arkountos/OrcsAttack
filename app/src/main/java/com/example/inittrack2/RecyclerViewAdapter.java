@@ -40,7 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
         holder.image_name.setText(mcharacters.get(position).getName());
@@ -55,12 +55,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Log.d(TAG, "INSIDE COLOUR CHANGE");
             holder.parent_layout.setBackgroundColor(Color.parseColor("#d7263d"));
         }
+
+        holder.parent_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "clicked on " + mcharacters.get(position).getName());
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mcharacters.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
