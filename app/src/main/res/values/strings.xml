@@ -3,6 +3,8 @@
 
     <string name="test">This is my test string</string>
 
+    <string name="add_to_party">Add to party</string>
+
     <string-array name="classes">
         <item>Barbarian</item>
         <item>Bard</item>

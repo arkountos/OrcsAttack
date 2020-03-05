@@ -1,12 +1,16 @@
 package com.example.inittrack2
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.annotation.IntegerRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_add_char.*
 
 
 class AddCharActivity : AppCompatActivity() {
@@ -30,6 +34,7 @@ class AddCharActivity : AppCompatActivity() {
         var editTextInitiative = findViewById<EditText>(com.example.inittrack2.R.id.editTextInitiative)
         var class_result: String = "Default"
         var amount_result: String = "1"
+        var editTextHitpoints = findViewById<EditText>(com.example.inittrack2.R.id.editTextHitpoints)
         val classes = arrayOf(
             "Monster",
             "Barbarian",
@@ -46,7 +51,8 @@ class AddCharActivity : AppCompatActivity() {
             "Wizard"
         )
         val quantities = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
-
+        val SHARED_PREFS : String = "sharedPrefs"
+        val ΝΑΜΕ : String = "text"
 
 
         // Class choosing Spinner
@@ -92,6 +98,14 @@ class AddCharActivity : AppCompatActivity() {
         }
 
 
+        fun saveToParty(){
+            var sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+            var editor : SharedPreferences.Editor = sharedPreferences.edit()
+
+//            editor.put
+
+        }
+
 
 
 
@@ -104,6 +118,7 @@ class AddCharActivity : AppCompatActivity() {
 
             var editTextNameValue = editTextName.text.toString()
             var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
+            var editTextHitpointsValue = Integer.valueOf(editTextHitpoints.text.toString())
             var spinnerValue = class_result
 
             println("HELLO!!!!!!")
@@ -118,6 +133,7 @@ class AddCharActivity : AppCompatActivity() {
             resultIntent.putExtra("EXTRA_NAME", editTextNameValue)
             resultIntent.putExtra("EXTRA_INITIATIVE", editTextInitiativeValue)
             resultIntent.putExtra("EXTRA_CLASS", class_result)
+            resultIntent.putExtra("EXTRA_HITPOINTS", editTextHitpointsValue)
             resultIntent.putExtra("EXTRA_AMOUNT", amount_result)
 
             setResult(Activity.RESULT_OK, resultIntent)

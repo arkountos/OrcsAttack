@@ -1,16 +1,23 @@
 package com.example.inittrack2
 
-class Character (input_name: String, input_initiative: Int, input_myclass: String){
-    var name: String
-    var initiative_modifier: Int
+class Character (input_name: String,
+                 input_initiative: Int,
+                 input_myclass: String,
+                 input_hitpoints: Int = 0,
+                 input_armor_class: Int = 0){
+
+    var name: String = input_name.capitalize()
+    var initiative_modifier: Int = input_initiative
+    var myclass: String = input_myclass
+    var hitpoints: Int = input_hitpoints
+    var armor_class: Int = input_armor_class
+
     var initiative: Int
-    var myclass: String
+    var temporary_hitpoints: Int
 
     init {
-        name = input_name
-        initiative_modifier = input_initiative
         initiative = 0
-        myclass = input_myclass
+        temporary_hitpoints = 0
     }
 
     fun rollInitiative(){
