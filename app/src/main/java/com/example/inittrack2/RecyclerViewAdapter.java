@@ -1,5 +1,6 @@
 package com.example.inittrack2;
 
+import com.example.application.example.HitpointsDialog;
 import com.example.inittrack2.R;
 import android.content.Context;
 import android.graphics.Color;
@@ -14,6 +15,8 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import android.app.FragmentManager;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -92,6 +95,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 popup.show();
             }
         });
+
+        holder.hitpoints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+    }
+
+    public void openDialog(){
+        HitpointsDialog exampleDialog = new HitpointsDialog();
+//        exampleDialog.show(getSupportFragmentManager(), "example dialog");
     }
 
 //    @Override
@@ -117,6 +132,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView image;
         ConstraintLayout parent_layout;
         ImageView options_image;
+        ImageView hitpoints;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -125,6 +141,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             image_name = itemView.findViewById(R.id.image_name);
             initiative_rolled = itemView.findViewById(R.id.inititative_rolled);
             options_image = itemView.findViewById(R.id.options);
+            hitpoints = itemView.findViewById(R.id.hitpoints);
         }
     }
 }
