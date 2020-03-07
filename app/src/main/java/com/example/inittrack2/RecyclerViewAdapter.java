@@ -1,6 +1,5 @@
 package com.example.inittrack2;
 
-import com.example.application.example.HitpointsDialog;
 import com.example.inittrack2.R;
 import android.content.Context;
 import android.graphics.Color;
@@ -22,6 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -65,6 +66,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.parent_layout.setBackgroundColor(ContextCompat.getColor(mContext, R.color.colorEnemy));
         }
 
+        holder.hitpoints.setText("" + mcharacters.get(position).getHitpoints());
+
         holder.options_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +89,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 break;
                             case R.id.menu2:
                                 //handle menu2 click
+
                                 break;
                         }
                         return false;
@@ -96,18 +100,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-        holder.hitpoints.setOnClickListener(new View.OnClickListener() {
+        holder.hitpoints_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDialog();
+                Log.d(TAG, "Hey!");
             }
         });
     }
 
     public void openDialog(){
-        HitpointsDialog exampleDialog = new HitpointsDialog();
-//        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+
     }
+
 
 //    @Override
 //    public boolean onMenuItemClick(MenuItem item) {
@@ -132,7 +136,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView image;
         ConstraintLayout parent_layout;
         ImageView options_image;
-        ImageView hitpoints;
+        TextView hitpoints;
+        ImageView hitpoints_image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -142,6 +147,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             initiative_rolled = itemView.findViewById(R.id.inititative_rolled);
             options_image = itemView.findViewById(R.id.options);
             hitpoints = itemView.findViewById(R.id.hitpoints);
+            hitpoints_image = itemView.findViewById(R.id.hitpoints_image);
         }
     }
 }

@@ -3,7 +3,7 @@ package com.example.inittrack2
 class Character (input_name: String,
                  input_initiative: Int,
                  input_myclass: String,
-                 input_hitpoints: Int = 0,
+                 input_hitpoints: Int,
                  input_armor_class: Int = 0){
 
     var name: String = input_name.capitalize()
@@ -13,11 +13,10 @@ class Character (input_name: String,
     var armor_class: Int = input_armor_class
 
     var initiative: Int
-    var temporary_hitpoints: Int
 
     init {
         initiative = 0
-        temporary_hitpoints = 0
+        armor_class = 0
     }
 
     fun rollInitiative(){

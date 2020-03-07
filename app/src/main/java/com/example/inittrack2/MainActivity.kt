@@ -55,19 +55,20 @@ class MainActivity : AppCompatActivity() {
                 var result_initiative = data?.getIntExtra("EXTRA_INITIATIVE", 0)
                 var result_class = data?.getStringExtra("EXTRA_CLASS")
                 var result_amount = data?.getStringExtra("EXTRA_AMOUNT") // Is a string!
+                var result_hitpoints = data?.getStringExtra("EXTRA_HITPOINTS")
 
 
                 // With the returned data create a new Character and add him to the list!
-                if (result_name == null || result_initiative == null || result_class == null || result_amount == null) {
+                if (result_name == null || result_initiative == null || result_class == null || result_amount == null || result_hitpoints == null) {
                     throw Exception("Oh no! Intent returned a null value.")
                 }
                 for (i in 0 until result_amount.toInt()) {
                     if (i >= 1){
                         var newName : String = "$result_name $i"
-                        addToCharacters(newName, result_initiative, result_class)
+                        addToCharacters(newName, result_initiative, result_class, result_hitpoints.toInt())
                     }
                     else {
-                        addToCharacters(result_name, result_initiative, result_class)
+                        addToCharacters(result_name, result_initiative, result_class, result_hitpoints.toInt())
                     }
                 }
                 initList()
@@ -78,8 +79,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addToCharacters(result_name: String, result_initiative: Int, result_class: String){
-        var new_char: Character = Character(result_name, result_initiative, result_class)
+    private fun addToCharacters(result_name: String, result_initiative: Int, result_class: String, result_hitpoints: Int){
+        var new_char: Character = Character(result_name, result_initiative, result_class, result_hitpoints)
         characters.add(new_char)
     }
 

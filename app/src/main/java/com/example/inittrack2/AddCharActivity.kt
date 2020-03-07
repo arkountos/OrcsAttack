@@ -18,9 +18,6 @@ class AddCharActivity : AppCompatActivity() {
 //    public val EXTRA_NAME = "com.example.inittrack2.EXTRA_NAME"
 //    public val EXTRA_INITIATIVE = "com.example.inittrack.EXTRA_INITIATIVE"
 
-
-
-
     private lateinit var class_option : Spinner
     private lateinit var amount_option : Spinner
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,17 +94,11 @@ class AddCharActivity : AppCompatActivity() {
 
         }
 
-
         fun saveToParty(){
             var sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
             var editor : SharedPreferences.Editor = sharedPreferences.edit()
-
 //            editor.put
-
         }
-
-
-
 
         println("##############")
         println(class_result)
@@ -118,7 +109,7 @@ class AddCharActivity : AppCompatActivity() {
 
             var editTextNameValue = editTextName.text.toString()
             var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
-            var editTextHitpointsValue = Integer.valueOf(editTextHitpoints.text.toString())
+            var editTextHitpointsValue = editTextHitpoints.text.toString()
             var spinnerValue = class_result
 
             println("HELLO!!!!!!")
@@ -128,6 +119,7 @@ class AddCharActivity : AppCompatActivity() {
             println(editTextInitiativeValue)
             println("And result is:")
             println(class_result)
+            println(editTextHitpointsValue)
 
             val resultIntent = Intent()
             resultIntent.putExtra("EXTRA_NAME", editTextNameValue)
