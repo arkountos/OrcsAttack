@@ -1,8 +1,11 @@
 package com.example.inittrack2;
 
 import com.example.inittrack2.R;
+
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,11 +18,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.app.FragmentManager;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
@@ -34,11 +38,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<Character> mcharacters = new ArrayList<>();
     private Context mContext;
+    private FragmentManager mFragmentManager;
 
     // Default Constructor!
-    public RecyclerViewAdapter(Context context, ArrayList<Character> characters) {
+    public RecyclerViewAdapter(Context context, ArrayList<Character> characters, FragmentManager fragmentManager) {
         mcharacters = characters;
         mContext = context;
+        mFragmentManager = fragmentManager;
     }
 
     @NonNull
@@ -104,21 +110,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Hey!");
+                openDialog();
             }
         });
     }
 
     public void openDialog(){
-
+        HitpointsDialog hpDialog = new HitpointsDialog();
+        hpDialog.show(mFragmentManager, "test");
     }
-
-
-//    @Override
-//    public boolean onMenuItemClick(MenuItem item) {
-//        Log.d(TAG, "Clicked!");
-//        Toast.makeText(mContext, "Clicked" + item, Toast.LENGTH_SHORT).show();
-//        return false;
-//    }
 
     @Override
     public int getItemCount() {

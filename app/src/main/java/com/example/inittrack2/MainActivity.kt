@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView(){
         val recyclerView: RecyclerView = findViewById(R.id.my_recycler_view)
-        val adapter = RecyclerViewAdapter(this, characters)
+        val adapter = RecyclerViewAdapter(this, characters, this.supportFragmentManager)
         recyclerView.adapter = adapter;
         recyclerView.layoutManager = LinearLayoutManager(this);
     }
