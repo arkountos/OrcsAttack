@@ -33,8 +33,9 @@ import java.util.ArrayList;
 
 //import static androidx.core.graphics.drawable.IconCompat.getResources;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> /*implements PopupMenu.OnMenuItemClickListener */{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements HitpointsDialog.HitpointsDialogListener {
     private static final String TAG = "RecyclerViewAdapter";
+    private int new_hitpoints;
 
     private ArrayList<Character> mcharacters = new ArrayList<>();
     private Context mContext;
@@ -111,21 +112,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Log.d(TAG, "Hey!");
                 openDialog();
+
+                Log.d(TAG, "Done with openDialog, new_hitpoints are:" +  new_hitpoints +
+                        "and char hitpoints are: " + mcharacters.get(position).getHitpoints());
             }
         });
     }
 
     public void openDialog(){
         HitpointsDialog hpDialog = new HitpointsDialog();
+
         hpDialog.show(mFragmentManager, "test");
     }
+
 
     @Override
     public int getItemCount() {
         return mcharacters.size();
     }
 
-
+    @Override
+    public void applyData(int hitpoints) {
+        Log.d(TAG, "################ In applyData ##############");
+        new_hitpoints = hitpoints;
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
