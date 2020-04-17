@@ -1,6 +1,7 @@
 package com.example.inittrack2;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import static java.sql.DriverManager.println;
 
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> {
 
@@ -44,7 +47,18 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Tile currentTile = mTiles.get(position);
-        String res = "ic_" + currentTile.getContent().getMyclass().toLowerCase();
+        String res = "";
+        if (currentTile.getCharacter() != null){
+            res = "ic_" + currentTile.getCharacter().getMyclass().toLowerCase();
+        }
+        else if (currentTile.getContent() != null){
+            res = "map_" + currentTile.getContent().getType().toLowerCase();
+        }
+        else{
+            Log.d("GRID_ADAPTER", "Tile character and ground both null");
+            return;
+        }
+
         int id = mContext.getResources().getIdentifier(res, "drawable", mContext.getPackageName());
 
         holder.mImageView.setImageResource(id);

@@ -27,7 +27,7 @@ class StartActivity : AppCompatActivity() {
     }
 
     private fun openGeneratorActivity(){
-        val intent: Intent = Intent(this, EncounterGeneratorActivity::class.java)
+        val intent: Intent = Intent(this, EncounterStartActivity::class.java)
         startActivity(intent)
     }
 }
