@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 //import android.support.v7.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,8 +23,12 @@ public class HitpointsDialog extends AppCompatDialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
+        Log.d("onAttach", "context is " + context.toString());
+
         try {
-            listener = (HitpointsDialogListener) getTargetFragment();
+//            Log.d("onAttach", "getActivity() is " + getActivity() + " getParentFragment is " + getParentFragment() +
+//                    "getActivity().getSupportFragmentManager() is ");
+            listener = (HitpointsDialogListener) getActivity().getSupportFragmentManager() /* NO! */;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
                     "must implement HitpointsDialogListener!");
