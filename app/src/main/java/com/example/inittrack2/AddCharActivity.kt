@@ -7,14 +7,17 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.annotation.IntegerRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_add_char.*
+import com.google.gson.Gson
 
 
 class AddCharActivity : AppCompatActivity() {
     private val TAG = "AddCharActivity"
+    val SHARED_PREFS : String = "sharedPrefs"
+
+    val gson = Gson()
+
 //    public val EXTRA_NAME = "com.example.inittrack2.EXTRA_NAME"
 //    public val EXTRA_INITIATIVE = "com.example.inittrack.EXTRA_INITIATIVE"
 
@@ -48,7 +51,6 @@ class AddCharActivity : AppCompatActivity() {
             "Wizard"
         )
         val quantities = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
-        val SHARED_PREFS : String = "sharedPrefs"
         val ΝΑΜΕ : String = "text"
 
 
@@ -94,15 +96,33 @@ class AddCharActivity : AppCompatActivity() {
 
         }
 
-        fun saveToParty(){
+        fun saveToParty(name: String, initiative: Int, hitpoints: String, myclass: String){
             var sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
             var editor : SharedPreferences.Editor = sharedPreferences.edit()
-//            editor.put
+
+            // Jsonify
+            var char = Character(name, initiative, myclass, hitpoints.toInt())
+            var jsonchar = gson.toJson(char)
+
+            // Put to sharedpreferences
+            editor.putString(name, jsonchar)
+
+            editor.apply()
         }
 
         println("##############")
         println(class_result)
         println(editTextName)
+
+        val add_to_party_btn = findViewById<Button>(R.id.add_to_party)
+        add_to_party_btn.setOnClickListener{
+            var editTextNameValue = editTextName.text.toString()
+            var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
+            var editTextHitpointsValue = editTextHitpoints.text.toString()
+            var spinnerValue = class_result
+
+            saveToParty(editTextNameValue, editTextInitiativeValue, editTextHitpointsValue, spinnerValue)
+        }
 
         val btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.doneButton)
         btn_done.setOnClickListener {
@@ -132,7 +152,6 @@ class AddCharActivity : AppCompatActivity() {
             finish()
         }
     }
-
 }
 
 

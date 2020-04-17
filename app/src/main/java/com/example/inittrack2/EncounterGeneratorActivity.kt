@@ -5,8 +5,11 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 
 class EncounterGeneratorActivity : AppCompatActivity() {
+    // Gson() object used for serialization and deserialization with JSON strings
+    val gson = Gson()
 
     private val tiles: ArrayList<Tile> = ArrayList()
 
@@ -29,6 +32,13 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         }
 
 
+//        val test = Tile(Character("Hero", 3, "Paladin", 50), Ground("grass"))
+//        println(test)
+//        val jsontest = gson.toJson(test)
+//        println(jsontest)
+//
+//        val resultjson = gson.fromJson(jsontest, Tile::class.java)
+//        println(resultjson)
 
         generateMap(height.toInt(), width.toInt(), tree_probability = tree_probability.toInt());
 
