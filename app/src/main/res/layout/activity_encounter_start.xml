@@ -100,7 +100,7 @@
     <Spinner
         android:id="@+id/height_spinner"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/height"
         app:layout_constraintHorizontal_bias="0.0"
@@ -110,7 +110,7 @@
     <Spinner
         android:id="@+id/width_spinner"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/width"
         app:layout_constraintHorizontal_bias="0.0"
@@ -132,7 +132,7 @@
     <Spinner
         android:id="@+id/tree_probability_spinner"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/tree_probability_text"
         app:layout_constraintTop_toBottomOf="@+id/tree_probability_text" />

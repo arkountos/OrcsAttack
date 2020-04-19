@@ -27,7 +27,16 @@ class EncounterStartActivity : AppCompatActivity() {
         "7",
         "8",
         "9",
-        "10"
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "20",
+        "25",
+        "50",
+        "100"
     )
 
     val probabilities = arrayOf(
