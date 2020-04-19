@@ -89,14 +89,6 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         }
 
         if (stream == 1){
-            if ((0..1).random() == 1){
-                var rand_x = 0
-                var rand_y = (0..height).random()
-            }
-            else {
-                var rand_x = (0..width).random()
-                var rand_y = 0
-            }
 
         }
     }
