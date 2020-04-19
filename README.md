@@ -7,6 +7,7 @@ For now the project consists only of the initiative tracker and is based on the 
 - Add PC and NPC characters with their names and initiative modifiers and roll separate initiative orders for each round of combat
 - Add a bunch of monsters with pregenerated numbered names with one tap
 - Remove characters from combat as they leave or die
+- (New) Random Encounter Wilderness Map generator, with customizable options for tree and river spawns, as well as a campfire indicating the player's camp position.
 
 ### Installation Guide
 
