@@ -59,9 +59,14 @@ class MainActivity : AppCompatActivity() {
 
 
                 // With the returned data create a new Character and add him to the list!
-                if (result_name == null || result_initiative == null || result_class == null || result_amount == null || result_hitpoints == null) {
+                if (result_name == null || result_initiative == null || result_class == null || result_amount == null) {
                     throw Exception("Oh no! Intent returned a null value.")
                 }
+                if (result_hitpoints == null){
+                    println("In resulthit")
+                    result_hitpoints = "1";
+                }
+                println("result_hitpoints is $result_hitpoints")
                 for (i in 0 until result_amount.toInt()) {
                     if (i >= 1){
                         var newName : String = "$result_name $i"

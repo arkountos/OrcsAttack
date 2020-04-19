@@ -1,6 +1,7 @@
 package com.example.inittrack2
 
 import android.app.Activity
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -23,6 +24,8 @@ class AddCharActivity : AppCompatActivity() {
 
     private lateinit var class_option : Spinner
     private lateinit var amount_option : Spinner
+    private lateinit var char_option : Spinner
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -34,6 +37,7 @@ class AddCharActivity : AppCompatActivity() {
         var editTextInitiative = findViewById<EditText>(com.example.inittrack2.R.id.editTextInitiative)
         var class_result: String = "Default"
         var amount_result: String = "1"
+        var char_result: String = "Default"
         var editTextHitpoints = findViewById<EditText>(com.example.inittrack2.R.id.editTextHitpoints)
         val classes = arrayOf(
             "Monster",
@@ -51,6 +55,7 @@ class AddCharActivity : AppCompatActivity() {
             "Wizard"
         )
         val quantities = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
+        var characterArray = arrayOf("Char1", "Char2", "Char3")
         val ΝΑΜΕ : String = "text"
 
 
@@ -58,12 +63,16 @@ class AddCharActivity : AppCompatActivity() {
         class_option = findViewById(com.example.inittrack2.R.id.spinner)
         // Amount of characters choosing Spinner
         amount_option = findViewById(com.example.inittrack2.R.id.spinner2)
+        // Load char Spinner
+        char_option = findViewById(R.id.load_char_spinner)
 
 
         class_option.adapter =
             ArrayAdapter<String>(this, R.layout.spinner_item, classes)
         amount_option.adapter =
             ArrayAdapter<String>(this, R.layout.spinner_item, quantities)
+        char_option.adapter =
+            ArrayAdapter<String>(this, R.layout.spinner_item, characterArray)
 
         class_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -96,7 +105,23 @@ class AddCharActivity : AppCompatActivity() {
 
         }
 
-        fun saveToParty(name: String, initiative: Int, hitpoints: String, myclass: String){
+        char_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                char_result = "Default"
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                char_result = characterArray[position]
+            }
+
+        }
+
+        fun save(name: String, initiative: Int, hitpoints: String, myclass: String){
             var sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
             var editor : SharedPreferences.Editor = sharedPreferences.edit()
 
@@ -110,46 +135,70 @@ class AddCharActivity : AppCompatActivity() {
             editor.apply()
         }
 
+        fun load(key: String){
+
+        }
+
+
+
         println("##############")
         println(class_result)
         println(editTextName)
 
-        val add_to_party_btn = findViewById<Button>(R.id.add_to_party)
-        add_to_party_btn.setOnClickListener{
+        val save_btn = findViewById<Button>(R.id.add_to_party)
+        save_btn.setOnClickListener{
             var editTextNameValue = editTextName.text.toString()
             var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
             var editTextHitpointsValue = editTextHitpoints.text.toString()
             var spinnerValue = class_result
 
-            saveToParty(editTextNameValue, editTextInitiativeValue, editTextHitpointsValue, spinnerValue)
+            save(editTextNameValue, editTextInitiativeValue, editTextHitpointsValue, spinnerValue)
         }
+
+        val load_btn = findViewById<Button>(R.id.load_char_button)
+
 
         val btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.doneButton)
         btn_done.setOnClickListener {
-
             var editTextNameValue = editTextName.text.toString()
-            var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
+            var editTextInitiativeValue = editTextInitiative.text.toString()
             var editTextHitpointsValue = editTextHitpoints.text.toString()
-            var spinnerValue = class_result
 
-            println("HELLO!!!!!!")
-            println("Name is")
-            println(editTextNameValue)
-            println("And inititative is:")
-            println(editTextInitiativeValue)
-            println("And result is:")
-            println(class_result)
-            println(editTextHitpointsValue)
+            // Input sanitation
+            if (editTextInitiativeValue == ""){
+                editTextInitiativeValue = "0"
+            }
+            if (editTextHitpointsValue == ""){
+                editTextHitpointsValue = "1"
+            }
 
-            val resultIntent = Intent()
-            resultIntent.putExtra("EXTRA_NAME", editTextNameValue)
-            resultIntent.putExtra("EXTRA_INITIATIVE", editTextInitiativeValue)
-            resultIntent.putExtra("EXTRA_CLASS", class_result)
-            resultIntent.putExtra("EXTRA_HITPOINTS", editTextHitpointsValue)
-            resultIntent.putExtra("EXTRA_AMOUNT", amount_result)
+            if (editTextNameValue == ""){
+                println("In here")
+                Toast.makeText(this, "Please fill out the Name!",
+                    Toast.LENGTH_SHORT).show();
 
-            setResult(Activity.RESULT_OK, resultIntent)
-            finish()
+            }
+
+            else {
+                println("HELLO!!!!!!")
+                println("Name is")
+                println(editTextNameValue)
+                println("And inititative is:")
+                println(editTextInitiativeValue)
+                println("And result is:")
+                println(class_result)
+                println(editTextHitpointsValue)
+
+                val resultIntent = Intent()
+                resultIntent.putExtra("EXTRA_NAME", editTextNameValue)
+                resultIntent.putExtra("EXTRA_INITIATIVE", editTextInitiativeValue.toInt())
+                resultIntent.putExtra("EXTRA_CLASS", class_result)
+                resultIntent.putExtra("EXTRA_HITPOINTS", editTextHitpointsValue)
+                resultIntent.putExtra("EXTRA_AMOUNT", amount_result)
+
+                setResult(Activity.RESULT_OK, resultIntent)
+                finish()
+            }
         }
     }
 }

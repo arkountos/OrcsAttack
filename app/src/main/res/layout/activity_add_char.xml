@@ -9,6 +9,46 @@
     android:clickable="true"
     tools:context=".AddCharActivity">
 
+    <Button
+        android:id="@+id/load_char_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:text="Load"
+        app:layout_constraintStart_toStartOf="@+id/load_char_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/load_char_spinner" />
+
+    <TextView
+        android:id="@+id/load_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Character Name"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/load_char_text"
+        app:layout_constraintTop_toBottomOf="@+id/load_char_text" />
+
+    <Spinner
+        android:id="@+id/load_char_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="@+id/load_name_text"
+        app:layout_constraintTop_toBottomOf="@+id/load_name_text" />
+
+    <TextView
+        android:id="@+id/load_char_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Or load an existing character"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/add_to_party"
+        app:layout_constraintTop_toBottomOf="@+id/add_to_party" />
+
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
@@ -118,16 +158,11 @@
         android:id="@+id/add_to_party"
         android:layout_width="98dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
+        android:layout_marginTop="16dp"
         android:background="@color/colorAccent"
-        android:text="@string/add_to_party"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextName"
-        app:layout_constraintTop_toTopOf="@+id/editTextName" />
+        android:text="Save"
+        app:layout_constraintStart_toStartOf="@+id/spinner2"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
     <TextView
         android:id="@+id/textView"
