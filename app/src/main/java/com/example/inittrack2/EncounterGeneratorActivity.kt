@@ -4,19 +4,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+
+// TODO: Add Characters to the map
 
 class EncounterGeneratorActivity : AppCompatActivity() {
     // Gson() object used for serialization and deserialization with JSON strings
     val gson = Gson()
 
+    private var tiles_map = HashMap<Pair<Int, Int>, Tile>()
     private val tiles: ArrayList<Tile> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_grid_test)
+        setContentView(R.layout.activity_grid)
 
         //Read height and width from spinners
         val height : String = intent.getStringExtra("EXTRA_HEIGHT")
@@ -78,13 +80,19 @@ class EncounterGeneratorActivity : AppCompatActivity() {
             var rndm_tree = (0..100).random()
             var rndm_rock = (0..100).random()
             if (rndm_tree < tree_probability) {
-                tiles.add(Tile(null, Ground("tree"), (i % width), (i / height)))
+                val mytile = Tile(null, Ground("tree"), (i % width), (i / height))
+                tiles.add(mytile)
+                tiles_map[Pair(i % width, i / height)] = mytile
             }
             else if (rndm_rock < rock_probability){
-                tiles.add(Tile(null, Ground("rock"), (i % width), (i / height)))
+                val mytile = Tile(null, Ground("rock"), (i % width), (i / height))
+                tiles.add(mytile)
+                tiles_map[Pair(i % width, i / height)] = mytile
             }
             else {
-                tiles.add(Tile(null, Ground("grass"), (i % width), (i / height)))
+                val mytile = Tile(null, Ground("grass"), (i % width), (i / height))
+                tiles.add(mytile)
+                tiles_map[Pair(i % width, i / height)] = mytile
             }
         }
         if (campfire == 1){
