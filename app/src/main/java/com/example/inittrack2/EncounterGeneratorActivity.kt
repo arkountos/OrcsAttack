@@ -34,7 +34,14 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         // Read campfire checkbox
         val campfire_input = intent.getStringExtra("EXTRA_CAMPFIRE").toInt()
         val stream_input = intent.getStringExtra("EXTRA_STREAM").toInt()
-
+        val rocks_input = intent.getStringExtra("EXTRA_ROCKS").toInt()
+        val rock_probability: String
+        if (intent.getStringExtra("EXTRA_ROCKS").toInt() == 1) {
+            rock_probability = intent.getStringExtra("EXTRA_ROCKS_PROBABILITY").dropLast(1)
+        }
+        else{
+            rock_probability = "0"
+        }
 
 //        val test = Tile(Character("Hero", 3, "Paladin", 50), Ground("grass"))
 //        println(test)
@@ -44,7 +51,8 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 //        val resultjson = gson.fromJson(jsontest, Tile::class.java)
 //        println(resultjson)
 
-        generateMap(height.toInt(), width.toInt(), tree_probability = tree_probability.toInt(), campfire = campfire_input, stream = stream_input);
+        generateMap(height.toInt(), width.toInt(), tree_probability = tree_probability.toInt(),
+            campfire = campfire_input, stream = stream_input, rock_probability = rock_probability.toInt());
 
 //        for (e in tiles){
 //            if (e.x == 1 && e.y == 1){
@@ -65,13 +73,17 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
     private fun generateMap(height: Int, width: Int, campfire: Int = 0,
                             tree_probability: Int = 0, hill_probability: Int = 0,
-                            stream: Int = 0){
+                            stream: Int = 0, rock_probability: Int = 0){
         for (i in 0 until (height * width)){
-            var rndm = (0..100).random()
-            if (rndm < tree_probability) {
+            var rndm_tree = (0..100).random()
+            var rndm_rock = (0..100).random()
+            if (rndm_tree < tree_probability) {
                 tiles.add(Tile(null, Ground("tree"), (i % width), (i / height)))
             }
-            else{
+            else if (rndm_rock < rock_probability){
+                tiles.add(Tile(null, Ground("rock"), (i % width), (i / height)))
+            }
+            else {
                 tiles.add(Tile(null, Ground("grass"), (i % width), (i / height)))
             }
         }

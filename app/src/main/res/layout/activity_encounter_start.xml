@@ -8,6 +8,28 @@
     tools:context=".EncounterStartActivity">
 
     <TextView
+        android:id="@+id/tree_probability_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Rock spawn probability:"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/rocks_checkbox"
+        app:layout_constraintTop_toBottomOf="@+id/rocks_checkbox" />
+
+    <CheckBox
+        android:id="@+id/rocks_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Include rocks"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stream_checkbox" />
+
+    <TextView
         android:id="@+id/tree_probability_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,8 +155,16 @@
         android:id="@+id/tree_probability_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/tree_probability_text"
         app:layout_constraintTop_toBottomOf="@+id/tree_probability_text" />
+
+    <Spinner
+        android:id="@+id/rock_probability_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/tree_probability_text2"
+        app:layout_constraintTop_toBottomOf="@+id/tree_probability_text2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
