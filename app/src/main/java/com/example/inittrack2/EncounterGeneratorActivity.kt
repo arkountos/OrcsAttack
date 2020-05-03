@@ -138,63 +138,55 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         if (stream == 1){
             Log.d("STREAM", "1")
             // From top to bottom river
-            var start_tile: Tile = tiles_map[Pair(0,(0..width).random())]!!
-            var end_tile: Tile = tiles_map[Pair(height - 1,(0..width).random())]!!
-
-            Log.d("Distance(1,1) and (2,3)", distance(tiles_map[Pair(1,1)]!!, tiles_map[Pair(2,3)]!!).toString())
+            var start_tile: Tile = tiles_map[Pair(0,(0 until width).random())]!!
+            var end_tile: Tile = tiles_map[Pair(height - 1,(0 until width).random())]!!
 
             var open_set: MutableList<Tile> = mutableListOf(start_tile)
 
             // A star algorithm
+            open_set.add(start_tile)
+            var this_tile: Tile
             while (open_set.isNotEmpty()){
-                var tile : Tile = open_set.first()
-                tile.parent = start_tile
-                tile.hCost = distance(tile, end_tile)
-                tile.gCost = tile.parent!!.gCost + STEP_COST + tile.randomNoise
-                for (newtile in return_near_tiles(tile)){
-
+                this_tile = open_set.take(1)[0]
+                Log.d("CHECK", "Checking" + this_tile.x + ", " + this_tile.y + " tile")
+                open_set.removeAt(0)
+                for (tile in return_near_tiles(this_tile)){
+                    if (tile != null) {
+                        if (tile in open_set){
+                            if (tile.fCost > this_tile.gCost + STEP_COST + tile.hCost){
+                                // Must update
+                                tile.parent = this_tile
+                                tile.hCost = distance(tile, end_tile)
+                                tile.gCost = tile.parent!!.gCost + STEP_COST + tile.randomNoise
+                            }
+                        }
+                        else{
+                            tile.parent = this_tile
+                            tile.hCost = distance(tile, end_tile)
+                            tile.gCost = tile.parent!!.gCost + STEP_COST + tile.randomNoise
+                            open_set.add(tile)
+                            if (tile.x == end_tile.x && tile.y == end_tile.y){
+                                // Reached the end_tile
+                                Log.d("END", "Found the end-tile")
+                                // Do something about the path
+                                var tempTile = tile
+                                while(tempTile != null){
+                                    tempTile!!.content = Ground("water")
+                                    tempTile = tempTile.parent
+                                    if (tempTile != null) {
+                                        Log.d("tempTile", "Checkin on " + tempTile.x + "," + tempTile.y)
+                                    }
+                                }
+                                return
+                            }
+                        }
+                    }
+                    else{
+                        Log.d("Null!", "A null tile was returned in A* loop")
+                    }
                 }
-
-                open_set.add(tile)
                 Collections.sort(open_set, TileComparator())
-
             }
-            for (tile in return_near_tiles(start_tile)){
-                if (tile != null) {
-                    tile.parent = start_tile
-                    tile.hCost = distance(tile, end_tile)
-                    tile.gCost = tile.parent!!.gCost + STEP_COST + tile.randomNoise
-                }
-                else{
-                    Log.d("Null!", "A null tile was returned in A* loop")
-                }
-            }
-
-//            var fountain_tile: Tile = tiles_map[Pair((0..height).random(),(0..width).random())] ?: throw Exception("Fountain tile is null")
-//            for (tile in return_near_tiles(fountain_tile)){
-//                stream_queue.add(tile)
-//            }
-//            Log.d("STREAM", "2")
-//            var to_be_river: Tile?
-//            var tile: Tile
-//            while (stream_queue.peek() != null){
-//                // One of my neighbors becomes water block
-//                tile = stream_queue.poll()
-//                to_be_river = return_near_tiles(tile).shuffled().take(1)[0]
-//                if (to_be_river == null || to_be_river.content == Ground("campfire")){
-//                    continue
-//                }
-//                if ()
-//                to_be_river.content = Ground("river")
-//                stream_queue.add(to_be_river)
-//            }
-
-//            for (tile in stream_queue){
-//                // One of my neighbors becomes water block
-//                to_be_river = return_near_tiles(tile).shuffled().take(1)[0]
-//                to_be_river!!.content = Ground("river")
-//                stream_queue.add(to_be_river)
-//            }
         }
     }
 }
