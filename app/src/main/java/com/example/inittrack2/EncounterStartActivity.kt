@@ -122,6 +122,9 @@ class EncounterStartActivity : AppCompatActivity() {
             }
         }
 
+        height_option.setSelection(9)
+        width_option.setSelection(9)
+
         trees_probability_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 trees_probability_input = "5%"
@@ -154,7 +157,8 @@ class EncounterStartActivity : AppCompatActivity() {
             }
         }
 
-
+        trees_probability_option.setSelection(3)
+        rocks_probability_option.setSelection(3)
 
         val encounter_start_btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.encounter_start_done)
         encounter_start_btn_done.setOnClickListener {
@@ -185,6 +189,4 @@ class EncounterStartActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-
 }

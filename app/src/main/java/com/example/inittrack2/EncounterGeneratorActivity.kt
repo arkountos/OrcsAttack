@@ -6,8 +6,11 @@ import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import java.util.Queue
-import java.util.LinkedList
+import java.lang.Math.pow
+import java.lang.Math.sqrt
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 // TODO: Add Characters to the map
 
@@ -15,7 +18,8 @@ class EncounterGeneratorActivity : AppCompatActivity() {
     // Gson() object used for serialization and deserialization with JSON strings
     val gson = Gson()
 
-    private var stream_growth = 20 // 20% chance an extra neighboring tile is also stream
+    private val STEP_COST = 1.0
+    private val DIAGONAL_STEP_COST = 1.5
 
     private var tiles_map = HashMap<Pair<Int, Int>, Tile>()
     private val tiles: ArrayList<Tile> = ArrayList()
@@ -29,6 +33,10 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         var left_tile: Tile? = tiles_map[Pair(tile.x-1, tile.y)]
         var right_tile: Tile? = tiles_map[Pair(tile.x+1, tile.y)]
         return(listOf<Tile?>(up_tile, down_tile, left_tile, right_tile))
+    }
+
+    fun distance(start: Tile, finish: Tile): Double{
+        return (sqrt( pow(start.x.toDouble() - finish.x.toDouble(), 2.0) + pow(start.y.toDouble() - finish.y.toDouble(), 2.0)))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -128,14 +136,65 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         }
 
         if (stream == 1){
-            var fountain_tile: Tile = tiles_map[Pair(2,2)] ?: throw Exception("Foundain tile is null")
-            for (tile in return_near_tiles(fountain_tile)){
-                stream_queue.add(tile)
+            Log.d("STREAM", "1")
+            // From top to bottom river
+            var start_tile: Tile = tiles_map[Pair(0,(0..width).random())]!!
+            var end_tile: Tile = tiles_map[Pair(height - 1,(0..width).random())]!!
+
+            Log.d("Distance(1,1) and (2,3)", distance(tiles_map[Pair(1,1)]!!, tiles_map[Pair(2,3)]!!).toString())
+
+            var open_set: MutableList<Tile> = mutableListOf(start_tile)
+
+            // A star algorithm
+            while (open_set.isNotEmpty()){
+                var tile : Tile = open_set.first()
+                tile.parent = start_tile
+                tile.hCost = distance(tile, end_tile)
+                tile.gCost = tile.parent!!.gCost + STEP_COST + tile.randomNoise
+                for (newtile in return_near_tiles(tile)){
+
+                }
+
+                open_set.add(tile)
+                Collections.sort(open_set, TileComparator())
+
             }
-            for (tile in stream_queue){
-                // One of my neighbors becomes water block
-                return_near_tiles(tile).shuffled().take(1)[0]!!.content = Ground("water")
+            for (tile in return_near_tiles(start_tile)){
+                if (tile != null) {
+                    tile.parent = start_tile
+                    tile.hCost = distance(tile, end_tile)
+                    tile.gCost = tile.parent!!.gCost + STEP_COST + tile.randomNoise
+                }
+                else{
+                    Log.d("Null!", "A null tile was returned in A* loop")
+                }
             }
+
+//            var fountain_tile: Tile = tiles_map[Pair((0..height).random(),(0..width).random())] ?: throw Exception("Fountain tile is null")
+//            for (tile in return_near_tiles(fountain_tile)){
+//                stream_queue.add(tile)
+//            }
+//            Log.d("STREAM", "2")
+//            var to_be_river: Tile?
+//            var tile: Tile
+//            while (stream_queue.peek() != null){
+//                // One of my neighbors becomes water block
+//                tile = stream_queue.poll()
+//                to_be_river = return_near_tiles(tile).shuffled().take(1)[0]
+//                if (to_be_river == null || to_be_river.content == Ground("campfire")){
+//                    continue
+//                }
+//                if ()
+//                to_be_river.content = Ground("river")
+//                stream_queue.add(to_be_river)
+//            }
+
+//            for (tile in stream_queue){
+//                // One of my neighbors becomes water block
+//                to_be_river = return_near_tiles(tile).shuffled().take(1)[0]
+//                to_be_river!!.content = Ground("river")
+//                stream_queue.add(to_be_river)
+//            }
         }
     }
 }
