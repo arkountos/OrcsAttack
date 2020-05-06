@@ -17,6 +17,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/dimensions3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/dimensions5" />
 
             <TextView
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/dimensions5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,6 +39,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/dimensions4" />
 
             <TextView
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/dimensions4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,6 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rock_probability_spinner" />
 
             <CheckBox
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/trees_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,6 +64,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/campfire_checkbox" />
 
             <Spinner
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/height_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,6 +75,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/height" />
 
             <CheckBox
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/rocks_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,8 +88,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/stream_checkbox" />
 
             <TextView
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/width"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:text="Width:"
@@ -92,6 +99,7 @@
                 app:layout_constraintTop_toTopOf="@+id/height" />
 
             <CheckBox
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/hills_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,8 +110,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/tree_probability_spinner" />
 
             <TextView
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/height"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Height:"
@@ -112,6 +121,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/dimensions" />
 
             <Spinner
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/width_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -122,6 +132,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/width" />
 
             <Spinner
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/tree_probability_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -143,6 +154,7 @@
                 app:srcCompat="@drawable/ic_done_black_24dp" />
 
             <TextView
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/tree_probability_text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -153,6 +165,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rocks_checkbox" />
 
             <CheckBox
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/campfire_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,6 +178,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/height_spinner" />
 
             <CheckBox
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/stream_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,6 +191,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/hills_checkbox" />
 
             <Spinner
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/rock_probability_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -185,6 +200,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tree_probability_text2" />
 
             <TextView
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/dimensions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -198,6 +214,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:fontFamily="@font/lunchds"
                 android:id="@+id/tree_probability_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
