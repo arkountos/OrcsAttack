@@ -141,13 +141,12 @@ class EncounterGeneratorActivity : AppCompatActivity() {
             var start_tile: Tile = tiles_map[Pair(0,(0 until width).random())]!!
             var end_tile: Tile = tiles_map[Pair(height - 1,(0 until width).random())]!!
 
-            var open_set: MutableList<Tile> = mutableListOf(start_tile)
-
             // A star algorithm
             start_tile.parent = null
             start_tile.hCost = distance(start_tile, end_tile)
             start_tile.gCost = 0.0
-            open_set.add(start_tile)
+            var open_set: MutableList<Tile> = mutableListOf(start_tile)
+            var closed_set: MutableList<Tile> = mutableListOf()
 
             var this_tile: Tile
             while (open_set.isNotEmpty()){
@@ -156,7 +155,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                 open_set.removeAt(0)
                 for (tile in return_near_tiles(this_tile)){
                     if (tile != null) {
-                        if (tile in open_set){
+                        if (tile in closed_set){
                             Log.d("UPDATE", "update the tile")
                             if (tile.fCost > this_tile.gCost + STEP_COST + tile.hCost && tile != start_tile){
                                 // Must update
@@ -169,14 +168,10 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                             Log.d("ADD", "add the tile")
                             tile.parent = this_tile
                             tile.hCost = distance(tile, end_tile)
-                            tile.gCost = tile.parent!!.gCost + STEP_COST + tile.randomNoise
-                            open_set.add(tile)
-                        }
-                        if (tile.x == 0 && tile.y == 8){
-                            Log.d("problem", "tile parent" + tile.parent!!.x + tile.parent!!.y)
-                        }
-                        if (tile.x == 0 && tile.y == 9){
-                            Log.d("problem", "tile parent" + tile.parent!!.x + tile.parent!!.y)
+                            tile.gCost = this_tile.gCost + STEP_COST + tile.randomNoise
+                            if (tile !in open_set) {
+                                open_set.add(tile)
+                            }
                         }
                         if (tile.x == end_tile.x && tile.y == end_tile.y){
                             // Reached the end_tile
@@ -186,7 +181,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                             Log.d("End tile", "" + end_tile.x + "," + end_tile.y)
                             var tempTile = tile
                             while(tempTile != null){
-                                tempTile!!.content = Ground("water")
+                                tempTile!!.content = Ground("river")
                                 if(tempTile.parent != null){
                                     Log.d("tempTile", "I am " + tempTile.x + "," + tempTile.y + "and my parent is" + tempTile.parent!!.x + tempTile.parent!!.y)
                                 }
@@ -200,6 +195,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                         Log.d("Null!", "A null tile was returned in A* loop")
                     }
                 }
+                closed_set.add(this_tile)
                 Log.d("CHECK", "Checked" + this_tile.x + ", " + this_tile.y + " with parent" + (this_tile.parent?.x
                     ?: Int) + (this_tile.parent?.y ?: Int)
                 )
