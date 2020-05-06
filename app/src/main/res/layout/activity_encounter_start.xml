@@ -7,164 +7,207 @@
     android:background="@color/colorBackground"
     tools:context=".EncounterStartActivity">
 
-    <TextView
-        android:id="@+id/tree_probability_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Rock spawn probability:"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/rocks_checkbox"
-        app:layout_constraintTop_toBottomOf="@+id/rocks_checkbox" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
-    <CheckBox
-        android:id="@+id/rocks_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Include rocks"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stream_checkbox" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tree_probability_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Tree spawn probability:"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/trees_checkbox"
-        app:layout_constraintTop_toBottomOf="@+id/trees_checkbox" />
+            <TextView
+                android:id="@+id/dimensions3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Enemies:"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/dimensions5"
+                app:layout_constraintTop_toBottomOf="@+id/dimensions5" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/encounter_start_done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        app:backgroundTint="#f46036"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_done_black_24dp" />
+            <TextView
+                android:id="@+id/dimensions5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Heroes:"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/dimensions4"
+                app:layout_constraintTop_toBottomOf="@+id/dimensions4" />
 
-    <CheckBox
-        android:id="@+id/stream_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Include stream"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hills_checkbox" />
+            <TextView
+                android:id="@+id/dimensions4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:text="Characters:"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/rock_probability_spinner"
+                app:layout_constraintTop_toBottomOf="@+id/rock_probability_spinner" />
 
-    <CheckBox
-        android:id="@+id/hills_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Include hills and caverns"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/tree_probability_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/tree_probability_spinner" />
+            <CheckBox
+                android:id="@+id/trees_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Include trees"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/campfire_checkbox" />
 
-    <CheckBox
-        android:id="@+id/trees_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Include trees"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campfire_checkbox" />
+            <Spinner
+                android:id="@+id/height_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/height"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/height"
+                app:layout_constraintTop_toBottomOf="@+id/height" />
 
-    <TextView
-        android:id="@+id/dimensions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Grid Dimensions:"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <CheckBox
+                android:id="@+id/rocks_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Include rocks"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stream_checkbox" />
 
-    <TextView
-        android:id="@+id/height"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Height:"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/dimensions"
-        app:layout_constraintTop_toBottomOf="@+id/dimensions" />
+            <TextView
+                android:id="@+id/width"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="Width:"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/height"
+                app:layout_constraintTop_toTopOf="@+id/height" />
 
-    <TextView
-        android:id="@+id/width"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:text="Width:"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toEndOf="@+id/height"
-        app:layout_constraintTop_toTopOf="@+id/height" />
+            <CheckBox
+                android:id="@+id/hills_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Include hills and caverns"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/tree_probability_spinner"
+                app:layout_constraintTop_toBottomOf="@+id/tree_probability_spinner" />
 
-    <Spinner
-        android:id="@+id/height_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/height"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/height"
-        app:layout_constraintTop_toBottomOf="@+id/height" />
+            <TextView
+                android:id="@+id/height"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Height:"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/dimensions"
+                app:layout_constraintTop_toBottomOf="@+id/dimensions" />
 
-    <Spinner
-        android:id="@+id/width_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/width"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/width"
-        app:layout_constraintTop_toBottomOf="@+id/width" />
+            <Spinner
+                android:id="@+id/width_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/width"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/width"
+                app:layout_constraintTop_toBottomOf="@+id/width" />
 
-    <CheckBox
-        android:id="@+id/campfire_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="52dp"
-        android:text="Include campfire"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/height_spinner" />
+            <Spinner
+                android:id="@+id/tree_probability_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tree_probability_text"
+                app:layout_constraintTop_toBottomOf="@+id/tree_probability_text" />
 
-    <Spinner
-        android:id="@+id/tree_probability_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/tree_probability_text"
-        app:layout_constraintTop_toBottomOf="@+id/tree_probability_text" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/encounter_start_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="24dp"
+                android:clickable="true"
+                app:backgroundTint="#f46036"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_done_black_24dp" />
 
-    <Spinner
-        android:id="@+id/rock_probability_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/tree_probability_text2"
-        app:layout_constraintTop_toBottomOf="@+id/tree_probability_text2" />
+            <TextView
+                android:id="@+id/tree_probability_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Rock spawn probability:"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/rocks_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/rocks_checkbox" />
+
+            <CheckBox
+                android:id="@+id/campfire_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="52dp"
+                android:text="Include campfire"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/height_spinner" />
+
+            <CheckBox
+                android:id="@+id/stream_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Include stream"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hills_checkbox" />
+
+            <Spinner
+                android:id="@+id/rock_probability_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tree_probability_text2"
+                app:layout_constraintTop_toBottomOf="@+id/tree_probability_text2" />
+
+            <TextView
+                android:id="@+id/dimensions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Grid Dimensions:"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tree_probability_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Tree spawn probability:"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/trees_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/trees_checkbox" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

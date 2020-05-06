@@ -138,8 +138,11 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         if (stream == 1){
             Log.d("STREAM", "1")
             // From top to bottom river
+            Log.d("HEIGHT", "h:$height w:$width")
             var start_tile: Tile = tiles_map[Pair(0,(0 until width).random())]!!
-            var end_tile: Tile = tiles_map[Pair(height - 1,(0 until width).random())]!!
+            var myheight = height-1
+            var mywidth = (0 until width).random()
+            var end_tile: Tile = tiles_map[Pair(myheight,mywidth)]!!
 
             // A star algorithm
             start_tile.parent = null
@@ -161,14 +164,14 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                                 // Must update
                                 tile.parent = this_tile
                                 tile.hCost = distance(tile, end_tile)
-                                tile.gCost = tile.parent!!.gCost + STEP_COST + tile.randomNoise
+                                tile.gCost = tile.parent!!.gCost + STEP_COST /*+ tile.randomNoise*/
                             }
                         }
                         else{
                             Log.d("ADD", "add the tile")
                             tile.parent = this_tile
                             tile.hCost = distance(tile, end_tile)
-                            tile.gCost = this_tile.gCost + STEP_COST + tile.randomNoise
+                            tile.gCost = this_tile.gCost + STEP_COST /*+ tile.randomNoise*/
                             if (tile !in open_set) {
                                 open_set.add(tile)
                             }

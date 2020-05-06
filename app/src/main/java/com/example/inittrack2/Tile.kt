@@ -7,8 +7,8 @@ class Tile(var character: Character?, var content: Ground?, val x: Int, val y: I
     var parent: Tile? = null
     var gCost : Double = 0.0
     var hCost : Double = 0.0
-    var fCost : Double = this.gCost + this.hCost
     var randomNoise : Double = (0..2).random().toDouble()
+    var fCost : Double = this.gCost + this.hCost + this.randomNoise
 }
 
 class TileComparator: Comparator<Tile>{
