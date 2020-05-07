@@ -17,7 +17,22 @@ class EncounterStartActivity : AppCompatActivity() {
     private lateinit var width_option : Spinner
     private lateinit var trees_probability_option : Spinner
     private lateinit var rocks_probability_option : Spinner
+    private lateinit var enemies_quantity_option: Spinner
 
+
+    val quantities = arrayOf(
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+    )
 
     val height_width_values = arrayOf(
         "1",
@@ -63,6 +78,7 @@ class EncounterStartActivity : AppCompatActivity() {
         var width_input = "5"
         var trees_probability_input = "5%"
         var rocks_probability_input = "5%"
+        var enemies_quantity_input = "1"
 
 
         var campfire_input = findViewById<CheckBox>(R.id.campfire_checkbox)
@@ -76,6 +92,8 @@ class EncounterStartActivity : AppCompatActivity() {
         width_option = findViewById(com.example.inittrack2.R.id.width_spinner)
         trees_probability_option = findViewById(com.example.inittrack2.R.id.tree_probability_spinner)
         rocks_probability_option = findViewById(com.example.inittrack2.R.id.rock_probability_spinner)
+        enemies_quantity_option = findViewById(com.example.inittrack2.R.id.enemies_quantity_spinner)
+
 
 
 
@@ -87,6 +105,9 @@ class EncounterStartActivity : AppCompatActivity() {
             ArrayAdapter<String>(this, R.layout.spinner_item, probabilities)
         rocks_probability_option.adapter =
             ArrayAdapter<String>(this, R.layout.spinner_item, probabilities)
+        enemies_quantity_option.adapter =
+            ArrayAdapter<String>(this, R.layout.spinner_item, quantities)
+
 
 
 
@@ -160,6 +181,24 @@ class EncounterStartActivity : AppCompatActivity() {
         trees_probability_option.setSelection(3)
         rocks_probability_option.setSelection(3)
 
+        enemies_quantity_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                enemies_quantity_input = "1"
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                enemies_quantity_input = quantities[position]
+
+            }
+        }
+
+        enemies_quantity_option.setSelection(0)
+
         val encounter_start_btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.encounter_start_done)
         encounter_start_btn_done.setOnClickListener {
 
@@ -167,6 +206,7 @@ class EncounterStartActivity : AppCompatActivity() {
             var width_result = width_input
             var trees_probability_result = trees_probability_input
             var rocks_probability_result = rocks_probability_input
+            var enemies_quantity_result = enemies_quantity_input
 
             var campfire_result = if(campfire_input.isChecked) "1" else "0"
             var trees_result = if(trees_input.isChecked) "1" else "0"
@@ -184,6 +224,7 @@ class EncounterStartActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_STREAM", stream_result)
             intent.putExtra("EXTRA_ROCKS", rocks_result)
             intent.putExtra("EXTRA_ROCKS_PROBABILITY", rocks_probability_result)
+            intent.putExtra("EXTRA_ENEMIES_QUANTITY", enemies_quantity_result)
 
 
             startActivity(intent)

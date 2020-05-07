@@ -68,6 +68,8 @@ class EncounterGeneratorActivity : AppCompatActivity() {
             rock_probability = "0"
         }
 
+        val enemies_quantity = intent.getStringExtra("EXTRA_ENEMIES_QUANTITY").toInt()
+
 //        val test = Tile(Character("Hero", 3, "Paladin", 50), Ground("grass"))
 //        println(test)
 //        val jsontest = gson.toJson(test)
@@ -77,7 +79,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 //        println(resultjson)
 
         generateMap(height.toInt(), width.toInt(), tree_probability = tree_probability.toInt(),
-            campfire = campfire_input, stream = stream_input, rock_probability = rock_probability.toInt());
+            campfire = campfire_input, stream = stream_input, rock_probability = rock_probability.toInt(), enemies_quantity = enemies_quantity);
 
 //        for (e in tiles){
 //            if (e.x == 1 && e.y == 1){
@@ -98,7 +100,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
     private fun generateMap(height: Int, width: Int, campfire: Int = 0,
                             tree_probability: Int = 0, hill_probability: Int = 0,
-                            stream: Int = 0, rock_probability: Int = 0){
+                            stream: Int = 0, rock_probability: Int = 0, enemies_quantity: Int = 0){
         for (i in 0 until (height * width)){
             var rndm_tree = (0..100).random()
             var rndm_rock = (0..100).random()
@@ -205,5 +207,10 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                 Collections.sort(open_set, TileComparator())
             }
         }
+
+        if (enemies_quantity > 0){
+
+        }
+
     }
 }
