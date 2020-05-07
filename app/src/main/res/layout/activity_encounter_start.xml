@@ -137,9 +137,9 @@
                 android:id="@+id/encounter_start_done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="true"
                 app:backgroundTint="#f46036"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -231,6 +231,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/dimensions3"
                 app:layout_constraintTop_toBottomOf="@+id/dimensions3" />
 
