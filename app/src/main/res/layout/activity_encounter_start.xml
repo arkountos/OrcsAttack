@@ -10,7 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,11 +21,11 @@
                 android:id="@+id/dimensions3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Enemies (Quantity):"
                 android:textColor="@android:color/white"
-                app:layout_constraintStart_toStartOf="@+id/dimensions5"
-                app:layout_constraintTop_toBottomOf="@+id/dimensions5" />
+                app:layout_constraintStart_toStartOf="@+id/hero_name_map"
+                app:layout_constraintTop_toBottomOf="@+id/hero_name_map" />
 
             <TextView
                 android:id="@+id/dimensions5"
@@ -49,13 +49,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/rock_probability_spinner" />
 
             <CheckBox
-                android:fontFamily="@font/blkchry"
                 android:id="@+id/trees_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/blkchry"
                 android:text="Include trees"
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,13 +72,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/height" />
 
             <CheckBox
-                android:fontFamily="@font/blkchry"
                 android:id="@+id/rocks_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/blkchry"
                 android:text="Include rocks"
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,11 +95,11 @@
                 app:layout_constraintTop_toTopOf="@+id/height" />
 
             <CheckBox
-                android:fontFamily="@font/blkchry"
                 android:id="@+id/hills_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/blkchry"
                 android:text="Include hills and caverns"
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="@+id/tree_probability_spinner"
@@ -157,26 +157,26 @@
                 app:layout_constraintTop_toBottomOf="@+id/rocks_checkbox" />
 
             <CheckBox
-                android:fontFamily="@font/blkchry"
                 android:id="@+id/campfire_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="52dp"
+                android:fontFamily="@font/blkchry"
                 android:text="Include campfire"
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/height_spinner" />
 
             <CheckBox
-                android:fontFamily="@font/blkchry"
                 android:id="@+id/stream_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/blkchry"
                 android:text="Include stream"
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="parent"
@@ -235,6 +235,51 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/dimensions3"
                 app:layout_constraintTop_toBottomOf="@+id/dimensions3" />
+
+            <Spinner
+                android:id="@+id/class_spinner_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/hero_name_map"
+                app:layout_constraintStart_toEndOf="@+id/hero_name_map"
+                app:layout_constraintTop_toTopOf="@+id/hero_name_map" />
+
+            <EditText
+                android:id="@+id/hero_name_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="6"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:textColor="@android:color/white"
+                android:textSize="10dp"
+                app:layout_constraintStart_toStartOf="@+id/dimensions5"
+                app:layout_constraintTop_toBottomOf="@+id/dimensions5" />
+
+            <ImageButton
+                android:id="@+id/add_hero_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/class_spinner_map"
+                app:layout_constraintStart_toEndOf="@+id/class_spinner_map"
+                app:layout_constraintTop_toTopOf="@+id/class_spinner_map"
+                app:srcCompat="@drawable/ic_add_black_24dp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/dimensions2"
+                app:layout_constraintStart_toEndOf="@+id/dimensions2"
+                app:layout_constraintTop_toTopOf="@+id/dimensions2"
+                app:layout_constraintVertical_bias="0.585"
+                app:srcCompat="@drawable/ivy" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

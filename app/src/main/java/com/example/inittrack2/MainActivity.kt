@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 println("result_hitpoints is $result_hitpoints")
                 for (i in 0 until result_amount.toInt()) {
                     if (i >= 1){
-                        var newName : String = "$result_name $i"
+                        var newName : String = "$result_name ${i+1}"
                         addToCharacters(newName, result_initiative, result_class, result_hitpoints.toInt())
                     }
                     else {
