@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">InitTrack2</string>
+    <string name="app_description">InitTrack2 is a collection of small programs that help you DM your pen and paper RPG.</string>
+
 
     <string name="test">This is my test string</string>
 
