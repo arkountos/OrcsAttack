@@ -26,4 +26,5 @@
             android:resource="@array/preloaded_fonts" />
     </application>
 
+    <uses-permission android:name="android.permission.VIBRATE" />
 </manifest>

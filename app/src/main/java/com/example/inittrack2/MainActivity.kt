@@ -1,9 +1,14 @@
 package com.example.inittrack2
 
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +29,12 @@ class MainActivity : AppCompatActivity() {
     private val characters: ArrayList<Character> = ArrayList()
     private val characters_sorted: ArrayList<Character> = ArrayList()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        val vibrator: Vibrator
+        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -33,12 +43,14 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate called from onCreate")
         val btn_add_char = findViewById<FloatingActionButton>(R.id.AddCharButton)
         btn_add_char.setOnClickListener {
+            vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
             val intent :Intent = Intent(this, AddCharActivity::class.java)
             startActivityForResult(intent, 1)
         }
 
         val btn_reroll = findViewById<Button>(R.id.reroll)
         btn_reroll.setOnClickListener {
+            vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
             Log.d(TAG, "characters has " + characters.size + " and characters_sorted has " + characters_sorted.size)
             rollInitiatives()
             sortByRolledInitiative()
