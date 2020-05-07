@@ -71,24 +71,8 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
         val enemies_quantity = intent.getStringExtra("EXTRA_ENEMIES_QUANTITY").toInt()
 
-//        val test = Tile(Character("Hero", 3, "Paladin", 50), Ground("grass"))
-//        println(test)
-//        val jsontest = gson.toJson(test)
-//        println(jsontest)
-//
-//        val resultjson = gson.fromJson(jsontest, Tile::class.java)
-//        println(resultjson)
-
         generateMap(height.toInt(), width.toInt(), tree_probability = tree_probability.toInt(),
             campfire = campfire_input, stream = stream_input, rock_probability = rock_probability.toInt(), enemies_quantity = enemies_quantity);
-
-//        for (e in tiles){
-//            if (e.x == 1 && e.y == 1){
-//                e.character = Character("Test", 3, "Paladin", 3)
-//            }
-//        }
-
-
 
         val mRecyclerView : RecyclerView = findViewById(R.id.recyclerview_id)
 //        mRecyclerView.setHasFixedSize(true)
