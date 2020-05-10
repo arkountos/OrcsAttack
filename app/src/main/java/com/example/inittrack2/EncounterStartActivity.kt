@@ -246,17 +246,17 @@ class EncounterStartActivity : AppCompatActivity() {
         hero_class_option.setSelection(0)
 
         var last_element_on_list = findViewById<EditText>(R.id.hero_name_map)
+        var last_spinner_on_list = findViewById<Spinner>(R.id.class_spinner_map)
 
-        val constraint_view = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.constraint_inside)
         val add_hero_btn = findViewById<ImageButton>(R.id.add_hero_button)
         add_hero_btn.setOnClickListener{
-            var toast = Toast.makeText(getApplicationContext(), "Pressed!", Toast.LENGTH_SHORT);
+            var toast = Toast.makeText(applicationContext, "Pressed!", Toast.LENGTH_SHORT);
             toast.show()
             var constraintLayout : ConstraintLayout = findViewById(R.id.constraint_inside);
 
             // Add edittext
             var hero_name: EditText = EditText(this)
-            hero_name.setHint("Name")
+            hero_name.hint = "Name"
             var params = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -272,9 +272,34 @@ class EncounterStartActivity : AppCompatActivity() {
             constraintLayout.addView(hero_name)
 
             // Add spinner
-            var class_spinner : Spinner = Spinner(this)
+            var class_spinner : Spinner = Spinner(applicationContext)
+            var class_spinner_input = ""
             class_spinner.id = View.generateViewId()
-            class_spinner= findViewById(com.example.inittrack2.R.id.class_spinner_map)
+            var class_spinner_option = findViewById<Spinner>(class_spinner.id)
+            var spinner_params = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            class_spinner_option.layoutParams = spinner_params
+            spinner_params.setMargins(0, 8, 0, 0)
+//            class_spinner_option = findViewById(com.example.inittrack2.R.id.class_spinner_map)
+            class_spinner_option.adapter =
+                ArrayAdapter<String>(this, R.layout.spinner_item, classes)
+            class_spinner_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    class_spinner_input = "Fighter"
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    class_spinner_input = classes[position]
+                }
+            }
+            constraintLayout.addView(class_spinner_option)
 
 
 
@@ -285,11 +310,18 @@ class EncounterStartActivity : AppCompatActivity() {
             constraintSet.connect(hero_name.id, ConstraintSet.LEFT, last_element_on_list.id, ConstraintSet.LEFT, 0)
             constraintSet.connect(R.id.enemies_quantity_edittext, ConstraintSet.TOP, hero_name.id, ConstraintSet.BOTTOM, 8)
 
+            var constraintSet2 = ConstraintSet()
+            constraintSet2.connect(class_spinner_option.id, ConstraintSet.TOP, last_spinner_on_list.id, ConstraintSet.BOTTOM, 160)
+            constraintSet2.connect(class_spinner_option.id, ConstraintSet.LEFT, last_spinner_on_list.id, ConstraintSet.LEFT, 0)
+            constraintSet2.connect(class_spinner_option.id, ConstraintSet.START, last_spinner_on_list.id, ConstraintSet.END, 0)
+
 
 
             constraintSet.applyTo(constraintLayout)
-
             last_element_on_list = hero_name
+
+            constraintSet2.applyTo(constraintLayout)
+            last_spinner_on_list = class_spinner_option
 
         }
 
