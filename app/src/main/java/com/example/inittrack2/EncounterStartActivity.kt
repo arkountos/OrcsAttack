@@ -1,15 +1,15 @@
 package com.example.inittrack2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.CheckBox
-import android.widget.Spinner
+import android.widget.*
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_encounter_start.*
 
 class EncounterStartActivity : AppCompatActivity() {
 
@@ -18,7 +18,23 @@ class EncounterStartActivity : AppCompatActivity() {
     private lateinit var trees_probability_option : Spinner
     private lateinit var rocks_probability_option : Spinner
     private lateinit var enemies_quantity_option: Spinner
+    private lateinit var hero_class_option: Spinner
 
+
+    val classes = arrayOf(
+        "Barbarian",
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Fighter",
+        "Monk",
+        "Paladin",
+        "Ranger",
+        "Rogue",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+    )
 
     val quantities = arrayOf(
         "0",
@@ -68,6 +84,7 @@ class EncounterStartActivity : AppCompatActivity() {
         "75%"
     )
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_encounter_start)
@@ -79,6 +96,8 @@ class EncounterStartActivity : AppCompatActivity() {
         var trees_probability_input = "5%"
         var rocks_probability_input = "5%"
         var enemies_quantity_input = "1"
+        var hero_class_input = "Fighter"
+
 
 
         var campfire_input = findViewById<CheckBox>(R.id.campfire_checkbox)
@@ -93,6 +112,7 @@ class EncounterStartActivity : AppCompatActivity() {
         trees_probability_option = findViewById(com.example.inittrack2.R.id.tree_probability_spinner)
         rocks_probability_option = findViewById(com.example.inittrack2.R.id.rock_probability_spinner)
         enemies_quantity_option = findViewById(com.example.inittrack2.R.id.enemies_quantity_spinner)
+        hero_class_option = findViewById(com.example.inittrack2.R.id.class_spinner_map)
 
 
 
@@ -107,6 +127,8 @@ class EncounterStartActivity : AppCompatActivity() {
             ArrayAdapter<String>(this, R.layout.spinner_item, probabilities)
         enemies_quantity_option.adapter =
             ArrayAdapter<String>(this, R.layout.spinner_item, quantities)
+        hero_class_option.adapter =
+            ArrayAdapter<String>(this, R.layout.spinner_item, classes)
 
 
 
@@ -197,7 +219,52 @@ class EncounterStartActivity : AppCompatActivity() {
             }
         }
 
+        hero_class_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                hero_class_input = "Fighter"
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                hero_class_input = classes[position]
+
+            }
+        }
+
         enemies_quantity_option.setSelection(0)
+        hero_class_option.setSelection(0)
+
+
+        val constraint_view = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.constraint_inside)
+        val add_hero_btn = findViewById<ImageButton>(R.id.add_hero_button)
+        add_hero_btn.setOnClickListener{
+            var toast = Toast.makeText(getApplicationContext(), "Pressed!", Toast.LENGTH_SHORT);
+            toast.show()
+            var constraintLayout : ConstraintLayout = findViewById(R.id.constraint_inside);
+
+            var testView: EditText = EditText(this)
+            testView.setText("Hello")
+            testView.id = View.generateViewId()
+            constraintLayout.addView(testView)
+
+            var constraintSet = ConstraintSet()
+            constraintSet.clone(constraintLayout)
+
+            constraintSet.connect(testView.id, ConstraintSet.TOP, R.id.hero_name_map, ConstraintSet.BOTTOM, 8)
+            constraintSet.connect(testView.id, ConstraintSet.LEFT, R.id.constraint_inside, ConstraintSet.LEFT, 16)
+            constraintSet.connect(R.id.enemies_quantity_edittext, ConstraintSet.TOP, testView.id, ConstraintSet.BOTTOM, 8)
+            constraintSet.applyTo(constraintLayout)
+
+//            var new_constraintSet = ConstraintSet()
+//            new_constraintSet.clone(constraintLayout)
+
+
+        }
+
 
         val encounter_start_btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.encounter_start_done)
         encounter_start_btn_done.setOnClickListener {
@@ -225,6 +292,7 @@ class EncounterStartActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_ROCKS", rocks_result)
             intent.putExtra("EXTRA_ROCKS_PROBABILITY", rocks_probability_result)
             intent.putExtra("EXTRA_ENEMIES_QUANTITY", enemies_quantity_result)
+            intent.putExtra("EXTRA_HERO_CLASS", hero_class_input)
 
 
             startActivity(intent)

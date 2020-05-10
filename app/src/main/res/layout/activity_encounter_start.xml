@@ -2,12 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_outside"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     tools:context=".EncounterStartActivity">
 
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="-16dp"
@@ -15,10 +17,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/constraint_inside">
 
             <TextView
-                android:id="@+id/dimensions3"
+                android:id="@+id/enemies_quantity_edittext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -233,8 +236,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/dimensions3"
-                app:layout_constraintTop_toBottomOf="@+id/dimensions3" />
+                app:layout_constraintStart_toStartOf="@+id/enemies_quantity_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/enemies_quantity_edittext" />
 
             <Spinner
                 android:id="@+id/class_spinner_map"
