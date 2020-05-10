@@ -245,6 +245,7 @@ class EncounterStartActivity : AppCompatActivity() {
         enemies_quantity_option.setSelection(0)
         hero_class_option.setSelection(0)
 
+        var last_element_on_list = findViewById<EditText>(R.id.hero_name_map)
 
         val constraint_view = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.constraint_inside)
         val add_hero_btn = findViewById<ImageButton>(R.id.add_hero_button)
@@ -255,7 +256,7 @@ class EncounterStartActivity : AppCompatActivity() {
 
             // Add edittext
             var hero_name: EditText = EditText(this)
-            hero_name.setText("Name")
+            hero_name.setHint("Name")
             var params = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -280,17 +281,15 @@ class EncounterStartActivity : AppCompatActivity() {
             var constraintSet = ConstraintSet()
             constraintSet.clone(constraintLayout)
 
-            constraintSet.connect(hero_name.id, ConstraintSet.TOP, R.id.hero_name_map, ConstraintSet.BOTTOM, 8)
-            constraintSet.connect(hero_name.id, ConstraintSet.LEFT, R.id.hero_name_map, ConstraintSet.LEFT, 0)
+            constraintSet.connect(hero_name.id, ConstraintSet.TOP, last_element_on_list.id, ConstraintSet.BOTTOM, 8)
+            constraintSet.connect(hero_name.id, ConstraintSet.LEFT, last_element_on_list.id, ConstraintSet.LEFT, 0)
             constraintSet.connect(R.id.enemies_quantity_edittext, ConstraintSet.TOP, hero_name.id, ConstraintSet.BOTTOM, 8)
 
 
 
             constraintSet.applyTo(constraintLayout)
 
-//            var new_constraintSet = ConstraintSet()
-//            new_constraintSet.clone(constraintLayout)
-
+            last_element_on_list = hero_name
 
         }
 
