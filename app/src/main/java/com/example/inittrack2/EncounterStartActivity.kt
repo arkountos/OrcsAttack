@@ -1,15 +1,22 @@
 package com.example.inittrack2
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.InputType
+import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
+import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.marginTop
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 class EncounterStartActivity : AppCompatActivity() {
 
@@ -246,17 +253,39 @@ class EncounterStartActivity : AppCompatActivity() {
             toast.show()
             var constraintLayout : ConstraintLayout = findViewById(R.id.constraint_inside);
 
-            var testView: EditText = EditText(this)
-            testView.setText("Hello")
-            testView.id = View.generateViewId()
-            constraintLayout.addView(testView)
+            // Add edittext
+            var hero_name: EditText = EditText(this)
+            hero_name.setText("Name")
+            var params = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            hero_name.layoutParams = params
+            params.setMargins(0, 8, 0, 0)
+            hero_name.id = View.generateViewId()
+            hero_name.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
+            hero_name.setEms(6)
+            hero_name.setTextColor(Color.WHITE)
+            hero_name.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10F)
+
+            constraintLayout.addView(hero_name)
+
+            // Add spinner
+            var class_spinner : Spinner = Spinner(this)
+            class_spinner.id = View.generateViewId()
+            class_spinner= findViewById(com.example.inittrack2.R.id.class_spinner_map)
+
+
 
             var constraintSet = ConstraintSet()
             constraintSet.clone(constraintLayout)
 
-            constraintSet.connect(testView.id, ConstraintSet.TOP, R.id.hero_name_map, ConstraintSet.BOTTOM, 8)
-            constraintSet.connect(testView.id, ConstraintSet.LEFT, R.id.constraint_inside, ConstraintSet.LEFT, 16)
-            constraintSet.connect(R.id.enemies_quantity_edittext, ConstraintSet.TOP, testView.id, ConstraintSet.BOTTOM, 8)
+            constraintSet.connect(hero_name.id, ConstraintSet.TOP, R.id.hero_name_map, ConstraintSet.BOTTOM, 8)
+            constraintSet.connect(hero_name.id, ConstraintSet.LEFT, R.id.hero_name_map, ConstraintSet.LEFT, 0)
+            constraintSet.connect(R.id.enemies_quantity_edittext, ConstraintSet.TOP, hero_name.id, ConstraintSet.BOTTOM, 8)
+
+
+
             constraintSet.applyTo(constraintLayout)
 
 //            var new_constraintSet = ConstraintSet()
