@@ -14,7 +14,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.marginTop
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -257,12 +256,12 @@ class EncounterStartActivity : AppCompatActivity() {
             // Add edittext
             var hero_name: EditText = EditText(this)
             hero_name.hint = "Name"
+            hero_name.setHintTextColor(Color.WHITE)
             var params = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             hero_name.layoutParams = params
-            params.setMargins(0, 8, 0, 0)
             hero_name.id = View.generateViewId()
             hero_name.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
             hero_name.setEms(6)
@@ -272,20 +271,16 @@ class EncounterStartActivity : AppCompatActivity() {
             constraintLayout.addView(hero_name)
 
             // Add spinner
-            var class_spinner : Spinner = Spinner(applicationContext)
+            var class_spinner : Spinner = Spinner(this)
             var class_spinner_input = ""
             class_spinner.id = View.generateViewId()
-            var class_spinner_option = findViewById<Spinner>(class_spinner.id)
             var spinner_params = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
-            class_spinner_option.layoutParams = spinner_params
-            spinner_params.setMargins(0, 8, 0, 0)
-//            class_spinner_option = findViewById(com.example.inittrack2.R.id.class_spinner_map)
-            class_spinner_option.adapter =
-                ArrayAdapter<String>(this, R.layout.spinner_item, classes)
-            class_spinner_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            class_spinner.layoutParams = spinner_params
+            class_spinner.adapter = ArrayAdapter<String>(this, R.layout.spinner_item, classes)
+            class_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     class_spinner_input = "Fighter"
                 }
@@ -299,29 +294,36 @@ class EncounterStartActivity : AppCompatActivity() {
                     class_spinner_input = classes[position]
                 }
             }
-            constraintLayout.addView(class_spinner_option)
+
+
 
 
 
             var constraintSet = ConstraintSet()
             constraintSet.clone(constraintLayout)
 
-            constraintSet.connect(hero_name.id, ConstraintSet.TOP, last_element_on_list.id, ConstraintSet.BOTTOM, 8)
+            constraintSet.connect(hero_name.id, ConstraintSet.TOP, last_element_on_list.id, ConstraintSet.BOTTOM, 40)
             constraintSet.connect(hero_name.id, ConstraintSet.LEFT, last_element_on_list.id, ConstraintSet.LEFT, 0)
-            constraintSet.connect(R.id.enemies_quantity_edittext, ConstraintSet.TOP, hero_name.id, ConstraintSet.BOTTOM, 8)
-
-            var constraintSet2 = ConstraintSet()
-            constraintSet2.connect(class_spinner_option.id, ConstraintSet.TOP, last_spinner_on_list.id, ConstraintSet.BOTTOM, 160)
-            constraintSet2.connect(class_spinner_option.id, ConstraintSet.LEFT, last_spinner_on_list.id, ConstraintSet.LEFT, 0)
-            constraintSet2.connect(class_spinner_option.id, ConstraintSet.START, last_spinner_on_list.id, ConstraintSet.END, 0)
-
-
 
             constraintSet.applyTo(constraintLayout)
             last_element_on_list = hero_name
 
+            constraintLayout.addView(class_spinner)
+
+            var constraintSet2 = ConstraintSet()
+            constraintSet2.clone(constraintLayout)
+            constraintSet2.connect(class_spinner.id, ConstraintSet.TOP, last_element_on_list.id, ConstraintSet.TOP, 0)
+            constraintSet2.connect(class_spinner.id, ConstraintSet.LEFT, last_spinner_on_list.id, ConstraintSet.LEFT, 0)
+
             constraintSet2.applyTo(constraintLayout)
-            last_spinner_on_list = class_spinner_option
+            last_spinner_on_list = class_spinner
+
+            var constraintSet3 = ConstraintSet()
+            constraintSet3.clone(constraintLayout)
+            constraintSet3.connect(R.id.enemies_quantity_edittext, ConstraintSet.TOP, last_spinner_on_list.id, ConstraintSet.BOTTOM, 16)
+
+            constraintSet3.applyTo(constraintLayout)
+
 
         }
 
