@@ -71,14 +71,19 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
         val enemies_quantity = intent.getStringExtra("EXTRA_ENEMIES_QUANTITY").toInt()
         var heroes_quantity = intent.getStringExtra("EXTRA_HEROES_SIZE").toInt()
+        Log.d("Heroes quantity", "" + heroes_quantity)
 
         var heroes : MutableList<Pair<String, String>> = mutableListOf()
-        while (heroes_quantity > 0){
-            var hero_name = intent.getStringExtra("EXTRA_HERO_" + heroes_quantity.toString() + "_NAME")
-            var hero_class = intent.getStringExtra("EXTRA_HERO_" + heroes_quantity.toString() + "_CLASS")
+        var i: Int = 0
+        while (i < heroes_quantity){
+            var hero_name = intent.getStringExtra("EXTRA_HERO_" + i.toString() + "_NAME").toString()
+            var hero_class = intent.getStringExtra("EXTRA_HERO_" + i.toString() + "_CLASS").toString()
+            Log.d("heroes_quantity, i", "" + heroes_quantity + i.toString())
+            Log.d("Data to hero Pair", "" + hero_name + hero_class)
             var hero : Pair<String, String> = Pair(hero_name, hero_class)
             heroes.add(hero)
-            heroes_quantity--
+            Log.d("Heroes after addition", "" + heroes)
+            i++
         }
         Log.d("Arguments", "Heroes passed to generateMap: $heroes")
 

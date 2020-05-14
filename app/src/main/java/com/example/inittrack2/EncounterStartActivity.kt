@@ -110,6 +110,7 @@ class EncounterStartActivity : AppCompatActivity() {
 
         var heroes: MutableList<Pair<String, String>> = mutableListOf()
         var nameclass_ids: MutableList<Pair<Int, Int>> = mutableListOf()
+        var class_id_name_map : HashMap<Int, String> = hashMapOf()
 
         val campfire_input = findViewById<CheckBox>(R.id.campfire_checkbox)
         val trees_input = findViewById<CheckBox>(R.id.trees_checkbox)
@@ -252,6 +253,8 @@ class EncounterStartActivity : AppCompatActivity() {
         var last_element_on_list = findViewById<EditText>(R.id.hero_name_map)
         var last_spinner_on_list = findViewById<Spinner>(R.id.class_spinner_map)
 
+
+
         val add_hero_btn = findViewById<ImageButton>(R.id.add_hero_button)
         add_hero_btn.setOnClickListener{
             var toast = Toast.makeText(applicationContext, "Pressed!", Toast.LENGTH_SHORT);
@@ -301,6 +304,7 @@ class EncounterStartActivity : AppCompatActivity() {
                 ) {
                     Log.d("HERE!", "in onItemSelected()")
                     class_spinner_input = classes[position]
+                    class_id_name_map[class_spinner.id] = class_spinner_input
                 }
             }
             Log.d("After", "onItemSelectedListener")
@@ -354,7 +358,7 @@ class EncounterStartActivity : AppCompatActivity() {
             var rocks_result = if(rocks_input.isChecked) "1" else "0"
 
             for ((name_id, class_id) in nameclass_ids) {
-                var hero : Pair<String, String> = Pair(findViewById<EditText>(name_id).text.toString(), input)
+                var hero : Pair<String, String> = Pair(findViewById<EditText>(name_id).text.toString(), class_id_name_map[class_id]!!)
                 Log.d("Heroes Size", "Heroes size is " + heroes.size)
                 heroes.add(hero)
                 Log.d("Heroes Size After", "Heroes size is " + heroes.size)
@@ -379,10 +383,13 @@ class EncounterStartActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_HEROES_SIZE", heroes.size.toString())
             Log.d("Heroes.size is", heroes.size.toString())
             for ((i, hero) in heroes.withIndex()){
+                Log.d("i.toString()", "" + i.toString())
                 var extra_name = "EXTRA_HERO_" + i.toString() + "_NAME"
-                intent.putExtra(extra_name, hero.first)
+                Log.d("extra_name" , "" + extra_name)
+                Log.d("hero.first", "" + hero.first)
+                intent.putExtra(extra_name.toString(), hero.first)
                 var extra_class = "EXTRA_HERO_" + i.toString() + "_CLASS"
-                intent.putExtra(extra_class, hero.second)
+                intent.putExtra(extra_class.toString(), hero.second)
             }
 
             Log.d("Print Heroes", "")
