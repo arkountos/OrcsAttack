@@ -21,6 +21,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
     private val STEP_COST = 1.0
     private val DIAGONAL_STEP_COST = 1.5
     private val NOTICE_RADIUS = 3
+    private val CAMPFIRE_DISTANCE = 2
 
     private var tiles_map = HashMap<Pair<Int, Int>, Tile>()
     private val tiles: ArrayList<Tile> = ArrayList()
@@ -280,24 +281,24 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 //                    rand_x = (campfire_tile?.x - NOTICE_RADIUS .. campfire_tile?.x + NOTICE_RADIUS).random()
 //                    rand_y = (campfire_tile?.y - NOTICE_RADIUS .. campfire_tile?.y + NOTICE_RADIUS).random()
                 //Choosing random x away from campfire
-                if (campfire_tile?.x - NOTICE_RADIUS <=0){
+                if (campfire_tile?.x - CAMPFIRE_DISTANCE <=0){
                     rand_x = (0 until campfire_tile.x).random()
                 }
-                else if (campfire_tile?.x + NOTICE_RADIUS >= width){
-                    rand_x = (campfire_tile?.x - NOTICE_RADIUS until width).random()
+                else if (campfire_tile?.x + CAMPFIRE_DISTANCE >= width){
+                    rand_x = (campfire_tile?.x - CAMPFIRE_DISTANCE until width).random()
                 }
                 else{
-                    rand_x = (campfire_tile?.x - NOTICE_RADIUS .. campfire_tile?.x + NOTICE_RADIUS).random()
+                    rand_x = (campfire_tile?.x - CAMPFIRE_DISTANCE .. campfire_tile?.x + CAMPFIRE_DISTANCE).random()
                 }
                 //Choosing random x away from campfire
-                if (campfire_tile?.y - NOTICE_RADIUS <=0){
+                if (campfire_tile?.y - CAMPFIRE_DISTANCE <=0){
                     rand_y = (0 until campfire_tile.x).random()
                 }
-                else if (campfire_tile?.y + NOTICE_RADIUS >= width){
-                    rand_y = (campfire_tile?.y - NOTICE_RADIUS until width).random()
+                else if (campfire_tile?.y + CAMPFIRE_DISTANCE >= width){
+                    rand_y = (campfire_tile?.y - CAMPFIRE_DISTANCE until width).random()
                 }
                 else{
-                    rand_y = (campfire_tile?.y - NOTICE_RADIUS .. campfire_tile?.y + NOTICE_RADIUS).random()
+                    rand_y = (campfire_tile?.y - CAMPFIRE_DISTANCE .. campfire_tile?.y + CAMPFIRE_DISTANCE).random()
                 }
             }
             else{
