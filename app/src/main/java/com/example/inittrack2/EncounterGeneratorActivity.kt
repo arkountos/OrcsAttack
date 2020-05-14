@@ -262,7 +262,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                 }
 
                 // TILE CHECKS ? (Don't spawn over another monster or on rocks or smth)
-                if (tiles_map[Pair(rand_x, rand_y)]?.character == null) {
+                if (tiles_map[Pair(rand_x, rand_y)]?.character == null && tiles_map[Pair(rand_x, rand_y)]?.content!!.type != Ground("river")!!.type) {
                     tiles_map[Pair(rand_x, rand_y)]!!.character =
                         Character("Monster", 3, "Monster", 1, 0)
                 }
@@ -307,7 +307,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
             }
 
             // TILE CHECKS ? (Don't spawn over another monster or on rocks or smth)
-            if (tiles_map[Pair(rand_x, rand_y)]?.character == null) {
+            if (tiles_map[Pair(rand_x, rand_y)]?.character == null && tiles_map[Pair(rand_x, rand_y)]?.content!!.type != Ground("river")!!.type) {
                 tiles_map[Pair(rand_x, rand_y)]!!.character =
                     Character(hero.first.toString(), 3,
                         hero.second.toString(), 1, 0)
