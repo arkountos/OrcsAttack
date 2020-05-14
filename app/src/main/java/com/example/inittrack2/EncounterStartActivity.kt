@@ -26,7 +26,7 @@ class EncounterStartActivity : AppCompatActivity() {
     private lateinit var trees_probability_option : Spinner
     private lateinit var rocks_probability_option : Spinner
     private lateinit var enemies_quantity_option: Spinner
-    private lateinit var hero_class_option: Spinner
+//    private lateinit var hero_class_option: Spinner
 
 
 
@@ -106,7 +106,7 @@ class EncounterStartActivity : AppCompatActivity() {
         var trees_probability_input = "5%"
         var rocks_probability_input = "5%"
         var enemies_quantity_input = "1"
-        var hero_class_input = "Fighter"
+//        var hero_class_input = "Fighter"
 
         var heroes: MutableList<Pair<String, String>> = mutableListOf()
         var nameclass_ids: MutableList<Pair<Int, Int>> = mutableListOf()
@@ -124,7 +124,7 @@ class EncounterStartActivity : AppCompatActivity() {
         trees_probability_option = findViewById(com.example.inittrack2.R.id.tree_probability_spinner)
         rocks_probability_option = findViewById(com.example.inittrack2.R.id.rock_probability_spinner)
         enemies_quantity_option = findViewById(com.example.inittrack2.R.id.enemies_quantity_spinner)
-        hero_class_option = findViewById(com.example.inittrack2.R.id.class_spinner_map)
+//        hero_class_option = findViewById(com.example.inittrack2.R.id.class_spinner_map)
 
 
 
@@ -139,8 +139,8 @@ class EncounterStartActivity : AppCompatActivity() {
             ArrayAdapter<String>(this, R.layout.spinner_item, probabilities)
         enemies_quantity_option.adapter =
             ArrayAdapter<String>(this, R.layout.spinner_item, quantities)
-        hero_class_option.adapter =
-            ArrayAdapter<String>(this, R.layout.spinner_item, classes)
+//        hero_class_option.adapter =
+//            ArrayAdapter<String>(this, R.layout.spinner_item, classes)
 
 
 
@@ -231,24 +231,25 @@ class EncounterStartActivity : AppCompatActivity() {
             }
         }
 
-        hero_class_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                hero_class_input = "Fighter"
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                hero_class_input = classes[position]
-
-            }
-        }
+//        hero_class_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                hero_class_input = "Fighter"
+//            }
+//
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                hero_class_input = classes[position]
+//                class_id_name_map[hero_class_option.id] = hero_class_input
+//
+//            }
+//        }
 
         enemies_quantity_option.setSelection(0)
-        hero_class_option.setSelection(0)
+//        hero_class_option.setSelection(0)
 
         var last_element_on_list = findViewById<EditText>(R.id.hero_name_map)
         var last_spinner_on_list = findViewById<Spinner>(R.id.class_spinner_map)
@@ -327,7 +328,7 @@ class EncounterStartActivity : AppCompatActivity() {
             var constraintSet2 = ConstraintSet()
             constraintSet2.clone(constraintLayout)
             constraintSet2.connect(class_spinner.id, ConstraintSet.TOP, last_element_on_list.id, ConstraintSet.TOP, 0)
-            constraintSet2.connect(class_spinner.id, ConstraintSet.LEFT, last_spinner_on_list.id, ConstraintSet.LEFT, 0)
+            constraintSet2.connect(class_spinner.id, ConstraintSet.LEFT, last_element_on_list.id, ConstraintSet.RIGHT, 8)
 
             constraintSet2.applyTo(constraintLayout)
             last_spinner_on_list = class_spinner
@@ -379,7 +380,7 @@ class EncounterStartActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_ROCKS", rocks_result)
             intent.putExtra("EXTRA_ROCKS_PROBABILITY", rocks_probability_result)
             intent.putExtra("EXTRA_ENEMIES_QUANTITY", enemies_quantity_result)
-            intent.putExtra("EXTRA_HERO_CLASS", hero_class_input)
+//            intent.putExtra("EXTRA_HERO_CLASS", hero_class_input)
             intent.putExtra("EXTRA_HEROES_SIZE", heroes.size.toString())
             Log.d("Heroes.size is", heroes.size.toString())
             for ((i, hero) in heroes.withIndex()){

@@ -12,13 +12,13 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="-210dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_inside"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/constraint_inside">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/enemies_quantity_edittext"
@@ -37,11 +37,11 @@
                 android:layout_marginTop="20dp"
                 android:text="Heroes:"
                 android:textColor="@android:color/white"
-                app:layout_constraintStart_toStartOf="@+id/dimensions4"
-                app:layout_constraintTop_toBottomOf="@+id/dimensions4" />
+                app:layout_constraintStart_toStartOf="@+id/characters_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/characters_checkbox" />
 
             <TextView
-                android:id="@+id/dimensions4"
+                android:id="@+id/characters_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="52dp"
@@ -245,6 +245,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@+id/hero_name_map"
                 app:layout_constraintTop_toTopOf="@+id/hero_name_map" />
 
@@ -259,6 +260,7 @@
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
                 android:textSize="10dp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/dimensions5"
                 app:layout_constraintTop_toBottomOf="@+id/dimensions5" />
 
@@ -268,9 +270,9 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/class_spinner_map"
-                app:layout_constraintStart_toEndOf="@+id/class_spinner_map"
-                app:layout_constraintTop_toTopOf="@+id/class_spinner_map"
+                app:layout_constraintBottom_toBottomOf="@+id/dimensions5"
+                app:layout_constraintStart_toEndOf="@+id/dimensions5"
+                app:layout_constraintTop_toTopOf="@+id/dimensions5"
                 app:srcCompat="@drawable/ic_add_black_24dp" />
 
             <ImageView
