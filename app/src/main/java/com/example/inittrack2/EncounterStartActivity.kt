@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_encounter_start.*
 
 
 class EncounterStartActivity : AppCompatActivity() {
@@ -25,6 +27,8 @@ class EncounterStartActivity : AppCompatActivity() {
     private lateinit var rocks_probability_option : Spinner
     private lateinit var enemies_quantity_option: Spinner
     private lateinit var hero_class_option: Spinner
+
+
 
 
     val classes = arrayOf(
@@ -104,13 +108,14 @@ class EncounterStartActivity : AppCompatActivity() {
         var enemies_quantity_input = "1"
         var hero_class_input = "Fighter"
 
+        var heroes: MutableList<Pair<String, String>> = mutableListOf()
+        var nameclass_ids: MutableList<Pair<Int, Int>> = mutableListOf()
 
-
-        var campfire_input = findViewById<CheckBox>(R.id.campfire_checkbox)
-        var trees_input = findViewById<CheckBox>(R.id.trees_checkbox)
-        var hills_input = findViewById<CheckBox>(R.id.hills_checkbox)
-        var stream_input = findViewById<CheckBox>(R.id.stream_checkbox)
-        var rocks_input = findViewById<CheckBox>(R.id.rocks_checkbox)
+        val campfire_input = findViewById<CheckBox>(R.id.campfire_checkbox)
+        val trees_input = findViewById<CheckBox>(R.id.trees_checkbox)
+        val hills_input = findViewById<CheckBox>(R.id.hills_checkbox)
+        val stream_input = findViewById<CheckBox>(R.id.stream_checkbox)
+        val rocks_input = findViewById<CheckBox>(R.id.rocks_checkbox)
 
         // Class choosing Spinner
         height_option = findViewById(com.example.inittrack2.R.id.height_spinner)
@@ -267,19 +272,22 @@ class EncounterStartActivity : AppCompatActivity() {
             hero_name.setEms(6)
             hero_name.setTextColor(Color.WHITE)
             hero_name.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10F)
-
+            Log.d("EditText", "name: " + hero_name.text.toString())
             constraintLayout.addView(hero_name)
 
             // Add spinner
             var class_spinner : Spinner = Spinner(this)
             var class_spinner_input = ""
             class_spinner.id = View.generateViewId()
+
+            class_spinner.adapter = ArrayAdapter<String>(this, R.layout.spinner_item, classes)
             var spinner_params = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             class_spinner.layoutParams = spinner_params
-            class_spinner.adapter = ArrayAdapter<String>(this, R.layout.spinner_item, classes)
+            var input: String = "Paladin"
+            Log.d("Before", "onItemSelectedListener")
             class_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     class_spinner_input = "Fighter"
@@ -291,13 +299,15 @@ class EncounterStartActivity : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
+                    Log.d("HERE!", "in onItemSelected()")
                     class_spinner_input = classes[position]
                 }
             }
+            Log.d("After", "onItemSelectedListener")
 
 
 
-
+            nameclass_ids.add(Pair(hero_name.id, class_spinner.id))
 
             var constraintSet = ConstraintSet()
             constraintSet.clone(constraintLayout)
@@ -324,7 +334,6 @@ class EncounterStartActivity : AppCompatActivity() {
 
             constraintSet3.applyTo(constraintLayout)
 
-
         }
 
 
@@ -337,11 +346,23 @@ class EncounterStartActivity : AppCompatActivity() {
             var rocks_probability_result = rocks_probability_input
             var enemies_quantity_result = enemies_quantity_input
 
+
             var campfire_result = if(campfire_input.isChecked) "1" else "0"
             var trees_result = if(trees_input.isChecked) "1" else "0"
             var hills_result = if(hills_input.isChecked) "1" else "0"
             var stream_result = if(stream_input.isChecked) "1" else "0"
             var rocks_result = if(rocks_input.isChecked) "1" else "0"
+
+            for ((name_id, class_id) in nameclass_ids) {
+                var hero : Pair<String, String> = Pair(findViewById<EditText>(name_id).text.toString(), input)
+                Log.d("Heroes Size", "Heroes size is " + heroes.size)
+                heroes.add(hero)
+                Log.d("Heroes Size After", "Heroes size is " + heroes.size)
+                Log.d("Hero added is: ", "" + hero)
+            }
+
+
+
 
             val intent = Intent(this, EncounterGeneratorActivity::class.java)
             intent.putExtra("EXTRA_HEIGHT", height_result)
@@ -355,9 +376,41 @@ class EncounterStartActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_ROCKS_PROBABILITY", rocks_probability_result)
             intent.putExtra("EXTRA_ENEMIES_QUANTITY", enemies_quantity_result)
             intent.putExtra("EXTRA_HERO_CLASS", hero_class_input)
+            intent.putExtra("EXTRA_HEROES_SIZE", heroes.size.toString())
+            Log.d("Heroes.size is", heroes.size.toString())
+            for ((i, hero) in heroes.withIndex()){
+                var extra_name = "EXTRA_HERO_" + i.toString() + "_NAME"
+                intent.putExtra(extra_name, hero.first)
+                var extra_class = "EXTRA_HERO_" + i.toString() + "_CLASS"
+                intent.putExtra(extra_class, hero.second)
+            }
 
+            Log.d("Print Heroes", "")
+            for ((i, hero) in heroes.withIndex()){
+                Log.d("Hero:", "$i : $hero")
+            }
 
             startActivity(intent)
         }
     }
+
+
+//    fun spinnerChoose(spinner: Spinner): String{
+//        var input: String = "Fighter"
+//        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                input = "Fighter"
+//            }
+//
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                input = classes[position]
+//            }
+//        }
+//        return(input)
+//    }
 }

@@ -70,9 +70,21 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         }
 
         val enemies_quantity = intent.getStringExtra("EXTRA_ENEMIES_QUANTITY").toInt()
+        var heroes_quantity = intent.getStringExtra("EXTRA_HEROES_SIZE").toInt()
+
+        var heroes : MutableList<Pair<String, String>> = mutableListOf()
+        while (heroes_quantity > 0){
+            var hero_name = intent.getStringExtra("EXTRA_HERO_" + heroes_quantity.toString() + "_NAME")
+            var hero_class = intent.getStringExtra("EXTRA_HERO_" + heroes_quantity.toString() + "_CLASS")
+            var hero : Pair<String, String> = Pair(hero_name, hero_class)
+            heroes.add(hero)
+            heroes_quantity--
+        }
+        Log.d("Arguments", "Heroes passed to generateMap: $heroes")
 
         generateMap(height.toInt(), width.toInt(), tree_probability = tree_probability.toInt(),
-            campfire = campfire_input, stream = stream_input, rock_probability = rock_probability.toInt(), enemies_quantity = enemies_quantity);
+            campfire = campfire_input, stream = stream_input, rock_probability = rock_probability.toInt(),
+            enemies_quantity = enemies_quantity, heroes_list = heroes);
 
         val mRecyclerView : RecyclerView = findViewById(R.id.recyclerview_id)
 //        mRecyclerView.setHasFixedSize(true)
@@ -85,7 +97,9 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
     private fun generateMap(height: Int, width: Int, campfire: Int = 0,
                             tree_probability: Int = 0, hill_probability: Int = 0,
-                            stream: Int = 0, rock_probability: Int = 0, enemies_quantity: Int = 0){
+                            stream: Int = 0, rock_probability: Int = 0,
+                            enemies_quantity: Int = 0,
+                            heroes_list: MutableList<Pair<String, String>> = mutableListOf()){
         var campfire_tile : Tile? = null
         for (i in 0 until (height * width)){
             var rndm_tree = (0..100).random()
@@ -202,8 +216,8 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         if (enemies_quantity > 0){
             // Enemies appear NOTICE_RADIUS tiles away from campfire
             // TODO: Make NOTICE_RADIUS changeable by user
-            var count : Int = enemies_quantity
-            while (count > 0) {
+            var count_enemies : Int = enemies_quantity
+            while (count_enemies > 0) {
                 var rand_x: Int
                 var rand_y: Int
                 if (campfire_tile != null) {
@@ -249,10 +263,52 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                 else{
                     continue
                 }
-                count--
+                count_enemies--
             }
 
         }
 
+        for (hero in heroes_list){
+            var rand_x: Int
+            var rand_y: Int
+            if (campfire_tile != null) {
+//                    rand_x = (campfire_tile?.x - NOTICE_RADIUS .. campfire_tile?.x + NOTICE_RADIUS).random()
+//                    rand_y = (campfire_tile?.y - NOTICE_RADIUS .. campfire_tile?.y + NOTICE_RADIUS).random()
+                //Choosing random x away from campfire
+                if (campfire_tile?.x - NOTICE_RADIUS <=0){
+                    rand_x = (0 until campfire_tile.x).random()
+                }
+                else if (campfire_tile?.x + NOTICE_RADIUS >= width){
+                    rand_x = (campfire_tile?.x - NOTICE_RADIUS until width).random()
+                }
+                else{
+                    rand_x = (campfire_tile?.x - NOTICE_RADIUS .. campfire_tile?.x + NOTICE_RADIUS).random()
+                }
+                //Choosing random x away from campfire
+                if (campfire_tile?.y - NOTICE_RADIUS <=0){
+                    rand_y = (0 until campfire_tile.x).random()
+                }
+                else if (campfire_tile?.y + NOTICE_RADIUS >= width){
+                    rand_y = (campfire_tile?.y - NOTICE_RADIUS until width).random()
+                }
+                else{
+                    rand_y = (campfire_tile?.y - NOTICE_RADIUS .. campfire_tile?.y + NOTICE_RADIUS).random()
+                }
+            }
+            else{
+                rand_x = (0 until width).random()
+                rand_y = (0 until height).random()
+            }
+
+            // TILE CHECKS ? (Don't spawn over another monster or on rocks or smth)
+            if (tiles_map[Pair(rand_x, rand_y)]?.character == null) {
+                tiles_map[Pair(rand_x, rand_y)]!!.character =
+                    Character(hero.first.toString(), 3,
+                        hero.second.toString(), 1, 0)
+            }
+            else{
+                continue
+            }
+        }
     }
 }
