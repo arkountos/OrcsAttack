@@ -262,7 +262,10 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                 }
 
                 // TILE CHECKS ? (Don't spawn over another monster or on rocks or smth)
-                if (tiles_map[Pair(rand_x, rand_y)]?.character == null && tiles_map[Pair(rand_x, rand_y)]?.content!!.type != Ground("river")!!.type) {
+                if (tiles_map[Pair(rand_x, rand_y)]?.character == null &&
+                    tiles_map[Pair(rand_x, rand_y)]?.content!!.type != Ground("river")!!.type &&
+                    tiles_map[Pair(rand_x, rand_y)]?.content!!.type != Ground("campfire")!!.type)
+                {
                     tiles_map[Pair(rand_x, rand_y)]!!.character =
                         Character("Monster", 3, "Monster", 1, 0)
                 }
@@ -277,44 +280,41 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         for (hero in heroes_list){
             var rand_x: Int
             var rand_y: Int
-            if (campfire_tile != null) {
-//                    rand_x = (campfire_tile?.x - NOTICE_RADIUS .. campfire_tile?.x + NOTICE_RADIUS).random()
-//                    rand_y = (campfire_tile?.y - NOTICE_RADIUS .. campfire_tile?.y + NOTICE_RADIUS).random()
-                //Choosing random x away from campfire
-                if (campfire_tile?.x - CAMPFIRE_DISTANCE <=0){
-                    rand_x = (0 until campfire_tile.x).random()
-                }
-                else if (campfire_tile?.x + CAMPFIRE_DISTANCE >= width){
-                    rand_x = (campfire_tile?.x - CAMPFIRE_DISTANCE until width).random()
+            do {
+                if (campfire_tile != null) {
+    //                    rand_x = (campfire_tile?.x - NOTICE_RADIUS .. campfire_tile?.x + NOTICE_RADIUS).random()
+    //                    rand_y = (campfire_tile?.y - NOTICE_RADIUS .. campfire_tile?.y + NOTICE_RADIUS).random()
+                    //Choosing random x away from campfire
+                    if (campfire_tile?.x - CAMPFIRE_DISTANCE <=0){
+                        rand_x = (0 until campfire_tile.x).random()
+                    }
+                    else if (campfire_tile?.x + CAMPFIRE_DISTANCE >= width){
+                        rand_x = (campfire_tile?.x - CAMPFIRE_DISTANCE until width).random()
+                    }
+                    else{
+                        rand_x = (campfire_tile?.x - CAMPFIRE_DISTANCE .. campfire_tile?.x + CAMPFIRE_DISTANCE).random()
+                    }
+                    //Choosing random x away from campfire
+                    if (campfire_tile?.y - CAMPFIRE_DISTANCE <=0){
+                        rand_y = (0 until campfire_tile.x).random()
+                    }
+                    else if (campfire_tile?.y + CAMPFIRE_DISTANCE >= width){
+                        rand_y = (campfire_tile?.y - CAMPFIRE_DISTANCE until width).random()
+                    }
+                    else{
+                        rand_y = (campfire_tile?.y - CAMPFIRE_DISTANCE .. campfire_tile?.y + CAMPFIRE_DISTANCE).random()
+                    }
                 }
                 else{
-                    rand_x = (campfire_tile?.x - CAMPFIRE_DISTANCE .. campfire_tile?.x + CAMPFIRE_DISTANCE).random()
+                    rand_x = (0 until width).random()
+                    rand_y = (0 until height).random()
                 }
-                //Choosing random x away from campfire
-                if (campfire_tile?.y - CAMPFIRE_DISTANCE <=0){
-                    rand_y = (0 until campfire_tile.x).random()
-                }
-                else if (campfire_tile?.y + CAMPFIRE_DISTANCE >= width){
-                    rand_y = (campfire_tile?.y - CAMPFIRE_DISTANCE until width).random()
-                }
-                else{
-                    rand_y = (campfire_tile?.y - CAMPFIRE_DISTANCE .. campfire_tile?.y + CAMPFIRE_DISTANCE).random()
-                }
-            }
-            else{
-                rand_x = (0 until width).random()
-                rand_y = (0 until height).random()
-            }
+                // TILE CHECKS ? (Don't spawn over another monster or on rocks or smth)
+            } while (tiles_map[Pair(rand_x, rand_y)]?.character != null ||
+                tiles_map[Pair(rand_x, rand_y)]?.content!!.type == Ground("river")!!.type ||
+                tiles_map[Pair(rand_x, rand_y)]?.content!!.type == Ground("campfire")!!.type)
 
-            // TILE CHECKS ? (Don't spawn over another monster or on rocks or smth)
-            if (tiles_map[Pair(rand_x, rand_y)]?.character == null && tiles_map[Pair(rand_x, rand_y)]?.content!!.type != Ground("river")!!.type) {
-                tiles_map[Pair(rand_x, rand_y)]!!.character =
-                    Character(hero.first.toString(), 3,
-                        hero.second.toString(), 1, 0)
-            }
-            else{
-                continue
-            }
+            tiles_map[Pair(rand_x, rand_y)]!!.character = Character(hero.first.toString(), 3, hero.second.toString(), 1, 0)
         }
     }
 }
