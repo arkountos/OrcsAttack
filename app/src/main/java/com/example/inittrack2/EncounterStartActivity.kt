@@ -398,6 +398,9 @@ class EncounterStartActivity : AppCompatActivity() {
                 Log.d("Hero:", "$i : $hero")
             }
 
+            // Clear stuff for next iteration
+            heroes.clear()
+
             startActivity(intent)
         }
     }
