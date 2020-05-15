@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">Orcs Attack!</string>
-    <string name="app_description">Orcs Attack! is a collection of small programs that help you DM your pen and paper RPG.</string>
+    <string name="app_description">Orcs Attack! is a collection of small programs that help you DM your pen and paper RPG. The app is most suitable for D&amp;D 5th edition, but is not system-specific and can be used for any RPG.</string>
 
 
     <string name="test">This is my test string</string>
 
     <string name="add_to_party">Add to party</string>
+
+    <string name="about_app">This app is a work in progress. It is being developed by myself in my spare time as a hobby and a way to learn more about Android developement. This app is completely ad-free and collects absolutely no personal data. If you want to report a bug
+    or have an idea for a feature for the app, please contact me! I will be very glad to hear you out and try my best to implement it. Seriously, I would love hearing from you!
+    </string>
+
+    <string name="about_rate">If you enjoyed this app, give it a good rating! If not, give it a bad one! Eitherway, I would very much appreciate you contacting me with your thoughts and views on the app and thoughts on making it better.</string>
+
+    <string name="about_attributions">The art for this application is from flaticon! Check them out here <div><a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></string>
 
     <string-array name="classes">
         <item>Barbarian</item>
