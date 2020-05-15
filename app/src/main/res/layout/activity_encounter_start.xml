@@ -166,8 +166,8 @@
                 android:layout_marginTop="32dp"
                 android:text="Map Style:"
                 android:textColor="@android:color/white"
-                app:layout_constraintTop_toBottomOf="@+id/rock_probability_spinner"
-                tools:layout_editor_absoluteX="16dp" />
+                app:layout_constraintStart_toStartOf="@+id/rock_probability_spinner"
+                app:layout_constraintTop_toBottomOf="@+id/rock_probability_spinner" />
 
             <CheckBox
                 android:id="@+id/campfire_checkbox"
