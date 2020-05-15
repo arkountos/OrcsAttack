@@ -63,6 +63,7 @@
         android:background="@color/colorAccent"
         android:padding="8dp"
         android:text="Export"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView"
         app:layout_constraintStart_toStartOf="@+id/horizontalScrollView" />

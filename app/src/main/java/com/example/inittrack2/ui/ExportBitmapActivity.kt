@@ -1,14 +1,26 @@
 package com.example.inittrack2.ui
 
+import android.Manifest
+import android.app.Activity
+import android.app.PendingIntent.getActivity
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.example.inittrack2.R
-import jp.wasabeef.glide.transformations.gpu.SepiaFilterTransformation
+import java.io.File
 import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class ExportBitmapActivity : AppCompatActivity() {
@@ -33,5 +45,35 @@ class ExportBitmapActivity : AppCompatActivity() {
         //Glide.with(mContext).load(id).transform(SepiaFilterTransformation()).into(holder.mImageView)
 
         Glide.with(applicationContext).load(bitmap).override(600, 600).into(mapImageView)
+
+        // Error filename not found
+        Log.d("1", "1")
+        if (bitmap != null) {
+            SaveImage(bitmap)
+        }
+
+    }
+
+    private fun SaveImage(finalBitmap: Bitmap) {
+        Log.d("2", "2")
+
+        val root = ContextCompat.getExternalFilesDirs(applicationContext, null).toString()
+        Log.d("root path", root)
+        val myDir = File("$root/saved_maps")
+        myDir.mkdirs()
+        val sdf = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
+        val currentDateandTime: String = sdf.format(Date())
+        var filename: String = currentDateandTime
+        val fname = "Map-$filename.png"
+        val file = File(myDir, fname)
+        if (file.exists()) file.delete()
+        try {
+            val out = FileOutputStream(file)
+            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)
+            out.flush()
+            out.close()
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
     }
 }
