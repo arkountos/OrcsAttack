@@ -28,10 +28,10 @@ class ExportBitmapActivity : AppCompatActivity() {
         }
 
         var mapImageView = findViewById<ImageView>(R.id.map_png)
-        mapImageView.setImageBitmap(bitmap?.let { Bitmap.createScaledBitmap(it, 960, 960, false) })
+//        mapImageView.setImageBitmap(bitmap?.let { Bitmap.createScaledBitmap(it, mapImageView.width, mapImageView.height, false) })
 //        holder.mImageView.setImageResource(id);
         //Glide.with(mContext).load(id).transform(SepiaFilterTransformation()).into(holder.mImageView)
 
-//        Glide.with(applicationContext).load(bitmap).into(mapImageView)
+        Glide.with(applicationContext).load(bitmap).override(600, 600).into(mapImageView)
     }
 }

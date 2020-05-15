@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.inittrack2.ui.ExportBitmapActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_grid.*
+import kotlinx.android.synthetic.main.activity_grid.view.*
 import java.io.FileOutputStream
 import java.lang.Math.pow
 import java.lang.Math.sqrt
@@ -114,9 +115,9 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
         var export_button : Button = findViewById(R.id.export_button)
         export_button.setOnClickListener{
-            var map_bitmap : Bitmap? = getBitmapFromView(recyclerview_id
-//                horizontalScrollView.getChildAt(0).width,
-//                horizontalScrollView.getChildAt(0).height
+            var map_bitmap : Bitmap? = getBitmapFromView(recyclerview_id,
+                recyclerview_id.getChildAt(0).width,
+                recyclerview_id.getChildAt(0).height
             )  // Pass a view as an argument
             var filename : String = "temp_bitmap.png"
             var stream : FileOutputStream = this.openFileOutput(filename, Context.MODE_PRIVATE)
@@ -350,7 +351,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         }
     }
 
-    fun getBitmapFromView(view: View/*, totalWidth: Int, totalHeight: Int*/): Bitmap? {
+    fun getBitmapFromView(view: View, totalWidth: Int, totalHeight: Int): Bitmap? {
         //Define a bitmap with the same size as the view
         val returnedBitmap =
             Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
