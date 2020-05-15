@@ -33,7 +33,6 @@ android {
 dependencies {
     def nav_version = "2.3.0-alpha02"
 
-    implementation 'com.google.code.gson:gson:2.8.5'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
@@ -48,5 +47,12 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    // If you want to use the GPU Filters
+    implementation 'com.google.code.gson:gson:2.8.5'
+    // Image effects stuff
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
+    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
 
 }

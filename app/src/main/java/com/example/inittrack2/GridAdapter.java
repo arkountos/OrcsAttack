@@ -10,8 +10,17 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import jp.wasabeef.glide.transformations.GrayscaleTransformation;
+import jp.wasabeef.glide.transformations.gpu.ContrastFilterTransformation;
+import jp.wasabeef.glide.transformations.gpu.InvertFilterTransformation;
+import jp.wasabeef.glide.transformations.gpu.PixelationFilterTransformation;
+import jp.wasabeef.glide.transformations.gpu.SepiaFilterTransformation;
+import jp.wasabeef.glide.transformations.gpu.SketchFilterTransformation;
 
 import static java.sql.DriverManager.println;
 
@@ -61,7 +70,9 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
 
         int id = mContext.getResources().getIdentifier(res, "drawable", mContext.getPackageName());
 
-        holder.mImageView.setImageResource(id);
+//        holder.mImageView.setImageResource(id);
+        Glide.with(mContext).load(id).transform(new SepiaFilterTransformation()).into(holder.mImageView);
+
     }
 
     @Override
