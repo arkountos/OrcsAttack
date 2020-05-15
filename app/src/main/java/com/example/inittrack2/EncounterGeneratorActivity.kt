@@ -114,7 +114,10 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
         var export_button : Button = findViewById(R.id.export_button)
         export_button.setOnClickListener{
-            var map_bitmap : Bitmap? = getBitmapFromView(horizontalScrollView)  // Pass a view as an argument
+            var map_bitmap : Bitmap? = getBitmapFromView(recyclerview_id
+//                horizontalScrollView.getChildAt(0).width,
+//                horizontalScrollView.getChildAt(0).height
+            )  // Pass a view as an argument
             var filename : String = "temp_bitmap.png"
             var stream : FileOutputStream = this.openFileOutput(filename, Context.MODE_PRIVATE)
             map_bitmap?.compress(Bitmap.CompressFormat.PNG, 100, stream)
@@ -347,7 +350,7 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         }
     }
 
-    fun getBitmapFromView(view: View): Bitmap? {
+    fun getBitmapFromView(view: View/*, totalWidth: Int, totalHeight: Int*/): Bitmap? {
         //Define a bitmap with the same size as the view
         val returnedBitmap =
             Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)

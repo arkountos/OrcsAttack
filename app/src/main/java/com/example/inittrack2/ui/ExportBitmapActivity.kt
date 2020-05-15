@@ -28,7 +28,7 @@ class ExportBitmapActivity : AppCompatActivity() {
         }
 
         var mapImageView = findViewById<ImageView>(R.id.map_png)
-        mapImageView.setImageBitmap(bitmap?.let { Bitmap.createScaledBitmap(it, 500, 500, false) })
+        mapImageView.setImageBitmap(bitmap?.let { Bitmap.createScaledBitmap(it, 960, 960, false) })
 //        holder.mImageView.setImageResource(id);
         //Glide.with(mContext).load(id).transform(SepiaFilterTransformation()).into(holder.mImageView)
 
