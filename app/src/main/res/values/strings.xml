@@ -15,6 +15,8 @@
 
     <string name="about_attributions">The art for this application is from flaticon! Check them out here <div><a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></string>
 
+    <string name="battle_to_start">Dynamic Battle Tracker</string>
+
     <string-array name="classes">
         <item>Barbarian</item>
         <item>Bard</item>

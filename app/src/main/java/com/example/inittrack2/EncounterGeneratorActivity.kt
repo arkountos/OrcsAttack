@@ -66,8 +66,11 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         name_view.text = encounterName
 
         //Read height and width from spinners
-        val height : String = intent.getStringExtra("EXTRA_HEIGHT")
-        val width : String = intent.getStringExtra("EXTRA_WIDTH")
+        var height_input : String = intent.getStringExtra("EXTRA_HEIGHT").toString()
+
+        var delimiter = " "
+        var height = height_input.split(delimiter)[0].toInt()
+        var width = height.toInt()
 
 
         // Read tree checkbox and tree probability setting
