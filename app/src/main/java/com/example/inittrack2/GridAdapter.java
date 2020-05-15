@@ -71,7 +71,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
         int id = mContext.getResources().getIdentifier(res, "drawable", mContext.getPackageName());
 
 //        holder.mImageView.setImageResource(id);
-        Glide.with(mContext).load(id).transform(new SepiaFilterTransformation()).into(holder.mImageView);
+        Glide.with(mContext).load(id).into(holder.mImageView);
 
     }
 

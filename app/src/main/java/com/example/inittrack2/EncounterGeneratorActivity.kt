@@ -1,16 +1,28 @@
 package com.example.inittrack2
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.inittrack2.ui.ExportBitmapActivity
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_grid.*
+import java.io.FileOutputStream
 import java.lang.Math.pow
 import java.lang.Math.sqrt
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
+
 
 // TODO: Add Characters to the map
 
@@ -99,6 +111,23 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
         mRecyclerView.layoutManager = mLayoutManager
         mRecyclerView.adapter = mAdapter
+
+        var export_button : Button = findViewById(R.id.export_button)
+        export_button.setOnClickListener{
+            var map_bitmap : Bitmap? = getBitmapFromView(horizontalScrollView)  // Pass a view as an argument
+            var filename : String = "temp_bitmap.png"
+            var stream : FileOutputStream = this.openFileOutput(filename, Context.MODE_PRIVATE)
+            map_bitmap?.compress(Bitmap.CompressFormat.PNG, 100, stream)
+
+            // Cleanup
+            stream.close();
+            map_bitmap?.recycle()
+
+            // Intent
+            var export_intent: Intent = Intent(this, ExportBitmapActivity::class.java)
+            export_intent.putExtra("EXTRA_IMAGE_PATH", filename)
+            startActivity(export_intent)
+        }
     }
 
     private fun generateMap(height: Int, width: Int, campfire: Int = 0,
@@ -316,5 +345,22 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
             tiles_map[Pair(rand_x, rand_y)]!!.character = Character(hero.first.toString(), 3, hero.second.toString(), 1, 0)
         }
+    }
+
+    fun getBitmapFromView(view: View): Bitmap? {
+        //Define a bitmap with the same size as the view
+        val returnedBitmap =
+            Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+        //Bind a canvas to it
+        val canvas = Canvas(returnedBitmap)
+        //Get the view's background
+        val bgDrawable: Drawable? = view.background
+        if (bgDrawable != null) //has background drawable, then draw it on the canvas
+            bgDrawable.draw(canvas) else  //does not have background drawable, then draw white background on the canvas
+            canvas.drawColor(Color.WHITE)
+        // draw the view on the canvas
+        view.draw(canvas)
+        //return the bitmap
+        return returnedBitmap
     }
 }
