@@ -26,10 +26,13 @@ class EncounterStartActivity : AppCompatActivity() {
     private lateinit var trees_probability_option : Spinner
     private lateinit var rocks_probability_option : Spinner
     private lateinit var enemies_quantity_option: Spinner
-//    private lateinit var hero_class_option: Spinner
+    private lateinit var map_style_option: Spinner
 
-
-
+    val styles = arrayOf(
+        "Standard",
+        "Sepia",
+        "Greyscale"
+    )
 
     val classes = arrayOf(
         "Barbarian",
@@ -106,7 +109,9 @@ class EncounterStartActivity : AppCompatActivity() {
         var trees_probability_input = "5%"
         var rocks_probability_input = "5%"
         var enemies_quantity_input = "1"
-//        var hero_class_input = "Fighter"
+        var map_style_input = "Standard"
+
+
 
         var heroes: MutableList<Pair<String, String>> = mutableListOf()
         var nameclass_ids: MutableList<Pair<Int, Int>> = mutableListOf()
@@ -124,7 +129,7 @@ class EncounterStartActivity : AppCompatActivity() {
         trees_probability_option = findViewById(com.example.inittrack2.R.id.tree_probability_spinner)
         rocks_probability_option = findViewById(com.example.inittrack2.R.id.rock_probability_spinner)
         enemies_quantity_option = findViewById(com.example.inittrack2.R.id.enemies_quantity_spinner)
-//        hero_class_option = findViewById(com.example.inittrack2.R.id.class_spinner_map)
+        map_style_option = findViewById(com.example.inittrack2.R.id.map_style_spinner)
 
 
 
@@ -139,8 +144,8 @@ class EncounterStartActivity : AppCompatActivity() {
             ArrayAdapter<String>(this, R.layout.spinner_item, probabilities)
         enemies_quantity_option.adapter =
             ArrayAdapter<String>(this, R.layout.spinner_item, quantities)
-//        hero_class_option.adapter =
-//            ArrayAdapter<String>(this, R.layout.spinner_item, classes)
+        map_style_option.adapter =
+            ArrayAdapter<String>(this, R.layout.spinner_item, styles)
 
 
 
@@ -231,25 +236,23 @@ class EncounterStartActivity : AppCompatActivity() {
             }
         }
 
-//        hero_class_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                hero_class_input = "Fighter"
-//            }
-//
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                hero_class_input = classes[position]
-//                class_id_name_map[hero_class_option.id] = hero_class_input
-//
-//            }
-//        }
+        map_style_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                map_style_input = "Fighter"
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                map_style_input = styles[position]
+            }
+        }
 
         enemies_quantity_option.setSelection(0)
-//        hero_class_option.setSelection(0)
+        map_style_option.setSelection(0)
 
         var last_element_on_list = findViewById<EditText>(R.id.hero_name_map)
         var last_spinner_on_list = findViewById<Spinner>(R.id.class_spinner_map)
@@ -350,6 +353,7 @@ class EncounterStartActivity : AppCompatActivity() {
             var trees_probability_result = trees_probability_input
             var rocks_probability_result = rocks_probability_input
             var enemies_quantity_result = enemies_quantity_input
+            var map_style_result = map_style_input
 
 
             var campfire_result = if(campfire_input.isChecked) "1" else "0"
@@ -366,7 +370,8 @@ class EncounterStartActivity : AppCompatActivity() {
                 Log.d("Hero added is: ", "" + hero)
             }
 
-
+//            var global_ref : MyAppApplication = applicationContext as MyAppApplication
+//            global_ref.setMapStyle(map_style_result)
 
 
             val intent = Intent(this, EncounterGeneratorActivity::class.java)
@@ -380,7 +385,6 @@ class EncounterStartActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_ROCKS", rocks_result)
             intent.putExtra("EXTRA_ROCKS_PROBABILITY", rocks_probability_result)
             intent.putExtra("EXTRA_ENEMIES_QUANTITY", enemies_quantity_result)
-//            intent.putExtra("EXTRA_HERO_CLASS", hero_class_input)
             intent.putExtra("EXTRA_HEROES_SIZE", heroes.size.toString())
             Log.d("Heroes.size is", heroes.size.toString())
             for ((i, hero) in heroes.withIndex()){
@@ -404,24 +408,4 @@ class EncounterStartActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-
-//    fun spinnerChoose(spinner: Spinner): String{
-//        var input: String = "Fighter"
-//        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                input = "Fighter"
-//            }
-//
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                input = classes[position]
-//            }
-//        }
-//        return(input)
-//    }
 }

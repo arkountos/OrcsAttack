@@ -19,7 +19,43 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/gotoGenerator"
+        android:id="@+id/gotoSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="Settings"
+        app:layout_constraintEnd_toEndOf="@+id/gotoGenerator2"
+        app:layout_constraintStart_toStartOf="@+id/gotoGenerator2"
+        app:layout_constraintTop_toBottomOf="@+id/gotoGenerator2" />
+
+    <Button
+        android:id="@+id/gotoGenerator3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="About"
+        app:layout_constraintEnd_toEndOf="@+id/gotoSettings"
+        app:layout_constraintStart_toStartOf="@+id/gotoSettings"
+        app:layout_constraintTop_toBottomOf="@+id/gotoSettings" />
+
+    <Button
+        android:id="@+id/gotoExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="Exit"
+        app:layout_constraintEnd_toEndOf="@+id/gotoGenerator3"
+        app:layout_constraintStart_toStartOf="@+id/gotoGenerator3"
+        app:layout_constraintTop_toBottomOf="@+id/gotoGenerator3" />
+
+    <Button
+        android:id="@+id/gotoGenerator2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

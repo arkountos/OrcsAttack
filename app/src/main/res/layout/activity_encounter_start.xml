@@ -49,7 +49,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/rock_probability_spinner"
-                app:layout_constraintTop_toBottomOf="@+id/rock_probability_spinner" />
+                app:layout_constraintTop_toBottomOf="@+id/map_style_spinner" />
 
             <CheckBox
                 android:id="@+id/trees_checkbox"
@@ -158,6 +158,16 @@
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="@+id/rocks_checkbox"
                 app:layout_constraintTop_toBottomOf="@+id/rocks_checkbox" />
+
+            <TextView
+                android:id="@+id/map_style_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Map Style:"
+                android:textColor="@android:color/white"
+                app:layout_constraintTop_toBottomOf="@+id/rock_probability_spinner"
+                tools:layout_editor_absoluteX="16dp" />
 
             <CheckBox
                 android:id="@+id/campfire_checkbox"
@@ -285,6 +295,14 @@
                 app:layout_constraintTop_toTopOf="@+id/dimensions2"
                 app:layout_constraintVertical_bias="0.585"
                 app:srcCompat="@drawable/ivy" />
+
+            <Spinner
+                android:id="@+id/map_style_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/map_style_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/map_style_edittext" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

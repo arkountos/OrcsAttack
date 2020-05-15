@@ -9,7 +9,6 @@ import android.os.Vibrator
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.getSystemService
 
 
 class StartActivity : AppCompatActivity() {
@@ -27,7 +26,7 @@ class StartActivity : AppCompatActivity() {
             vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
             openInitiativeActivity()
         }
-        val generatorButton: Button = findViewById(R.id.gotoGenerator)
+        val generatorButton: Button = findViewById(R.id.gotoSettings)
         generatorButton.setOnClickListener{
             vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
             openGeneratorActivity()

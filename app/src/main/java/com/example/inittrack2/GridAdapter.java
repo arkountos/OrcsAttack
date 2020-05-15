@@ -43,6 +43,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
     public GridAdapter(ArrayList<Tile> tileList, Context context) {
         mTiles = tileList;
         mContext = context;
+
     }
 
     @NonNull
@@ -69,10 +70,17 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
         }
 
         int id = mContext.getResources().getIdentifier(res, "drawable", mContext.getPackageName());
+//        MyAppApplication global_ref = ((MyAppApplication)mContext);
+//        String map_style = global_ref.getMapStyle();
+////        holder.mImageView.setImageResource(id);
+//        switch (map_style){
+//            case "Standard" : Glide.with(mContext).load(id).into(holder.mImageView);
+//            case "Sepia" : Glide.with(mContext).load(id).transform(new SepiaFilterTransformation()).into(holder.mImageView);
+//            case "Greyscale" : Glide.with(mContext).load(id).transform(new GrayscaleTransformation()).into(holder.mImageView);
+//            default: Glide.with(mContext).load(id).into(holder.mImageView);
+//        }
 
-//        holder.mImageView.setImageResource(id);
         Glide.with(mContext).load(id).into(holder.mImageView);
-
     }
 
     @Override
