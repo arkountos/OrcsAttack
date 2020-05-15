@@ -10,6 +10,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,6 +59,11 @@ class EncounterGeneratorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_grid)
+
+
+        val encounterName = intent.getStringExtra("EXTRA_ENCOUNTER_NAME")
+        val name_view = findViewById<TextView>(R.id.map_name)
+        name_view.text = encounterName
 
         //Read height and width from spinners
         val height : String = intent.getStringExtra("EXTRA_HEIGHT")

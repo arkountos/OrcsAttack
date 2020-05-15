@@ -28,6 +28,76 @@ class EncounterStartActivity : AppCompatActivity() {
     private lateinit var enemies_quantity_option: Spinner
     private lateinit var map_style_option: Spinner
 
+    val place_adjective = arrayOf(
+        "Magical",
+        "Mystical",
+        "Quiet",
+        "Silent",
+        "Far Away",
+        "Long Lost",
+        "Forgotten",
+        "Famous",
+        "Unheard",
+        "Enchanted",
+        "Mythical",
+        "Old",
+        "New",
+        "Ancient",
+        "Lesser"
+    )
+    val place_type = arrayOf(
+        "Forest",
+        "Forests",
+        "Swamp",
+        "Swamps",
+        "Hill",
+        "Hills",
+        "Wilderness",
+        "Mountain",
+        "Mountains",
+        "Magic Forest",
+        "Plain",
+        "Plains",
+        "Field",
+        "Fields",
+        "Land",
+        "Lands"
+    )
+
+    val place_names = arrayOf(
+        "Southshore",
+        "Icefay",
+        "Lochport",
+        "Strongland",
+        "Vertpond",
+        "Freywall",
+        "Raycliff",
+        "Lorcliff",
+        "Crystalmill",
+        "Fallville",
+        "Silverfort",
+        "Lightbank",
+        "Deepby",
+        "Erihurst",
+        "Whitewater",
+        "Aelcoast",
+        "Pondcliff",
+        "Westpine",
+        "Greybutter",
+        "Icepond",
+        "Newbush",
+        "Westerspring",
+        "Silvercliff",
+        "Linlyn",
+        "Deepmere",
+        "Bywell",
+        "Highburn",
+        "Buttersummer",
+        "Landfort",
+        "Fogbarrow",
+        "Butterness"
+    )
+
     val styles = arrayOf(
         "Standard",
         "Sepia",
@@ -79,10 +149,7 @@ class EncounterStartActivity : AppCompatActivity() {
         "13",
         "14",
         "15",
-        "20",
-        "25",
-        "50",
-        "100"
+        "20"
     )
 
     val probabilities = arrayOf(
@@ -373,8 +440,10 @@ class EncounterStartActivity : AppCompatActivity() {
 //            var global_ref : MyAppApplication = applicationContext as MyAppApplication
 //            global_ref.setMapStyle(map_style_result)
 
+            var encounterName : String = "The " + place_adjective.random() + " " + place_type.random() + " of " + place_names.random()
 
             val intent = Intent(this, EncounterGeneratorActivity::class.java)
+            intent.putExtra("EXTRA_ENCOUNTER_NAME", encounterName)
             intent.putExtra("EXTRA_HEIGHT", height_result)
             intent.putExtra("EXTRA_WIDTH", width_result)
             intent.putExtra("EXTRA_TREES_PROBABILITY", trees_probability_result)

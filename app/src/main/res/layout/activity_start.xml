@@ -26,9 +26,9 @@
         android:background="@color/colorAccent"
         android:padding="5dp"
         android:text="Settings"
-        app:layout_constraintEnd_toEndOf="@+id/gotoGenerator2"
-        app:layout_constraintStart_toStartOf="@+id/gotoGenerator2"
-        app:layout_constraintTop_toBottomOf="@+id/gotoGenerator2" />
+        app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
+        app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
+        app:layout_constraintTop_toBottomOf="@+id/gotoGenerator" />
 
     <Button
         android:id="@+id/gotoGenerator3"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gotoGenerator3" />
 
     <Button
-        android:id="@+id/gotoGenerator2"
+        android:id="@+id/gotoGenerator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

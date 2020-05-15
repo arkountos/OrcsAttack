@@ -26,7 +26,7 @@ class StartActivity : AppCompatActivity() {
             vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
             openInitiativeActivity()
         }
-        val generatorButton: Button = findViewById(R.id.gotoSettings)
+        val generatorButton: Button = findViewById(R.id.gotoGenerator)
         generatorButton.setOnClickListener{
             vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
             openGeneratorActivity()
