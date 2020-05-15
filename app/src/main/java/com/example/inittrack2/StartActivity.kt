@@ -9,6 +9,8 @@ import android.os.Vibrator
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_start.view.*
+import kotlin.system.exitProcess
 
 
 class StartActivity : AppCompatActivity() {
@@ -31,6 +33,22 @@ class StartActivity : AppCompatActivity() {
             vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
             openGeneratorActivity()
         }
+        val settingsButton: Button = findViewById(R.id.gotoSettings)
+        settingsButton.setOnClickListener {
+            vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
+            openSettingsActivity()
+        }
+        val aboutButton: Button = findViewById(R.id.gotoAbout)
+        aboutButton.setOnClickListener {
+            vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
+            openAboutActivity()
+        }
+        val exitButton: Button = findViewById(R.id.gotoExit)
+        exitButton.setOnClickListener {
+            vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
+            finish();
+            exitProcess(0);
+        }
     }
 
     private fun openInitiativeActivity(){
@@ -40,6 +58,16 @@ class StartActivity : AppCompatActivity() {
 
     private fun openGeneratorActivity(){
         val intent: Intent = Intent(this, EncounterStartActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun openSettingsActivity(){
+        val intent: Intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun openAboutActivity(){
+        val intent: Intent = Intent(this, AboutActivity::class.java)
         startActivity(intent)
     }
 }

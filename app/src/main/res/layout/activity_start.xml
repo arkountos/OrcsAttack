@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gotoGenerator" />
 
     <Button
-        android:id="@+id/gotoGenerator3"
+        android:id="@+id/gotoAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -50,9 +50,9 @@
         android:background="@color/colorAccent"
         android:padding="5dp"
         android:text="Exit"
-        app:layout_constraintEnd_toEndOf="@+id/gotoGenerator3"
-        app:layout_constraintStart_toStartOf="@+id/gotoGenerator3"
-        app:layout_constraintTop_toBottomOf="@+id/gotoGenerator3" />
+        app:layout_constraintEnd_toEndOf="@+id/gotoAbout"
+        app:layout_constraintStart_toStartOf="@+id/gotoAbout"
+        app:layout_constraintTop_toBottomOf="@+id/gotoAbout" />
 
     <Button
         android:id="@+id/gotoGenerator"

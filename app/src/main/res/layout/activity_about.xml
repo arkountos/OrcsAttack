@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context="com.example.inittrack2.SettingsActivity">
+    tools:context="com.example.inittrack2.AboutActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
