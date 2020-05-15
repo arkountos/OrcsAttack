@@ -10,10 +10,15 @@
 <!--        <item name="android:checkboxStyle">@style/MyCustomCheckboxFontStyle</item>-->
         <item name="android:buttonStyle">@style/MyCustomFontStyle</item>
         <item name="android:textColor">#FFFFFF</item>
+        <item name="android:popupMenuStyle">@style/MyCustomPopupMenuStyle</item>
     </style>
 
     <style name="MyCustomFontStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/blkchry</item>
+    </style>
+
+    <style name="MyCustomPopupMenuStyle">
+        <item name="android:popupBackground">@color/colorPrimary</item>
     </style>
 
 </resources>

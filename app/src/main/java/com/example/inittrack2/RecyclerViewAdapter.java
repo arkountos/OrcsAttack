@@ -91,13 +91,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 mcharacters.remove(newPosition);
                                 notifyItemRemoved(newPosition);
                                 notifyItemRangeChanged(newPosition, mcharacters.size());
-
-
                                 //handle menu1 click
-                                break;
-                            case R.id.menu2:
-                                //handle menu2 click
-
                                 break;
                         }
                         return false;

@@ -5,8 +5,4 @@
         android:id="@+id/menu1"
         android:title="Remove" />
 
-    <item
-        android:id="@+id/menu2"
-        android:title="Menu 2" />
-
 </menu>
