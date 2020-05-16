@@ -35,8 +35,8 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 
     private val STEP_COST = 1.0
     private val DIAGONAL_STEP_COST = 1.5
-    private val NOTICE_RADIUS = 3
-    private val CAMPFIRE_DISTANCE = 2
+    private val NOTICE_RADIUS = GlobalsActivity.NOTICE_RADIUS
+    private val CAMPFIRE_DISTANCE = GlobalsActivity.CAMPFIRE_DISTANCE
 
     private var tiles_map = HashMap<Pair<Int, Int>, Tile>()
     private val tiles: ArrayList<Tile> = ArrayList()
