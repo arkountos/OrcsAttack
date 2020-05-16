@@ -5,7 +5,7 @@
     android:id="@+id/mylayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#483c46"
+    android:background="@drawable/black_pixelwall"
     android:clickable="true"
     tools:context=".AddCharActivity">
 

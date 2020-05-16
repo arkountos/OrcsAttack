@@ -1,6 +1,7 @@
 package com.example.inittrack2;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +60,13 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
         Tile currentTile = mTiles.get(position);
         String res = "";
         if (currentTile.getCharacter() != null){
+            if (currentTile.getCharacter().getMyclass() == "Monster"){
+                holder.mImageView.setBackgroundColor(mContext.getResources().getColor(R.color.colorEnemy));
+            }
+            else{
+                holder.mImageView.setBackgroundColor(mContext.getResources().getColor(R.color.colorFriend));
+
+            }
             res = "ic_" + currentTile.getCharacter().getMyclass().toLowerCase();
         }
         else if (currentTile.getContent() != null){
@@ -79,7 +87,6 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
 //            case "Greyscale" : Glide.with(mContext).load(id).transform(new GrayscaleTransformation()).into(holder.mImageView);
 //            default: Glide.with(mContext).load(id).into(holder.mImageView);
 //        }
-
         Glide.with(mContext).load(id).into(holder.mImageView);
     }
 
