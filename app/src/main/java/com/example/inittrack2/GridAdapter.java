@@ -78,16 +78,22 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
         }
 
         int id = mContext.getResources().getIdentifier(res, "drawable", mContext.getPackageName());
-//        MyAppApplication global_ref = ((MyAppApplication)mContext);
-//        String map_style = global_ref.getMapStyle();
-////        holder.mImageView.setImageResource(id);
-//        switch (map_style){
-//            case "Standard" : Glide.with(mContext).load(id).into(holder.mImageView);
-//            case "Sepia" : Glide.with(mContext).load(id).transform(new SepiaFilterTransformation()).into(holder.mImageView);
-//            case "Greyscale" : Glide.with(mContext).load(id).transform(new GrayscaleTransformation()).into(holder.mImageView);
-//            default: Glide.with(mContext).load(id).into(holder.mImageView);
+        String map_style = GlobalsActivity.Companion.getGlobal_styles();
+//        Log.d("Map_style", ":" + map_style + ":");
+//        if (map_style.equals("Sepia")){
+//            Log.d("SEPIA!!!", "");
 //        }
-        Glide.with(mContext).load(id).into(holder.mImageView);
+//        else{
+//            Log.d("NOT SEPIA!!!", "");
+//        }
+//        Log.d("DONE???", "");
+        switch (map_style){
+            case "Standard" : Glide.with(mContext).load(id).into(holder.mImageView);
+            case "Sepia" : Log.d("In Sepia", "");Glide.with(mContext).load(id).transform(new SepiaFilterTransformation()).into(holder.mImageView);
+            case "Greyscale" : Glide.with(mContext).load(id).transform(new GrayscaleTransformation()).into(holder.mImageView);
+            default: Glide.with(mContext).load(id).into(holder.mImageView);
+        }
+//        Glide.with(mContext).load(id).into(holder.mImageView);
     }
 
     @Override

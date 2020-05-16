@@ -441,8 +441,7 @@ class EncounterStartActivity : AppCompatActivity() {
                 Log.d("Hero added is: ", "" + hero)
             }
 
-//            var global_ref : MyAppApplication = applicationContext as MyAppApplication
-//            global_ref.setMapStyle(map_style_result)
+            GlobalsActivity.global_styles = map_style_input
 
             var encounterName : String = "The " + place_adjective.random() + " " + place_type.random() + " of " + place_names.random()
 
