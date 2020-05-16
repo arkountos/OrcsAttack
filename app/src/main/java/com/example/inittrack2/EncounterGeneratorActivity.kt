@@ -172,25 +172,6 @@ class EncounterGeneratorActivity : AppCompatActivity() {
 //            val list =
 
         }
-        if (campfire == 1){
-            // Choose a random square in the "center" of the board to place campfire
-            var rand_x : Int? = null
-            var rand_y : Int? = null
-            while (tiles_map[Pair(rand_x, rand_y)] == null) {
-                rand_x = (((width - 1) / 4)..((width - 1) * 3 / 4)).random()
-                rand_y = (((height - 1) / 4)..((height - 1) * 3 / 4)).random()
-            }
-            // Find tile with said coordinates
-            Log.d("CAMP", "rand_x and rand_y: " + rand_x + rand_y + "the rest expression " + height/4 + height * 3 / 4 + 7/2)
-//            for (tile in tiles){
-//                if (tile.x == rand_x && tile.y == rand_y){
-//                    tile.content = Ground("campfire")
-//                }
-//            }
-            tiles_map[Pair(rand_x, rand_y)]!!.content = Ground("campfire")
-            campfire_tile = tiles_map[Pair(rand_x, rand_y)]!!
-        }
-
         if (stream == 1){
             Log.d("STREAM", "1")
             // From top to bottom river
@@ -260,6 +241,26 @@ class EncounterGeneratorActivity : AppCompatActivity() {
                 )
                 Collections.sort(open_set, TileComparator())
             }
+        }
+
+        if (campfire == 1){
+            // Choose a random square in the "center" of the board to place campfire
+            var rand_x : Int? = null
+            var rand_y : Int? = null
+            while (tiles_map[Pair(rand_x, rand_y)] == null || tiles_map[Pair(rand_x, rand_y)]?.content?.type == Ground("river").type) {
+                rand_x = (((width - 1) / 4)..((width - 1) * 3 / 4)).random()
+                rand_y = (((height - 1) / 4)..((height - 1) * 3 / 4)).random()
+            }
+            // Find tile with said coordinates
+            Log.d("CAMP", "rand_x and rand_y: " + rand_x + rand_y + "the rest expression " + height/4 + height * 3 / 4 + 7/2)
+//            for (tile in tiles){
+//                if (tile.x == rand_x && tile.y == rand_y){
+//                    tile.content = Ground("campfire")
+//                }
+//            }
+            tiles_map[Pair(rand_x, rand_y)]!!.content = Ground("campfire")
+            tiles_map[Pair(rand_x, rand_y)]!!.randomNoise = 100.0
+            campfire_tile = tiles_map[Pair(rand_x, rand_y)]!!
         }
 
         if (enemies_quantity > 0){
