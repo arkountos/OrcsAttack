@@ -17,6 +17,9 @@
 
     <string name="battle_to_start">Dynamic Battle Tracker</string>
 
+    <string name="campfire_help">When you check the campfire box, a campfire appears around the middle of your map. If a campfire is present, allied characters appear near the fire while enemy characters appear away from it.
+    If no campfire is present then all the characters appear randomly. You can set the max distance from the fire that ally characters can spawn, as well as the minimum distance from the campfire for enemies to spawn from the settings tab.</string>
+
     <string-array name="classes">
         <item>Barbarian</item>
         <item>Bard</item>

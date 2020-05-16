@@ -1,6 +1,7 @@
 package com.example.inittrack2
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -15,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.*
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -316,6 +318,22 @@ class EncounterStartActivity : AppCompatActivity() {
         var last_spinner_on_list = findViewById<Spinner>(R.id.class_spinner_map)
 
 
+        val campfire_help_btn = findViewById<ImageButton>(R.id.campfire_help)
+        campfire_help_btn.setOnClickListener {
+            val positiveButtonClick = {
+                dialog: DialogInterface, which: Int ->
+                Toast.makeText(applicationContext, android.R.string.no, Toast.LENGTH_SHORT).show()
+            }
+
+            val builder = AlertDialog.Builder(this)
+
+            with(builder){
+                setTitle("Campfire")
+                setMessage(R.string.campfire_help)
+                setPositiveButton("OK", DialogInterface.OnClickListener(function = positiveButtonClick))
+                show()
+            }
+        }
 
         val add_hero_btn = findViewById<ImageButton>(R.id.add_hero_button)
         add_hero_btn.setOnClickListener{

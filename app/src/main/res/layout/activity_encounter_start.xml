@@ -12,8 +12,8 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="184dp"
-        tools:layout_editor_absoluteY="-210dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_inside"
@@ -272,6 +272,18 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/map_style_edittext"
                 app:layout_constraintTop_toBottomOf="@+id/map_style_edittext" />
+
+            <ImageButton
+                android:id="@+id/campfire_help"
+                style="@android:style/Widget.Holo.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/campfire_checkbox"
+                app:layout_constraintStart_toEndOf="@+id/campfire_checkbox"
+                app:layout_constraintTop_toTopOf="@+id/campfire_checkbox"
+                app:srcCompat="@drawable/ivy" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
