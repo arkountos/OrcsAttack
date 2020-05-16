@@ -3,7 +3,8 @@
     <color name="colorPrimary">#58358a</color>
     <color name="colorBackground">#483c46</color>
     <color name="colorPrimaryDark">#3f256f</color>
-    <color name="colorAccent">#f46036</color>
+    <color name="colorAccent">#9FD356</color>
+<!--    #f46036-->
     <color name="colorEnemy">#d7263d</color>
     <color name="colorFriend">#3c6e71</color>
 </resources>

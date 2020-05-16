@@ -17,7 +17,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        app:backgroundTint="#f46036"
+        app:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/scroll_view"
         app:layout_constraintEnd_toEndOf="@+id/scroll_view"
         app:srcCompat="@drawable/ic_done_black_24dp" />
