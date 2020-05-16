@@ -1,9 +1,12 @@
 package com.example.inittrack2
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.text.InputType
 import android.util.Log
 import android.util.TypedValue
@@ -316,8 +319,13 @@ class EncounterStartActivity : AppCompatActivity() {
 
         val add_hero_btn = findViewById<ImageButton>(R.id.add_hero_button)
         add_hero_btn.setOnClickListener{
-            var toast = Toast.makeText(applicationContext, "Pressed!", Toast.LENGTH_SHORT);
-            toast.show()
+            val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
             var constraintLayout : ConstraintLayout = findViewById(R.id.constraint_inside);
 
             // Add edittext
@@ -402,6 +410,14 @@ class EncounterStartActivity : AppCompatActivity() {
 
         val encounter_start_btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.encounter_start_done)
         encounter_start_btn_done.setOnClickListener {
+
+            val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
 
             var height_result = height_input
 //            var width_result = width_input

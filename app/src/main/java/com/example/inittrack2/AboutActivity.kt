@@ -1,7 +1,11 @@
 package com.example.inittrack2
 
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,6 +18,13 @@ class AboutActivity : AppCompatActivity() {
 
         var feedback_button: Button = findViewById(R.id.feedback_button)
         feedback_button.setOnClickListener {
+            val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "plain/text"
             intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("fivosiliadis@gmail.com"))

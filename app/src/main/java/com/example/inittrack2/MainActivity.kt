@@ -31,9 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-        val vibrator: Vibrator
-        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-
+        val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,14 +41,24 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate called from onCreate")
         val btn_add_char = findViewById<FloatingActionButton>(R.id.AddCharButton)
         btn_add_char.setOnClickListener {
-            vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
             val intent :Intent = Intent(this, AddCharActivity::class.java)
             startActivityForResult(intent, 1)
         }
 
         val btn_reroll = findViewById<Button>(R.id.reroll)
         btn_reroll.setOnClickListener {
-            vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
             Log.d(TAG, "characters has " + characters.size + " and characters_sorted has " + characters_sorted.size)
             rollInitiatives()
             sortByRolledInitiative()

@@ -5,7 +5,10 @@ import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -147,6 +150,13 @@ class AddCharActivity : AppCompatActivity() {
 
         val save_btn = findViewById<Button>(R.id.add_to_party)
         save_btn.setOnClickListener{
+            val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
             var editTextNameValue = editTextName.text.toString()
             var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
             var editTextHitpointsValue = editTextHitpoints.text.toString()
@@ -160,6 +170,13 @@ class AddCharActivity : AppCompatActivity() {
 
         val btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.doneButton)
         btn_done.setOnClickListener {
+            val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
             var editTextNameValue = editTextName.text.toString()
             var editTextInitiativeValue = editTextInitiative.text.toString()
             var editTextHitpointsValue = editTextHitpoints.text.toString()
