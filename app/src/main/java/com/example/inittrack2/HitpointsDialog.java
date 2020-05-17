@@ -26,9 +26,9 @@ public class HitpointsDialog extends AppCompatDialogFragment {
         Log.d("onAttach", "context is " + context.toString());
 
         try {
-//            Log.d("onAttach", "getActivity() is " + getActivity() + " getParentFragment is " + getParentFragment() +
-//                    "getActivity().getSupportFragmentManager() is ");
-            listener = (HitpointsDialogListener) getActivity().getSupportFragmentManager() /* NO! */;
+            Log.d("onAttach", "getActivity() is " + getActivity() + " getParentFragment is " + getParentFragment() +
+                    "getActivity().getSupportFragmentManager() is " + getActivity().getSupportFragmentManager());
+            listener = (HitpointsDialogListener) context /* NO! */;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
                     "must implement HitpointsDialogListener!");
@@ -43,7 +43,7 @@ public class HitpointsDialog extends AppCompatDialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.hitpoints_dialog, null);
-
+        view.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         Button minus_one_btn = view.findViewById(R.id.minus_one);
         minus_one_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +68,7 @@ public class HitpointsDialog extends AppCompatDialogFragment {
                         listener.applyData(hitpoints);
                     }
                 });
+
 
         return builder.create();
     }

@@ -11,7 +11,14 @@
         <item name="android:buttonStyle">@style/MyCustomFontStyle</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:popupMenuStyle">@style/MyCustomPopupMenuStyle</item>
+        <item name="android:alertDialogStyle">@style/MyCustomAlertDialogStyle</item>
     </style>
+
+    <style name="MyCustomAlertDialogStyle">
+        <item name="android:fontFamily">@font/blkchry</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
 
     <style name="MyCustomFontStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/blkchry</item>

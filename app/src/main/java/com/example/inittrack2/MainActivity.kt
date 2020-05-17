@@ -9,21 +9,17 @@ import android.os.Vibrator
 import android.util.Log
 import android.widget.Button
 import androidx.annotation.RequiresApi
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.*;
-import kotlinx.android.synthetic.main.item_on_recyclerlist.*;
-import java.lang.Exception
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 import kotlin.collections.ArrayList
 
 // TODO: Save characters for quick selection when adding
 // TODO: Button to clear current Battle on top right
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), HitpointsDialog.HitpointsDialogListener {
     private val TAG = "MAIN"
 
     private val characters: ArrayList<Character> = ArrayList()
@@ -132,5 +128,10 @@ class MainActivity : AppCompatActivity() {
         val adapter = RecyclerViewAdapter(this, characters, this.supportFragmentManager)
         recyclerView.adapter = adapter;
         recyclerView.layoutManager = LinearLayoutManager(this);
+    }
+
+    override fun applyData(hitpoints: Int) {
+//        Log.d(RecyclerViewAdapter.TAG, "################ In applyData ##############")
+//        new_hitpoints = hitpoints
     }
 }
