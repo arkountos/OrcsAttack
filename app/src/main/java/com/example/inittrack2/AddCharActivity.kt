@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -174,8 +175,24 @@ class AddCharActivity : AppCompatActivity() {
             editor.apply()
         }
 
-        fun load(key: String){
+        fun load(key: String, heroes: MutableList<Character>){
+            for (character in heroes){
+                if (character.name == key){
+                    // Found the char we are looking
+                    val resultIntent = Intent()
+                    Log.d("Hero!:", character.name + character.initiative_modifier + character.myclass + character.hitpoints
+                    )
+                    resultIntent.putExtra("EXTRA_NAME", character.name)
+                    resultIntent.putExtra("EXTRA_INITIATIVE", character.initiative_modifier)
+                    resultIntent.putExtra("EXTRA_CLASS", character.myclass)
+                    resultIntent.putExtra("EXTRA_HITPOINTS", character.hitpoints)
+                    resultIntent.putExtra("EXTRA_AMOUNT", "1")
 
+                    setResult(Activity.RESULT_OK, resultIntent)
+                    finish()
+                }
+            }
+            Toast.makeText(this, "There are no saved characters in memory! Try adding some first.", Toast.LENGTH_LONG).show()
         }
 
         println("##############")
@@ -200,6 +217,17 @@ class AddCharActivity : AppCompatActivity() {
         }
 
         val load_btn = findViewById<Button>(R.id.load_char_button)
+        load_btn.setOnClickListener{
+            val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
+            var selectedCharacterName = char_result
+            load(selectedCharacterName, characterList)
+        }
 
 
 
