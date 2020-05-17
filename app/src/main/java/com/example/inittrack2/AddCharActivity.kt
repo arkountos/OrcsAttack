@@ -58,8 +58,30 @@ class AddCharActivity : AppCompatActivity() {
             "Wizard"
         )
         val quantities = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
-        var characterArray = arrayOf("Char1", "Char2", "Char3")
+//        var characterArray = arrayOf("Char1", "Char2", "Char3")
         val ΝΑΜΕ : String = "text"
+
+        // For character array
+        val sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        var characterSet = if (sharedPreferences.getStringSet("saved_characters", null) != null){
+            sharedPreferences.getStringSet("saved_characters", null)!!
+        } else{
+            mutableSetOf()
+        }
+
+
+        // characterList is a list tha has all the Character objects saved in shared prefs
+        var characterList : MutableList<Character> = mutableListOf()
+        for (character in characterSet){ // character is a jsonified string
+            var de_jsonchar = gson.fromJson(character, Character::class.java)
+            characterList.add(de_jsonchar)
+        }
+
+        // characterArray is an array with the names of all Character objects on characterList, it populates the spinner
+        var characterArray = arrayOfNulls<String>(characterList.size)
+        for ((i, character) in characterList.withIndex()){
+            characterArray[i] = character.name
+        }
 
 
         // Class choosing Spinner
@@ -119,30 +141,42 @@ class AddCharActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                char_result = characterArray[position]
+                char_result = characterArray[position].toString()
             }
 
         }
 
         fun save(name: String, initiative: Int, hitpoints: String, myclass: String){
-            var sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
-            var editor : SharedPreferences.Editor = sharedPreferences.edit()
+            val sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+            val editor : SharedPreferences.Editor = sharedPreferences.edit()
 
             // Jsonify
-            var char = Character(name, initiative, myclass, hitpoints.toInt())
-            var jsonchar = gson.toJson(char)
+            val char = Character(name, initiative, myclass, hitpoints.toInt())
+            val jsonchar = gson.toJson(char)
 
-            // Put to sharedpreferences
-            editor.putString(name, jsonchar)
+            // Get string set with chars
+            var heroes: Set<String>
+            if (sharedPreferences.getStringSet("saved_characters", null) != null){
+                heroes = sharedPreferences.getStringSet("saved_characters", null)!!
+            }
+            else{
+                heroes = mutableSetOf()
+                editor.putStringSet("saved_characters", heroes)
+                editor.apply()
+                heroes = sharedPreferences.getStringSet("saved_characters", null)!!
+            }
 
+            // Put new hero to heroes
+            heroes.add(jsonchar)
+
+            // Put new heroes to shared prefs
+            editor.putStringSet("save_characters", heroes)
             editor.apply()
         }
 
         fun load(key: String){
 
         }
-
-
 
         println("##############")
         println(class_result)
@@ -166,6 +200,7 @@ class AddCharActivity : AppCompatActivity() {
         }
 
         val load_btn = findViewById<Button>(R.id.load_char_button)
+
 
 
         val btn_done = findViewById<FloatingActionButton>(com.example.inittrack2.R.id.doneButton)
