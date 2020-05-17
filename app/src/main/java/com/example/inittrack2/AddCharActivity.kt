@@ -16,10 +16,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 
+import com.example.inittrack2.GlobalsActivity.Companion.SHARED_PREFS
+
 
 class AddCharActivity : AppCompatActivity() {
     private val TAG = "AddCharActivity"
-    val SHARED_PREFS : String = "sharedPrefs"
 
     val gson = Gson()
 

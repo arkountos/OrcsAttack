@@ -7,4 +7,47 @@
     android:background="@drawable/black_pixelwall"
     tools:context="com.example.inittrack2.SettingsActivity">
 
+    <TextView
+        android:id="@+id/settings_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Settings"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/settings_clear_heroes_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="Clear all saved characters"
+        app:layout_constraintEnd_toEndOf="@+id/settings_title"
+        app:layout_constraintStart_toStartOf="@+id/settings_title"
+        app:layout_constraintTop_toBottomOf="@+id/settings_tracker_text" />
+
+    <TextView
+        android:id="@+id/settings_tracker_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Dynamic tracker options:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_title" />
+
+    <TextView
+        android:id="@+id/settings_map_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Map generation options:"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/settings_tracker_text"
+        app:layout_constraintTop_toBottomOf="@+id/settings_clear_heroes_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
