@@ -95,6 +95,7 @@
                 android:fontFamily="@font/blkchry"
                 android:text="Include hills and caverns"
                 android:textColor="@android:color/white"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/tree_probability_spinner"
                 app:layout_constraintTop_toBottomOf="@+id/tree_probability_spinner" />
 
@@ -103,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Tile size:"
+                android:text="Grid size:"
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="@+id/dimensions"
                 app:layout_constraintTop_toBottomOf="@+id/dimensions" />

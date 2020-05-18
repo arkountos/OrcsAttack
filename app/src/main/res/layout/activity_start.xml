@@ -6,100 +6,112 @@
     android:layout_height="match_parent"
     android:background="@drawable/pixelwall_tree">
 
-    <Button
-        android:id="@+id/gotoInit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorAccent"
-        android:padding="5dp"
-        android:text="Dynamic Initiative Tracker"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/gotoSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorAccent"
-        android:padding="5dp"
-        android:text="Settings"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
-        app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
-        app:layout_constraintTop_toBottomOf="@+id/gotoGenerator" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/gotoAbout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorAccent"
-        android:padding="5dp"
-        android:text="About"
-        app:layout_constraintEnd_toEndOf="@+id/gotoSettings"
-        app:layout_constraintStart_toStartOf="@+id/gotoSettings"
-        app:layout_constraintTop_toBottomOf="@+id/gotoSettings" />
+            <Button
+                android:id="@+id/gotoInit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:padding="5dp"
+                android:text="Dynamic Initiative Tracker"
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintStart_toStartOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <Button
-        android:id="@+id/gotoExit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorAccent"
-        android:padding="5dp"
-        android:text="Exit"
-        app:layout_constraintEnd_toEndOf="@+id/gotoAbout"
-        app:layout_constraintStart_toStartOf="@+id/gotoAbout"
-        app:layout_constraintTop_toBottomOf="@+id/gotoAbout" />
+            <Button
+                android:id="@+id/gotoSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:padding="5dp"
+                android:text="Settings"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
+                app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
+                app:layout_constraintTop_toBottomOf="@+id/gotoGenerator" />
 
-    <Button
-        android:id="@+id/gotoGenerator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorAccent"
-        android:padding="5dp"
-        android:text="Random Encounter Map Generator"
-        app:layout_constraintEnd_toEndOf="@+id/gotoInit"
-        app:layout_constraintStart_toStartOf="@+id/gotoInit"
-        app:layout_constraintTop_toBottomOf="@+id/gotoInit" />
+            <Button
+                android:id="@+id/gotoAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:padding="5dp"
+                android:text="About"
+                app:layout_constraintEnd_toEndOf="@+id/gotoSettings"
+                app:layout_constraintStart_toStartOf="@+id/gotoSettings"
+                app:layout_constraintTop_toBottomOf="@+id/gotoSettings" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/app_name"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/gotoExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/colorAccent"
+                android:padding="5dp"
+                android:text="Exit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/gotoAbout"
+                app:layout_constraintStart_toStartOf="@+id/gotoAbout"
+                app:layout_constraintTop_toBottomOf="@+id/gotoAbout" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/app_description"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            <Button
+                android:id="@+id/gotoGenerator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:padding="5dp"
+                android:text="Random Encounter Map Generator"
+                app:layout_constraintEnd_toEndOf="@+id/gotoInit"
+                app:layout_constraintStart_toStartOf="@+id/gotoInit"
+                app:layout_constraintTop_toBottomOf="@+id/gotoInit" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:srcCompat="@drawable/ic_treasure_appicon" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/app_name"
+                android:textSize="50sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/app_description"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:srcCompat="@drawable/ic_treasure_appicon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

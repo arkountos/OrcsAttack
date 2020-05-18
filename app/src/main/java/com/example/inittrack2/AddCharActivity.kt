@@ -213,8 +213,18 @@ class AddCharActivity : AppCompatActivity() {
             var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
             var editTextHitpointsValue = editTextHitpoints.text.toString()
             var spinnerValue = class_result
-
-            save(editTextNameValue, editTextInitiativeValue, editTextHitpointsValue, spinnerValue)
+            if (editTextNameValue == null){
+                Toast.makeText(this, "Please fill the name!", Toast.LENGTH_SHORT)
+            }
+            else if(editTextInitiativeValue == null){
+                Toast.makeText(this, "Please fill the initiative modifier!", Toast.LENGTH_SHORT)
+            }
+            else if(editTextHitpointsValue == null){
+                editTextHitpointsValue = "1"
+            }
+            else{
+                save(editTextNameValue, editTextInitiativeValue, editTextHitpointsValue, spinnerValue)
+            }
         }
 
         val load_btn = findViewById<Button>(R.id.load_char_button)
