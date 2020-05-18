@@ -5,7 +5,7 @@ import android.app.Application
 class GlobalsActivity : Application() {
     companion object{
         var global_styles = "Sepia"
-        var global_toggle_background_colours_friend_enemy = "On"
+        var global_toggle_background_colours_friend_enemy = "Off"
         val NOTICE_RADIUS = 3
         val CAMPFIRE_DISTANCE = 2
         val SHARED_PREFS : String = "sharedPrefs"

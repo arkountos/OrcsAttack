@@ -23,7 +23,6 @@ import jp.wasabeef.glide.transformations.gpu.PixelationFilterTransformation;
 import jp.wasabeef.glide.transformations.gpu.SepiaFilterTransformation;
 import jp.wasabeef.glide.transformations.gpu.SketchFilterTransformation;
 
-import static java.sql.DriverManager.println;
 
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> {
 
@@ -60,12 +59,13 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
         Tile currentTile = mTiles.get(position);
         String res = "";
         if (currentTile.getCharacter() != null){
-            if (currentTile.getCharacter().getMyclass() == "Monster"){
-                holder.mImageView.setBackgroundColor(mContext.getResources().getColor(R.color.colorEnemy));
-            }
-            else{
-                holder.mImageView.setBackgroundColor(mContext.getResources().getColor(R.color.colorFriend));
+            if(GlobalsActivity.Companion.getGlobal_toggle_background_colours_friend_enemy().equals("On")) {
+                if (currentTile.getCharacter().getMyclass() == "Monster") {
+                    holder.mImageView.setBackgroundColor(mContext.getResources().getColor(R.color.colorEnemy));
+                } else {
+                    holder.mImageView.setBackgroundColor(mContext.getResources().getColor(R.color.colorFriend));
 
+                }
             }
             res = "ic_" + currentTile.getCharacter().getMyclass().toLowerCase();
         }

@@ -217,6 +217,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="number"
+                android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="@+id/textView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 

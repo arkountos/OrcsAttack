@@ -7,6 +7,18 @@
     android:background="@drawable/black_pixelwall"
     tools:context="com.example.inittrack2.SettingsActivity">
 
+    <Button
+        android:id="@+id/settings_background_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="Toggle character tile background colour"
+        app:layout_constraintEnd_toEndOf="@+id/settings_title"
+        app:layout_constraintStart_toStartOf="@+id/settings_title"
+        app:layout_constraintTop_toBottomOf="@+id/settings_map_text" />
+
     <TextView
         android:id="@+id/settings_title"
         android:layout_width="wrap_content"
@@ -47,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Map generation options:"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/settings_tracker_text"
         app:layout_constraintTop_toBottomOf="@+id/settings_clear_heroes_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

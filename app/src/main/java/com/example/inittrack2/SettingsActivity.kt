@@ -30,5 +30,19 @@ class SettingsActivity : AppCompatActivity() {
                 Toast.makeText(this, "There are no characters to be erased.", Toast.LENGTH_LONG).show()
             }
         }
+
+        val toggle_tile_background_colour_btn = findViewById<Button>(R.id.settings_background_color)
+        toggle_tile_background_colour_btn.setOnClickListener{
+            if (GlobalsActivity.global_toggle_background_colours_friend_enemy == "On"){
+                GlobalsActivity.global_toggle_background_colours_friend_enemy = "Off"
+                Toast.makeText(this, "Tile background colour has been set Off", Toast.LENGTH_LONG).show()
+
+            }
+            else{
+                GlobalsActivity.global_toggle_background_colours_friend_enemy = "On"
+                Toast.makeText(this, "Tile background colour has been set On", Toast.LENGTH_LONG).show()
+
+            }
+        }
     }
 }

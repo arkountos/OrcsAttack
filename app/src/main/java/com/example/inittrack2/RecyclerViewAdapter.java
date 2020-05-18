@@ -102,16 +102,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-        holder.hitpoints_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Hey!");
-                openDialog();
-
-                Log.d(TAG, "Done with openDialog, new_hitpoints are:" +  new_hitpoints +
-                        "and char hitpoints are: " + mcharacters.get(position).getHitpoints());
-            }
-        });
+//        holder.hitpoints_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG, "Hey!");
+//                openDialog();
+//
+//                Log.d(TAG, "Done with openDialog, new_hitpoints are:" +  new_hitpoints +
+//                        "and char hitpoints are: " + mcharacters.get(position).getHitpoints());
+//            }
+//        });
     }
 
     public void openDialog(){
