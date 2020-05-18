@@ -224,6 +224,7 @@ class AddCharActivity : AppCompatActivity() {
             }
             else{
                 save(editTextNameValue, editTextInitiativeValue, editTextHitpointsValue, spinnerValue)
+                Toast.makeText(this, "Saved! Next time you open this screen the character will appear in the load list", Toast.LENGTH_SHORT)
             }
         }
 
