@@ -146,6 +146,7 @@
                 android:layout_marginTop="32dp"
                 android:text="Map Style:"
                 android:textColor="@android:color/white"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/rock_probability_spinner"
                 app:layout_constraintTop_toBottomOf="@+id/rock_probability_spinner" />
 
@@ -270,6 +271,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/map_style_edittext"
                 app:layout_constraintTop_toBottomOf="@+id/map_style_edittext" />
 
