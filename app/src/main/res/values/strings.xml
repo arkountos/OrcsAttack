@@ -22,7 +22,7 @@
     <string name="campfire_help">When you check the campfire box, a campfire appears near the middle of your map. If a campfire is present, allied characters appear close to the fire while enemy characters appear far from it.
     If no campfire is present, all the characters appear randomly. You can set the max distance from the fire that ally characters can spawn, as well as the minimum distance from the campfire for enemies to spawn from the settings tab.</string>
 
-    <string name="artwork_jason">The background images were created by Jason Milios! Check him out here: </string>
+    <string name="artwork_jason">The background images were created by Jason Milios!</string>
 
     <string-array name="classes">
         <item>Barbarian</item>

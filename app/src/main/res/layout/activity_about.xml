@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/black_pixelwall"
-    tools:context="com.example.inittrack2.AboutActivity">
+    tools:context="com.arkountos.orcsattack.AboutActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,6 +47,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:text="@string/about_app"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/about_edittext" />
@@ -59,6 +60,7 @@
                 android:background="@color/colorAccent"
                 android:padding="5dp"
                 android:text="Feedback"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="@+id/about_paragraph"
                 app:layout_constraintStart_toStartOf="@+id/about_paragraph"
                 app:layout_constraintTop_toBottomOf="@+id/about_paragraph" />
@@ -73,6 +75,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:text="@string/about_rate"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/feedback_button" />
@@ -87,6 +90,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:text="@string/about_attributions"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rate_button" />
@@ -101,6 +105,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:text="@string/artwork_jason"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="@+id/about_attribution"
                 app:layout_constraintStart_toStartOf="@+id/about_attribution"
                 app:layout_constraintTop_toBottomOf="@+id/about_attribution" />

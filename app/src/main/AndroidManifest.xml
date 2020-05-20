@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.inittrack2">
+    package="com.arkountos.orcsattack">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name=".GlobalsActivity"
+        android:name="com.arkountos.orcsattack.GlobalsActivity"
         android:screenOrientation="nosensor"
         android:allowBackup="true"
         android:icon="@drawable/ic_treasure_appicon"
@@ -14,21 +14,21 @@
         android:supportsRtl="true"
         android:configChanges="orientation|screenSize"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutActivity"></activity>
-        <activity android:name=".ui.ExportBitmapActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".EncounterStartActivity" />
-        <activity android:name=".StartActivity">
+        <activity android:name="com.arkountos.orcsattack.AboutActivity"></activity>
+        <activity android:name="com.arkountos.orcsattack.ui.ExportBitmapActivity" />
+        <activity android:name="com.arkountos.orcsattack.SettingsActivity" />
+        <activity android:name="com.arkountos.orcsattack.EncounterStartActivity" />
+        <activity android:name="com.arkountos.orcsattack.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EncounterGeneratorActivity"
+        <activity android:name="com.arkountos.orcsattack.EncounterGeneratorActivity"
             android:configChanges="orientation|screenSize"/>
-        <activity android:name=".AddCharActivity" />
-        <activity android:name=".MainActivity"
+        <activity android:name="com.arkountos.orcsattack.AddCharActivity" />
+        <activity android:name="com.arkountos.orcsattack.MainActivity"
             android:configChanges="orientation|screenSize"/>
 
         <meta-data

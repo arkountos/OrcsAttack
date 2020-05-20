@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/black_pixelwall"
-    tools:context="com.example.inittrack2.SettingsActivity">
+    tools:context="com.arkountos.orcsattack.SettingsActivity">
 
     <Button
         android:id="@+id/settings_background_color"

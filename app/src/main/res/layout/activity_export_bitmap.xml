@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/black_pixelwall"
-    tools:context="com.example.inittrack2.ui.ExportBitmapActivity">
+    tools:context="com.arkountos.orcsattack.ui.ExportBitmapActivity">
 
     <ImageView
         android:id="@+id/map_png"
