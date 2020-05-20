@@ -9,19 +9,20 @@
 
     <string name="about_app">This app is a work in progress. It is being developed by myself in my spare time as a hobby and a way to learn more about Android developement. This app is completely ad-free and collects absolutely no personal data. If you want to report a bug
     or have an idea for a feature for the app, please contact me! I will be very glad to hear you out and try my best to implement it. Seriously, I would love hearing from you!
-        All the code is open-source and available on <a href="https://www.github.com/arkountos/Initiative-Tracker">Github</a>. Feel free to check it out!
+        All the code is open-source and available on Github at<a href="https://www.github.com/arkountos/Initiative-Tracker">Github</a>. Feel free to check it out!
     </string>
 
     <string name="about_rate">If you enjoyed this app, give it a good rating! If not, give it a bad one! Eitherway, I would very much appreciate you contacting me with your thoughts and views on the app and thoughts on making it better.</string>
 
-    <string name="about_attributions">The character and tile art for this application is from flaticon! Check them out here <div><a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></string>
+    <string name="about_attributions">The character and tile art for this application is from flaticon! Check them out here
+        <div><a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>,<br/></div> <div><a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></string>
 
     <string name="battle_to_start">Dynamic Battle Tracker</string>
 
     <string name="campfire_help">When you check the campfire box, a campfire appears near the middle of your map. If a campfire is present, allied characters appear close to the fire while enemy characters appear far from it.
     If no campfire is present, all the characters appear randomly. You can set the max distance from the fire that ally characters can spawn, as well as the minimum distance from the campfire for enemies to spawn from the settings tab.</string>
 
-    <string name="artwork_jason">The background images were created </string>
+    <string name="artwork_jason">The background images were created by Jason Milios! Check him out here: </string>
 
     <string-array name="classes">
         <item>Barbarian</item>
