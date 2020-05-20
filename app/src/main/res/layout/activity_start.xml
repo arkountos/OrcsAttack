@@ -22,6 +22,7 @@
                 android:background="@color/colorAccent"
                 android:padding="5dp"
                 android:text="Dynamic Initiative Tracker"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="@+id/textView6"
                 app:layout_constraintStart_toStartOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -34,6 +35,7 @@
                 android:background="@color/colorAccent"
                 android:padding="5dp"
                 android:text="Settings"
+                android:textSize="17sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
                 app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
@@ -47,6 +49,7 @@
                 android:background="@color/colorAccent"
                 android:padding="5dp"
                 android:text="About"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="@+id/gotoSettings"
                 app:layout_constraintStart_toStartOf="@+id/gotoSettings"
                 app:layout_constraintTop_toBottomOf="@+id/gotoSettings" />
@@ -60,6 +63,7 @@
                 android:background="@color/colorAccent"
                 android:padding="5dp"
                 android:text="Exit"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/gotoAbout"
                 app:layout_constraintStart_toStartOf="@+id/gotoAbout"
@@ -73,6 +77,7 @@
                 android:background="@color/colorAccent"
                 android:padding="5dp"
                 android:text="Random Encounter Map Generator"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="@+id/gotoInit"
                 app:layout_constraintStart_toStartOf="@+id/gotoInit"
                 app:layout_constraintTop_toBottomOf="@+id/gotoInit" />
@@ -95,6 +100,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@string/app_description"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />

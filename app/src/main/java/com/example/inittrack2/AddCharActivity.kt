@@ -210,21 +210,25 @@ class AddCharActivity : AppCompatActivity() {
                 vibrator.vibrate(20);
             }
             var editTextNameValue = editTextName.text.toString()
-            var editTextInitiativeValue = Integer.valueOf(editTextInitiative.text.toString())
+            var editTextInitiativeTemp = editTextInitiative.text.toString()
+            var editTextInitiativeValue: Int? = null
+            if (editTextInitiativeTemp != ""){
+                editTextInitiativeValue = editTextInitiativeTemp.toInt()
+            }
             var editTextHitpointsValue = editTextHitpoints.text.toString()
             var spinnerValue = class_result
-            if (editTextNameValue == null){
-                Toast.makeText(this, "Please fill the name!", Toast.LENGTH_SHORT)
+            if (editTextNameValue == ""){
+                Toast.makeText(this, "Please fill the name!", Toast.LENGTH_SHORT).show()
             }
             else if(editTextInitiativeValue == null){
-                Toast.makeText(this, "Please fill the initiative modifier!", Toast.LENGTH_SHORT)
-            }
-            else if(editTextHitpointsValue == null){
-                editTextHitpointsValue = "1"
+                Toast.makeText(this, "Please fill the initiative modifier!", Toast.LENGTH_SHORT).show()
             }
             else{
+                if(editTextHitpointsValue == "") {
+                    editTextHitpointsValue = "1"
+                }
                 save(editTextNameValue, editTextInitiativeValue, editTextHitpointsValue, spinnerValue)
-                Toast.makeText(this, "Saved! Next time you open this screen the character will appear in the load list", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Saved! Next time you open this screen the character will appear in the load list", Toast.LENGTH_LONG).show()
             }
         }
 
