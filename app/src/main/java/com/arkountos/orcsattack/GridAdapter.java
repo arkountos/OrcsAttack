@@ -22,15 +22,39 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
 
     private ArrayList<Tile> mTiles;
     private Context mContext;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
+
+
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView mImageView;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.book_img_id);
-
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Log.d("OnClick", "GridAdapter.java, Got here");
+                    if (listener != null){
+                        Log.d("OnClick", "GridAdapter.java, Got in first if");
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            Log.d("OnClick", "GridAdapter.java, Got in second if");
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -44,7 +68,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_tile_layout, parent, false);
-        MyViewHolder mvh = new MyViewHolder(v);
+        MyViewHolder mvh = new MyViewHolder(v, mListener);
         return mvh;
     }
 
@@ -73,21 +97,12 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
 
         int id = mContext.getResources().getIdentifier(res, "drawable", mContext.getPackageName());
         String map_style = GlobalsActivity.Companion.getGlobal_styles();
-//        Log.d("Map_style", ":" + map_style + ":");
-//        if (map_style.equals("Sepia")){
-//            Log.d("SEPIA!!!", "");
-//        }
-//        else{
-//            Log.d("NOT SEPIA!!!", "");
-//        }
-//        Log.d("DONE???", "");
         switch (map_style){
             case "Standard" : Glide.with(mContext).load(id).into(holder.mImageView);
             case "Sepia" : Log.d("In Sepia", "");Glide.with(mContext).load(id).transform(new SepiaFilterTransformation()).into(holder.mImageView);
             case "Greyscale" : Glide.with(mContext).load(id).transform(new GrayscaleTransformation()).into(holder.mImageView);
             default: Glide.with(mContext).load(id).into(holder.mImageView);
         }
-//        Glide.with(mContext).load(id).into(holder.mImageView);
     }
 
     @Override

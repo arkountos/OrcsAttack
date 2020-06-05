@@ -25,9 +25,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 
-// TODO: Add Characters to the map
-
-class EncounterGeneratorActivity : AppCompatActivity() {
+class EncounterGeneratorActivity : AppCompatActivity(), GridAdapter.OnItemClickListener {
     // Gson() object used for serialization and deserialization with JSON strings
     val gson = Gson()
 
@@ -114,12 +112,12 @@ class EncounterGeneratorActivity : AppCompatActivity() {
             enemies_quantity = enemies_quantity, heroes_list = heroes);
 
         val mRecyclerView : RecyclerView = findViewById(R.id.recyclerview_id)
-//        mRecyclerView.setHasFixedSize(true)
-        val mAdapter = GridAdapter(tiles, this)
+        val mAdapter : GridAdapter = GridAdapter(tiles, this)
         val mLayoutManager = GridLayoutManager(this, width.toInt())
 
         mRecyclerView.layoutManager = mLayoutManager
         mRecyclerView.adapter = mAdapter
+
 
         var export_button : Button = findViewById(R.id.export_button)
         export_button.setOnClickListener{
@@ -375,5 +373,9 @@ class EncounterGeneratorActivity : AppCompatActivity() {
         view.draw(canvas)
         //return the bitmap
         return returnedBitmap
+    }
+
+    override fun onItemClick(position: Int) {
+        TODO("Not yet implemented")
     }
 }

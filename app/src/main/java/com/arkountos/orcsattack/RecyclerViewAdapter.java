@@ -9,10 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
@@ -75,14 +77,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.menu1:
-                                Log.d(TAG, "Clicked!!!");
+                                Log.d(TAG, "Clicked Remove!!!");
                                 int newPosition = holder.getAdapterPosition();
                                 mcharacters.remove(newPosition);
                                 notifyItemRemoved(newPosition);
                                 notifyItemRangeChanged(newPosition, mcharacters.size());
                                 //handle menu1 click
                                 break;
+                            case R.id.menu2:
+                                Log.d(TAG, "Clicked Edit!!!");
+                                int newPosition2 = holder.getAdapterPosition();
+                                break;
                         }
+
                         return false;
                     }
                 });
@@ -91,22 +98,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-//        holder.hitpoints_image.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(TAG, "Hey!");
-//                openDialog();
-//
-//                Log.d(TAG, "Done with openDialog, new_hitpoints are:" +  new_hitpoints +
-//                        "and char hitpoints are: " + mcharacters.get(position).getHitpoints());
-//            }
-//        });
+        holder.hitpoints_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Hey!");
+                openDialog();
+
+                Log.d(TAG, "Done with openDialog, new_hitpoints are:" +  new_hitpoints +
+                        "and char hitpoints are: " + mcharacters.get(position).getHitpoints());
+            }
+        });
     }
 
     public void openDialog(){
-        HitpointsDialog hpDialog = new HitpointsDialog();
+//        HitpointsDialog hpDialog = new HitpointsDialog();
+//        hpDialog.show(mFragmentManager, "test");
+        AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+        alert.setTitle( "Change the Hitpoints?");
+        final LinearLayout layout = new LinearLayout(mContext);
+        layout.setOrientation(LinearLayout.VERTICAL);
 
-        hpDialog.show(mFragmentManager, "test");
+
+
+        alert.show();
     }
 
 
