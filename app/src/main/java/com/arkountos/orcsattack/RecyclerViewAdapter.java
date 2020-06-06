@@ -3,22 +3,28 @@ package com.arkountos.orcsattack;
 import com.arkountos.orcsattack.R;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.slider.*;
 
 
 import java.util.ArrayList;
@@ -114,12 +120,39 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //        HitpointsDialog hpDialog = new HitpointsDialog();
 //        hpDialog.show(mFragmentManager, "test");
         AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
-        alert.setTitle( "Change the Hitpoints?");
+//        alert.setTitle( "Change the Hitpoints?");
+        TextView titleView = new TextView(mContext);
+        titleView.setText("Change Hitpoints");
+        titleView.setTextColor(Color.BLACK);
+        titleView.setTextSize(30);
+        titleView.setGravity(Gravity.CENTER);
+        titleView.setPadding(0, 8, 0, 0);
+        alert.setCustomTitle(titleView);
+
         final LinearLayout layout = new LinearLayout(mContext);
         layout.setOrientation(LinearLayout.VERTICAL);
 
+//        TextView titleTextView = new TextView(mContext);
+//        titleTextView.setText("Set new Hitpoints");
+//        titleTextView.setTextColor(Color.BLACK);
+//        titleTextView.setGravity(Gravity.CENTER);
+//        layout.addView(titleTextView);
+
+//        AppCompatSeekBar seekBar = new AppCompatSeekBar(mContext);
+//        layout.addView(seekBar);
+
+        NumberPicker numberPicker = new NumberPicker(mContext);
+        numberPicker.setScaleX(Float.parseFloat("0.75"));
+        numberPicker.setScaleY(Float.parseFloat("0.75"));
+        numberPicker.setGravity(Gravity.CENTER);
+        numberPicker.setMinValue(0);
+        numberPicker.setMaxValue(100);
 
 
+
+        layout.addView(numberPicker);
+
+        alert.setView(layout);
         alert.show();
     }
 
