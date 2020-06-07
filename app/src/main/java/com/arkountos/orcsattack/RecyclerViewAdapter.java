@@ -136,16 +136,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         View view = inflater.inflate(com.arkountos.orcsattack.R.layout.hitpoints_dialog, null);
 
         final NumberPicker finalNumberPicker = view.findViewById(R.id.numberPicker);;
+        final int maxVal = 100;
+        final int minVal = -99;
+        int i;
+        String[] nums = new String[199];
+        for (i = minVal-1; i < maxVal-1; i++){
+            nums[i+maxVal] = Integer.toString(i);
+            Log.d("Array", Integer.toString(i));
+        }
         finalNumberPicker.setMinValue(0);
-        finalNumberPicker.setMaxValue(100);
+        finalNumberPicker.setMaxValue(198);
+        finalNumberPicker.setDisplayedValues(nums);
+        finalNumberPicker.setValue(99);
 
 
         Button okButton = view.findViewById(R.id.okButton);
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Btn", "Clicked!");
-                mcharacters.get(position).setHitpoints(mcharacters.get(position).getHitpoints() + finalNumberPicker.getValue());
+                Log.d("Btn", "Clicked!" +
+                        "");
+                mcharacters.get(position).setHitpoints(mcharacters.get(position).getHitpoints() + finalNumberPicker.getValue() - maxVal);
                 holder.hitpoints.setText("" + mcharacters.get(position).getHitpoints());
                 alertDialog.dismiss();
             }
