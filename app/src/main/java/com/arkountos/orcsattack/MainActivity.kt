@@ -19,7 +19,7 @@ import kotlin.collections.ArrayList
 // TODO: Save characters for quick selection when adding
 // TODO: Button to clear current Battle on top right
 
-class MainActivity : AppCompatActivity(), HitpointsDialog.HitpointsDialogListener {
+class MainActivity : AppCompatActivity(){
     private val TAG = "MAIN"
 
     private val characters: ArrayList<Character> = ArrayList()
@@ -130,8 +130,4 @@ class MainActivity : AppCompatActivity(), HitpointsDialog.HitpointsDialogListene
         recyclerView.layoutManager = LinearLayoutManager(this);
     }
 
-    override fun applyData(hitpoints: Int) {
-//        Log.d(RecyclerViewAdapter.TAG, "################ In applyData ##############")
-//        new_hitpoints = hitpoints
-    }
 }
