@@ -100,8 +100,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 //handle menu1 click
                                 break;
                             case R.id.menu2:
-                                Log.d(TAG, "Clicked Edit!!!");
-                                int newPosition2 = holder.getAdapterPosition();
+                                Log.d(TAG, "Clicked Set Initiative!!!");
+                                openInitiativeDialog(holder, position);
                                 break;
                         }
 
@@ -116,17 +116,47 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.hitpoints_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Hey!");
-                openDialog(holder, position);
-
-                Log.d(TAG, "Done with openDialog, new_hitpoints are:" +  new_hitpoints +
-                        "and char hitpoints are: " + mcharacters.get(position).getHitpoints());
+                openHitpointsDialog(holder, position);
             }
         });
     }
 
+    public void openInitiativeDialog(@NonNull final ViewHolder holder, final int position){
+        final Dialog alertDialog = new Dialog(mContext);
+        inflater = LayoutInflater.from(mContext);
+        View view = inflater.inflate(com.arkountos.orcsattack.R.layout.hitpoints_dialog, null);
+
+        final NumberPicker finalNumberPicker = view.findViewById(R.id.numberPicker);;
+        finalNumberPicker.setMinValue(0);
+        finalNumberPicker.setMaxValue(30);
+
+        Button okButton = view.findViewById(R.id.okButton);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Btn", "Clicked!" +
+                        "");
+                mcharacters.get(position).setInitiative(finalNumberPicker.getValue());
+                holder.initiative_rolled.setText("Initiative: " + mcharacters.get(position).getInitiative());
+                alertDialog.dismiss();
+            }
+        });
+        Button cancelButton = view.findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Btn", "Clicked Cancel!");
+                alertDialog.dismiss();
+            }
+        });
+
+
+        alertDialog.setContentView(view);
+        alertDialog.show();
+    }
+
     @SuppressLint("ResourceType")
-    public void openDialog(@NonNull final ViewHolder holder, final int position){
+    public void openHitpointsDialog(@NonNull final ViewHolder holder, final int position){
 
 //        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mContext);
 //        AlertDialog alertDialog = dialogBuilder.create();
