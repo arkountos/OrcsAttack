@@ -48,6 +48,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // Layout inflater for use inside the holder
     LayoutInflater inflater;
 
+    // An interface so I can call functions from MainActivity inside this adapter
+    // https://stackoverflow.com/questions/36347429/how-to-call-method-in-fragment-from-adapter-android
+    public interface OnInitiativeSetListener{
+        void onInitiativeSet();
+    }
+
     // Default Constructor!
     public RecyclerViewAdapter(Context context, ArrayList<Character> characters, FragmentManager fragmentManager) {
         mcharacters = characters;

@@ -8,6 +8,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
 import android.widget.Button
+import android.widget.PopupMenu
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,11 +20,13 @@ import kotlin.collections.ArrayList
 // TODO: Save characters for quick selection when adding
 // TODO: Button to clear current Battle on top right
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetListener{
     private val TAG = "MAIN"
 
     private val characters: ArrayList<Character> = ArrayList()
     private val characters_sorted: ArrayList<Character> = ArrayList()
+
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +48,34 @@ class MainActivity : AppCompatActivity(){
             }
             val intent :Intent = Intent(this, AddCharActivity::class.java)
             startActivityForResult(intent, 1)
+        }
+
+        val btn_settings = findViewById<FloatingActionButton>(R.id.SettingsButton)
+        btn_settings.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
+            val popup = PopupMenu(this, btn_settings) //?
+            popup.inflate(R.menu.settings_menu)
+            popup.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.menu1 -> {
+                        characters.clear()
+                        initList()
+                    }
+                    R.id.menu2 -> {
+                        sortByRolledInitiative()
+                        initList()
+                    }
+                }
+                false
+            }
+            //displaying the popup
+            //displaying the popup
+            popup.show()
         }
 
         val btn_reroll = findViewById<Button>(R.id.reroll)
@@ -128,6 +159,11 @@ class MainActivity : AppCompatActivity(){
         val adapter = RecyclerViewAdapter(this, characters, this.supportFragmentManager)
         recyclerView.adapter = adapter;
         recyclerView.layoutManager = LinearLayoutManager(this);
+    }
+
+    override fun onInitiativeSet() {
+        Log.d("Main", "Called me!!!")
+        sortByRolledInitiative()
     }
 
 }
