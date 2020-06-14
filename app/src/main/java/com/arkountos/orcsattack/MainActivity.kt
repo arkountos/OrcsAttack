@@ -214,7 +214,8 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
 
         // Add the ename to enames list on sharedPrefs
         encounter_names.add(ename)
-        editor.putStringSet("saved_encounters_names", null)
+        Log.d("Saved", "Encounter name")
+        editor.putStringSet("saved_encounters_names", encounter_names)
         editor.apply()
 
         // End of Serialization
