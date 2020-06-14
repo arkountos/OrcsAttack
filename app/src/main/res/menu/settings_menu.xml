@@ -7,4 +7,9 @@
     <item
         android:id="@+id/menu2"
         android:title="Re-Sort Everyone" />
+
+    <item
+        android:id="@+id/menu3"
+        android:title="Save Encounter" />
+
 </menu>
