@@ -12,4 +12,7 @@
         android:id="@+id/menu3"
         android:title="Save Encounter" />
 
+    <item
+        android:id="@+id/menu4"
+        android:title="Load Encounter" />
 </menu>

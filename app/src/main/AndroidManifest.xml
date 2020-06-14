@@ -5,31 +5,34 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="com.arkountos.orcsattack.GlobalsActivity"
-        android:screenOrientation="nosensor"
+        android:name=".GlobalsActivity"
         android:allowBackup="true"
+        android:configChanges="orientation|screenSize"
         android:icon="@drawable/ic_treasure_appicon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="nosensor"
         android:supportsRtl="true"
-        android:configChanges="orientation|screenSize"
         android:theme="@style/AppTheme">
-        <activity android:name="com.arkountos.orcsattack.AboutActivity"></activity>
-        <activity android:name="com.arkountos.orcsattack.ui.ExportBitmapActivity" />
-        <activity android:name="com.arkountos.orcsattack.SettingsActivity" />
-        <activity android:name="com.arkountos.orcsattack.EncounterStartActivity" />
-        <activity android:name="com.arkountos.orcsattack.StartActivity">
+        <activity android:name=".LoadEncounterActivity"></activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".ui.ExportBitmapActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".EncounterStartActivity" />
+        <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.arkountos.orcsattack.EncounterGeneratorActivity"
-            android:configChanges="orientation|screenSize"/>
-        <activity android:name="com.arkountos.orcsattack.AddCharActivity" />
-        <activity android:name="com.arkountos.orcsattack.MainActivity"
-            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".EncounterGeneratorActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".AddCharActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize" />
 
         <meta-data
             android:name="preloaded_fonts"

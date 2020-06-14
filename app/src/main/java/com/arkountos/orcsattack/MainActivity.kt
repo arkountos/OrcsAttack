@@ -2,6 +2,7 @@ package com.arkountos.orcsattack
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
@@ -9,22 +10,28 @@ import android.os.Vibrator
 import android.util.Log
 import android.widget.Button
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.arkountos.orcsattack.GlobalsActivity.Companion.SHARED_PREFS
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
+import java.net.Proxy
 import java.util.*
 import kotlin.collections.ArrayList
 
-// TODO: Save characters for quick selection when adding
-// TODO: Button to clear current Battle on top right
 
 class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetListener{
     private val TAG = "MAIN"
 
     private val characters: ArrayList<Character> = ArrayList()
     private val characters_sorted: ArrayList<Character> = ArrayList()
+
+    val gson = Gson()
 
 
 
@@ -69,6 +76,12 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
                     R.id.menu2 -> {
                         sortByRolledInitiative()
                         initList()
+                    }
+                    R.id.menu3 -> {
+                        saveEncounter(characters)
+                    }
+                    R.id.menu4 -> {
+                        loadEncounter()
                     }
                 }
                 false
@@ -164,6 +177,64 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
     override fun onInitiativeSet() {
         Log.d("Main", "Called me!!!")
         sortByRolledInitiative()
+    }
+
+    //
+    // Save and Load Encounter Functions
+    //
+
+    fun saveEncounter(characters: ArrayList<Character>){
+        val sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = sharedPreferences.edit()
+
+        var encounter_names: Set<String>
+        if (sharedPreferences.getStringSet("saved_encounters_names", null) == null){
+            encounter_names = mutableSetOf()
+            editor.putStringSet("saved_encounters_names", encounter_names)
+            editor.apply()
+            encounter_names = sharedPreferences.getStringSet("saved_encounters_names", null)!!
+        }
+        else{
+            encounter_names = sharedPreferences.getStringSet("saved_encounters_names", null)!!
+        }
+
+        var encounter: Set<String>
+        encounter = mutableSetOf()
+        for (character in characters){
+            // Jsonify each character as a string
+            val char = Character(character.name, character.initiative, character.myclass, character.hitpoints.toInt())
+            val jsonchar = gson.toJson(char)
+
+            // Add each character to a set of strings, that will be the encounter
+            encounter.add(jsonchar)
+        }
+
+        val ename = "Encounter_" + (1..10000).random().toString()
+        editor.putStringSet(ename, encounter)
+
+        // Add the ename to enames list on sharedPrefs
+        encounter_names.add(ename)
+        editor.putStringSet("saved_encounters_names", null)
+        editor.apply()
+
+        // End of Serialization
+        Toast.makeText(this, "Encounter Saved!", Toast.LENGTH_LONG).show()
+//        // Deserialization for testing
+//
+//        var encounter_character_set = sharedPreferences.getStringSet(ename, null)
+//        var encounter_character_list : MutableList<Character> = mutableListOf()
+//        if (encounter_character_set != null) {
+//            for (json_string in encounter_character_set){
+//                var de_jsoned_char = gson.fromJson(json_string, Character::class.java)
+//                encounter_character_list.add(de_jsoned_char)
+//            }
+//        }
+//        Log.d("List", encounter_character_list.toString())
+    }
+
+    fun loadEncounter(){
+        var intent = Intent(this, LoadEncounterActivity::class.java)
+        startActivityForResult(intent, 1)
     }
 
 }
