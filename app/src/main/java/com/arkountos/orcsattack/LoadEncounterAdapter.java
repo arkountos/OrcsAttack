@@ -29,13 +29,11 @@ public class LoadEncounterAdapter extends RecyclerView.Adapter<LoadEncounterAdap
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView mEncounter_name;
         public TextView mEncounter_members;
-        public TextView mEncounter_amount;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mEncounter_name = itemView.findViewById(R.id.Encounter_Name);
             mEncounter_members = itemView.findViewById(R.id.Encounter_Members);
-            mEncounter_amount = itemView.findViewById(R.id.Encounter_amount);
         }
     }
 
@@ -61,17 +59,22 @@ public class LoadEncounterAdapter extends RecyclerView.Adapter<LoadEncounterAdap
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Set<String> current_encounter = mArrayEncounters.get(position);
 
-        ArrayList<Character> characters = null;
+        ArrayList<Character> characters = new ArrayList<>();
         for (String character : current_encounter){
             Character dejson_char = gson.fromJson(character, Character.class);
-//            characters.add(gson.fromJson(current_encounter[i], Character.class));
+            characters.add(dejson_char);
         }
 
-//        holder.mEncounter_members.setText(gson.fromJson(current_encounter,));
+        String character_info = "";
+        for (Character character : characters){
+            character_info += character.getName().toString() + ", " + character.getMyclass().toString() + ", HP: " + character.getHitpoints() + ", AC: " + character.getArmor_class() + ", Modifier: " + character.getInitiative_modifier() + "\n";
+        }
+
+        holder.mEncounter_members.setText(character_info);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mEncounters.size();
     }
 }
