@@ -39,16 +39,35 @@ class LoadEncounterActivity : AppCompatActivity() {
             Log.d("Name", name)
         }
 
+        // A (all encounters) set of (single encounters) sets.
+        // I know I will not be able to read this in a few days. Sorry future fiv :(
+        var encounters: Set<Set<String>>
+        encounters= mutableSetOf()
+        Log.d("encounters", encounters.toString() + encounters?.javaClass?.canonicalName)
+
         for (name in encounter_names){
             // For every encounter
+            Log.d("NAME:", name)
+            var temp_encounter = sharedPreferences.getStringSet(name, null)
+            Log.d("temp_encounter", temp_encounter.toString() + temp_encounter?.javaClass?.canonicalName)
+            if (temp_encounter != null) {
+                for (character in temp_encounter){
+                    Log.d("Char Name:", gson.fromJson(character, Character::class.java).name)
+                }
+            }
+            if (temp_encounter != null) {
+                encounters.add(temp_encounter)
+            }
         }
+
+        initRecyclerView(encounters)
     }
 
-    private fun initRecyclerView(){
-//        val recyclerView: RecyclerView = findViewById(R.id.my_recycler_view)
-//        val adapter = RecyclerViewAdapter(this, encounters, this.supportFragmentManager)
-//        recyclerView.adapter = adapter;
-//        recyclerView.layoutManager = LinearLayoutManager(this);
+    private fun initRecyclerView(encounters: Set<Set<String>>){
+        val recyclerView: RecyclerView = findViewById(R.id.load_encounter_recyclerView)
+        val adapter = LoadEncounterAdapter(this, encounters, this.supportFragmentManager)
+        recyclerView.adapter = adapter;
+        recyclerView.layoutManager = LinearLayoutManager(this);
     }
 
 }
