@@ -3,8 +3,10 @@ package com.arkountos.orcsattack;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +36,12 @@ public class LoadEncounterAdapter extends RecyclerView.Adapter<LoadEncounterAdap
             super(itemView);
             mEncounter_name = itemView.findViewById(R.id.Encounter_Name);
             mEncounter_members = itemView.findViewById(R.id.Encounter_Members);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 
