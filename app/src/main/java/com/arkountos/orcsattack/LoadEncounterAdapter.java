@@ -1,6 +1,8 @@
 package com.arkountos.orcsattack;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,6 +18,8 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Set;
+
+import javax.xml.transform.Result;
 
 public class LoadEncounterAdapter extends RecyclerView.Adapter<LoadEncounterAdapter.MyViewHolder> {
 //    private ArrayList<Character> mCharacters;
@@ -39,7 +43,7 @@ public class LoadEncounterAdapter extends RecyclerView.Adapter<LoadEncounterAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent resultIntent = new Intent();
                 }
             });
         }
@@ -75,10 +79,24 @@ public class LoadEncounterAdapter extends RecyclerView.Adapter<LoadEncounterAdap
 
         String character_info = "";
         for (Character character : characters){
-            character_info += character.getName().toString() + ", " + character.getMyclass().toString() + ", HP: " + character.getHitpoints() + ", AC: " + character.getArmor_class() + ", Modifier: " + character.getInitiative_modifier() + "\n";
+            character_info += character.getName().toString() + "," + character.getMyclass().toString() + ", HP:" + character.getHitpoints() + ", AC:" + character.getArmor_class() + ", Modifier:" + character.getInitiative_modifier() + "\n";
         }
 
         holder.mEncounter_members.setText(character_info);
+
+        final String finalCharacter_info = character_info;
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("EXTRA_ENCOUNTER_STRING", finalCharacter_info);
+                Log.d("AdapteronClick", "OK!");
+                // Casting to Activity to finish inside adapter as seen here:
+                // https://stackoverflow.com/questions/7951936/how-to-finish-an-activity-from-an-adapter
+                ((Activity)mContext).setResult(Activity.RESULT_OK, resultIntent);
+                ((Activity)mContext).finish();
+            }
+        });
     }
 
     @Override

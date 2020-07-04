@@ -142,6 +142,31 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
 
             }
         }
+        if (requestCode == 2){
+            if (resultCode == RESULT_OK){
+                Log.d("MainResult", "Correct!")
+                var result_character_info = data?.getStringExtra("EXTRA_ENCOUNTER_STRING")
+                Log.d("Encounter Info: ", result_character_info)
+
+                var result_character_info_split = result_character_info?.split( "\n")
+                Log.d("split", result_character_info_split.toString())
+                if (result_character_info_split != null) {
+                    for (character in result_character_info_split){
+                        var character_split = character.split(":", ",")
+                        Log.d("char split", character_split.toString() + " size: " + character_split.size)
+                        if (character_split.size != 1) {
+                            var result_name = character_split[0]
+                            var result_initiative = character_split[7].toInt()
+                            var result_class = character_split[1]
+                            var result_amount = 1
+                            var result_hitpoints = character_split[3]
+                            addToCharacters(result_name, result_initiative, result_class, result_hitpoints.toInt())
+                            initList()
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun addToCharacters(result_name: String, result_initiative: Int, result_class: String, result_hitpoints: Int){
@@ -233,9 +258,9 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
 //        Log.d("List", encounter_character_list.toString())
     }
 
-    fun loadEncounter(){
+    private fun loadEncounter(){
         var intent = Intent(this, LoadEncounterActivity::class.java)
-        startActivityForResult(intent, 1)
+        startActivityForResult(intent, 2)
     }
 
 }
