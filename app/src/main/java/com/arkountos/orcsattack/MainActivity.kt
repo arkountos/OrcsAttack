@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
     private val characters: ArrayList<Character> = ArrayList()
     private val characters_sorted: ArrayList<Character> = ArrayList()
 
+    private lateinit var encounter_name_edittext : EditText
+
     val gson = Gson()
 
 
@@ -233,20 +235,22 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
         }
 
         var encounter_name = ""
-        var inflater: LayoutInflater? = null
+//        var inflater: LayoutInflater? = null
         val alertDialog = Dialog(this)
-        inflater = layoutInflater
-        val view: View = inflater.inflate(R.layout.encounter_naming_dialog, null)
+        var inflater = layoutInflater
+        val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.encounter_naming_dialog, null)
         alertDialog.setContentView(view)
+        alertDialog.show()
 
 
-        var encounter_name_edittext = findViewById<EditText>(R.id.editTextTextPersonName)
+        encounter_name_edittext = alertDialog.findViewById<EditText>(R.id.editTextTextPersonName)
         Log.d("encounter", encounter_name_edittext.toString())
         val okButton = view.findViewById<Button>(R.id.okButtonEncounter)
         okButton.setOnClickListener {
 //            encounter_name = encounter_name_edittext.text.toString()
             Log.d("Btn", "Clicked, encounter_name is $encounter_name")
             alertDialog.dismiss()
+            Toast.makeText(this, "Encounter Saved!", Toast.LENGTH_LONG).show()
         }
         val cancelButton =
             view.findViewById<Button>(R.id.cancelButtonEncounter)
@@ -255,7 +259,6 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
             alertDialog.dismiss()
         }
 
-        alertDialog.show()
 
         val ename = encounter_name
         editor.putStringSet(ename, encounter)
@@ -265,24 +268,8 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
         Log.d("Saved", "Encounter name")
         editor.putStringSet("saved_encounters_names", encounter_names)
         editor.apply()
-
-
+        Log.d("DONE", "COOLCOOLCOOL")
         // End of Serialization
-
-
-
-        Toast.makeText(this, "Encounter Saved!", Toast.LENGTH_LONG).show()
-//        // Deserialization for testing
-//
-//        var encounter_character_set = sharedPreferences.getStringSet(ename, null)
-//        var encounter_character_list : MutableList<Character> = mutableListOf()
-//        if (encounter_character_set != null) {
-//            for (json_string in encounter_character_set){
-//                var de_jsoned_char = gson.fromJson(json_string, Character::class.java)
-//                encounter_character_list.add(de_jsoned_char)
-//            }
-//        }
-//        Log.d("List", encounter_character_list.toString())
     }
 
     private fun loadEncounter(){

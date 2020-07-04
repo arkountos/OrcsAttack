@@ -31,6 +31,23 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
+        val clear_saved_encounters_btn = findViewById<Button>(R.id.settings_clear_encounters_button)
+        clear_saved_encounters_btn.setOnClickListener{
+            val sharedPreferences : SharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+            val editor : SharedPreferences.Editor = sharedPreferences.edit()
+            var encounters: Set<String>
+            if (sharedPreferences.getStringSet("saved_encounters_names", null) != null){
+                encounters = sharedPreferences.getStringSet("saved_encounters_names", null)!!
+                encounters = emptySet()
+                editor.putStringSet("saved_encounters_names", encounters)
+                editor.apply()
+                Toast.makeText(this, "All encounters have been removed from memory.", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Toast.makeText(this, "There are no encounters to be erased.", Toast.LENGTH_LONG).show()
+            }
+        }
+
         val toggle_tile_background_colour_btn = findViewById<Button>(R.id.settings_background_color)
         toggle_tile_background_colour_btn.setOnClickListener{
             if (GlobalsActivity.global_toggle_background_colours_friend_enemy == "On"){

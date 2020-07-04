@@ -83,6 +83,7 @@ public class LoadEncounterAdapter extends RecyclerView.Adapter<LoadEncounterAdap
         }
 
         holder.mEncounter_members.setText(character_info);
+        holder.mEncounter_name.setText("FIX THIS");
 
         final String finalCharacter_info = character_info;
         holder.itemView.setOnClickListener(new View.OnClickListener() {

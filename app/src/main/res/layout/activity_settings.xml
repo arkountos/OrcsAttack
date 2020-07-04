@@ -42,6 +42,18 @@
         app:layout_constraintStart_toStartOf="@+id/settings_title"
         app:layout_constraintTop_toBottomOf="@+id/settings_tracker_text" />
 
+    <Button
+        android:id="@+id/settings_clear_encounters_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="Clear all saved encounters"
+        app:layout_constraintEnd_toEndOf="@+id/settings_clear_heroes_button"
+        app:layout_constraintStart_toStartOf="@+id/settings_clear_heroes_button"
+        app:layout_constraintTop_toBottomOf="@+id/settings_clear_heroes_button" />
+
     <TextView
         android:id="@+id/settings_tracker_text"
         android:layout_width="wrap_content"
@@ -61,5 +73,5 @@
         android:text="Map generation options:"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/settings_tracker_text"
-        app:layout_constraintTop_toBottomOf="@+id/settings_clear_heroes_button" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_clear_encounters_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

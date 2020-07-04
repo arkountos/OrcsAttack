@@ -47,9 +47,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:hint="Name..."
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/encounter_naming_dialog_title"
         app:layout_constraintStart_toStartOf="@+id/encounter_naming_dialog_title"
         app:layout_constraintTop_toBottomOf="@+id/encounter_naming_dialog_title" />
