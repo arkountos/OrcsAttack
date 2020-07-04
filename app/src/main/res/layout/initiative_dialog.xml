@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/initiative_dialog_title" />
 
     <Button
-        android:id="@+id/okButton"
+        android:id="@+id/okButtonEncounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -42,12 +42,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/cancelButtonEncounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Cancel"
-        app:layout_constraintEnd_toStartOf="@+id/okButton"
-        app:layout_constraintTop_toTopOf="@+id/okButton" />
+        app:layout_constraintEnd_toStartOf="@+id/okButtonEncounter"
+        app:layout_constraintTop_toTopOf="@+id/okButtonEncounter" />
 </androidx.constraintlayout.widget.ConstraintLayout>

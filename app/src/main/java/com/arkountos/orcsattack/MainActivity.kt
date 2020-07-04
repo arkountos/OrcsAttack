@@ -1,5 +1,6 @@
 package com.arkountos.orcsattack
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -8,9 +9,9 @@ import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
-import android.widget.Button
-import android.widget.PopupMenu
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,9 +19,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arkountos.orcsattack.GlobalsActivity.Companion.SHARED_PREFS
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import java.lang.reflect.Type
-import java.net.Proxy
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -234,7 +232,32 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
             encounter.add(jsonchar)
         }
 
-        val ename = "Encounter_" + (1..10000).random().toString()
+        var encounter_name = ""
+        var inflater: LayoutInflater? = null
+        val alertDialog = Dialog(this)
+        inflater = layoutInflater
+        val view: View = inflater.inflate(R.layout.encounter_naming_dialog, null)
+        alertDialog.setContentView(view)
+
+
+        var encounter_name_edittext = findViewById<EditText>(R.id.editTextTextPersonName)
+        Log.d("encounter", encounter_name_edittext.toString())
+        val okButton = view.findViewById<Button>(R.id.okButtonEncounter)
+        okButton.setOnClickListener {
+//            encounter_name = encounter_name_edittext.text.toString()
+            Log.d("Btn", "Clicked, encounter_name is $encounter_name")
+            alertDialog.dismiss()
+        }
+        val cancelButton =
+            view.findViewById<Button>(R.id.cancelButtonEncounter)
+        cancelButton.setOnClickListener {
+            Log.d("Btn", "Clicked Cancel!")
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+
+        val ename = encounter_name
         editor.putStringSet(ename, encounter)
 
         // Add the ename to enames list on sharedPrefs
@@ -243,7 +266,11 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
         editor.putStringSet("saved_encounters_names", encounter_names)
         editor.apply()
 
+
         // End of Serialization
+
+
+
         Toast.makeText(this, "Encounter Saved!", Toast.LENGTH_LONG).show()
 //        // Deserialization for testing
 //
