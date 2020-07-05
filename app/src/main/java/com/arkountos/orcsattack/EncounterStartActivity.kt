@@ -137,8 +137,8 @@ class EncounterStartActivity : AppCompatActivity() {
         "10"
     )
 
+    // Deleted "5 x 5" because bugs
     val height_width_values = arrayOf(
-        "5 x 5",
         "10 x 10",
         "15 x 15",
         "20 x 20"
@@ -241,7 +241,7 @@ class EncounterStartActivity : AppCompatActivity() {
 //            }
 //        }
 
-        height_option.setSelection(1)
+        height_option.setSelection(0)
 //        width_option.setSelection(9)
 
         trees_probability_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

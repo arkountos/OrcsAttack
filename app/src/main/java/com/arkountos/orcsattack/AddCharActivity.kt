@@ -192,7 +192,7 @@ class AddCharActivity : AppCompatActivity() {
                     finish()
                 }
             }
-            Toast.makeText(this, "There are no saved characters in memory! Try adding some first.", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "There are no saved characters in memory! Try adding some first.", Toast.LENGTH_LONG).show()
         }
 
         println("##############")
