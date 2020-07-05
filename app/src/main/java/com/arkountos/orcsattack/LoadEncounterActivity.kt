@@ -39,10 +39,10 @@ class LoadEncounterActivity : AppCompatActivity() {
             Log.d("Name", name)
         }
 
-        // A (all encounters) set of (single encounters) sets.
+        // A (all encounters) set of Pairs of String (encounter name) and Set of Strings (encounter members).
         // I know I will not be able to read this in a few days. Sorry future fiv :(
-        var encounters: Set<Set<String>>
-        encounters= mutableSetOf()
+        var encounters: Map<String, Set<String>>
+        encounters= mutableMapOf()
         Log.d("encounters", encounters.toString() + encounters?.javaClass?.canonicalName)
 
         for (name in encounter_names){
@@ -56,14 +56,15 @@ class LoadEncounterActivity : AppCompatActivity() {
                 }
             }
             if (temp_encounter != null) {
-                encounters.add(temp_encounter)
+                encounters[name] = temp_encounter
+                Log.d("Print the mapping", "from activity: $encounters but name is: $name")
             }
         }
 
         initRecyclerView(encounters)
     }
 
-    private fun initRecyclerView(encounters: Set<Set<String>>){
+    private fun initRecyclerView(encounters: Map<String, Set<String>>){
         val recyclerView: RecyclerView = findViewById(R.id.load_encounter_recyclerView)
         val adapter = LoadEncounterAdapter(this, encounters, this.supportFragmentManager)
         recyclerView.adapter = adapter;
