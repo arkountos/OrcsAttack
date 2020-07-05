@@ -247,19 +247,24 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
         Log.d("encounter", encounter_name_edittext.toString())
         val okButtonEncounter = alertDialog.findViewById<Button>(R.id.okButtonEncounter)
         okButtonEncounter.setOnClickListener {
-            encounter_name = encounter_name_edittext.text.toString()
-            Log.d("THE REAL OK BTN", "Clicked, encounter_name is $encounter_name")
-            val ename = encounter_name
-            editor.putStringSet(ename, encounter)
+            if (encounter.isEmpty()){
+                Toast.makeText(this, "Add a character first!", Toast.LENGTH_LONG).show()
+            }
+            else {
+                encounter_name = encounter_name_edittext.text.toString()
+                Log.d("THE REAL OK BTN", "Clicked, encounter_name is $encounter_name")
+                val ename = encounter_name.capitalize()
+                editor.putStringSet(ename, encounter)
 
-            // Add the ename to enames list on sharedPrefs
-            encounter_names.add(ename)
-            Log.d("Saved", "Encounter name" + ename)
-            editor.putStringSet("saved_encounters_names", encounter_names)
-            editor.apply()
-            Log.d("DONE", "COOLCOOLCOOL")
-            alertDialog.dismiss()
-            Toast.makeText(this, "Encounter Saved!", Toast.LENGTH_LONG).show()
+                // Add the ename to enames list on sharedPrefs
+                encounter_names.add(ename)
+                Log.d("Saved", "Encounter name" + ename)
+                editor.putStringSet("saved_encounters_names", encounter_names)
+                editor.apply()
+                Log.d("DONE", "COOLCOOLCOOL")
+                alertDialog.dismiss()
+                Toast.makeText(this, "Encounter Saved!", Toast.LENGTH_LONG).show()
+            }
         }
         val cancelButtonEncounter =
             alertDialog.findViewById<Button>(R.id.cancelButtonEncounter)
