@@ -41,6 +41,158 @@
         <item>Wizard</item>
     </string-array>
 
+    <string-array name="NPC_races">
+        <item>Human</item>
+        <item>Elf</item>
+        <item>Dwarf</item>
+        <item>Halfling</item>
+        <item>Gnome</item>
+    </string-array>
+
+    <string-array name="NPC_names_human_male">
+        <item>Scipio</item>
+        <item>Vitale</item>
+        <item>Ludovico</item>
+        <item>Raul</item>
+        <item>Wright</item>
+        <item>Leonardo</item>
+        <item>Wilson</item>
+        <item>Judah</item>
+        <item>Whittaker</item>
+        <item>Emmyrson</item>
+        <item>Dorian</item>
+        <item>Otmund</item>
+        <item>Alkuin</item>
+        <item>Gregor</item>
+        <item>Jendrik</item>
+        <item>Deniz</item>
+    </string-array>
+
+    <string-array name="NPC_names_human_female">
+        <item>Eusebia</item>
+        <item>Alita</item>
+        <item>Zorra</item>
+        <item>Eliana</item>
+        <item>Nataly</item>
+        <item>Nicki</item>
+        <item>Clodia</item>
+        <item>Ynes</item>
+        <item>Silvina</item>
+        <item>Royale</item>
+        <item>Harvina</item>
+        <item>Hilda</item>
+        <item>Agatha</item>
+        <item>Elli</item>
+        <item>Marchelle</item>
+        <item>Rea</item>
+    </string-array>
+
+    <string-array name="NPC_names_elf_male">
+        <item>Tannivh</item>
+        <item>Ilthuryn</item>
+        <item>Aolis</item>
+        <item>Dalyor</item>
+        <item>Arathorn</item>
+        <item>Almer</item>
+        <item>Taerentym</item>
+        <item>Sharian</item>
+        <item>Kelvhan</item>
+        <item>Inialos</item>
+    </string-array>
+
+    <string-array name="NPC_names_elf_female">
+        <item>Radelia</item>
+        <item>Elincia</item>
+        <item>Immianthe</item>
+        <item>Rania</item>
+        <item>Geminara</item>
+        <item>Nuovis</item>
+        <item>Keerla</item>
+        <item>Ratha</item>
+        <item>Baerinda</item>
+        <item>Soliana</item>
+    </string-array>
+
+    <string-array name="NPC_names_dwarf_male">
+        <item>Kuri</item>
+        <item>Humi</item>
+        <item>Toir</item>
+        <item>Norlum</item>
+        <item>Dwomri</item>
+        <item>Thrarrous</item>
+        <item>Thragran</item>
+        <item>Bemnarlig</item>
+        <item>Rutrit</item>
+        <item>Garhear</item>
+    </string-array>
+
+    <string-array name="NPC_names_dwarf_female">
+        <item>Fen</item>
+        <item>Gic</item>
+        <item>Tuth</item>
+        <item>Hot</item>
+        <item>Morlug</item>
+        <item>Grooghimli</item>
+        <item>Thimatir</item>
+        <item>Bhakharlum</item>
+        <item>Grooldruli</item>
+        <item>Darfack</item>
+    </string-array>
+
+    <string-array name="NPC_names_halfling_male">
+        <item>Urifer</item>
+        <item>Horhorn</item>
+        <item>Idosire</item>
+        <item>Anlan</item>
+        <item>Ospos</item>
+        <item>Zalumo</item>
+        <item>Panos</item>
+        <item>Uriver</item>
+        <item>Davbin</item>
+        <item>Valrin</item>
+    </string-array>
+
+    <string-array name="NPC_names_halfling_female">
+        <item>Sakath</item>
+        <item>Xisica</item>
+        <item>Xiprys</item>
+        <item>Rosrana</item>
+        <item>Unatina</item>
+        <item>Graree</item>
+        <item>Darcey</item>
+        <item>Fayvyre</item>
+        <item>Calkath</item>
+        <item>Hanys</item>
+    </string-array>
+
+    <string-array name="NPC_names_gnome_male">
+        <item>Quahim</item>
+        <item>Valner</item>
+        <item>Bilpos</item>
+        <item>Davlen</item>
+        <item>Tanston</item>
+        <item>Valrick</item>
+        <item>Nesser</item>
+        <item>Altor</item>
+        <item>Umrug</item>
+        <item>Lokur</item>
+    </string-array>
+
+    <string-array name="NPC_names_gnome_female">
+        <item>Xyrogani</item>
+        <item>Odamiphi</item>
+        <item>Yogyra</item>
+        <item>Zinpine</item>
+        <item>Eltra</item>
+        <item>Arissa</item>
+        <item>Breedysa</item>
+        <item>Galmyn</item>
+        <item>Spiniana</item>
+        <item>Sarhana</item>
+    </string-array>
+
+
+
     <string-array name="NPC_charisma_checks">
         <item>Deception</item>
         <item>Intimidation</item>
