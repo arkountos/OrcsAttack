@@ -41,6 +41,16 @@ class StartActivity : AppCompatActivity() {
             }
             openGeneratorActivity()
         }
+        val NPCgeneratorButton: Button = findViewById(R.id.gotoNPCGeneratorButton)
+        NPCgeneratorButton.setOnClickListener{
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
+            openNPCGeneratorActivity()
+        }
         val settingsButton: Button = findViewById(R.id.gotoSettings)
         settingsButton.setOnClickListener {
             if (Build.VERSION.SDK_INT >= 26) {
@@ -81,6 +91,11 @@ class StartActivity : AppCompatActivity() {
 
     private fun openGeneratorActivity(){
         val intent: Intent = Intent(this, EncounterStartActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun openNPCGeneratorActivity(){
+        val intent: Intent = Intent(this, NPCGeneratorActivity::class.java)
         startActivity(intent)
     }
 

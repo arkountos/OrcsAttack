@@ -14,7 +14,8 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoadEncounterActivity"></activity>
+        <activity android:name=".NPCGeneratorActivity"></activity>
+        <activity android:name=".LoadEncounterActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".ui.ExportBitmapActivity" />
         <activity android:name=".SettingsActivity" />

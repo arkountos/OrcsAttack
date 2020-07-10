@@ -41,6 +41,86 @@
         <item>Wizard</item>
     </string-array>
 
+    <string-array name="NPC_charisma_checks">
+        <item>Deception</item>
+        <item>Intimidation</item>
+        <item>Flirting</item>
+        <item>Bribery</item>
+        <item>Persuasion</item>
+        <item>Blackmailing</item>
+        <item>Bartering</item>
+    </string-array>
+
+    <string-array name="NPC_secrets">
+        <item>Has committed murder</item>
+        <item>Holds a recently stolen item</item>
+        <item>Bounty-hunters are after him/her</item>
+        <item>Has wronged an old friend</item>
+        <item>Knows the true identity of an important political figure</item>
+        <item>Holds a kidnapped person</item>
+        <item>Has connection to a thieves guild</item>
+        <item>Holds a long lost book about wizardry</item>
+        <item>Knows the lair of a Dragon</item>
+        <item>Has power over a ruling politician</item>
+        <item>Is a very wealthy/powerful person in disguise</item>
+        <item>Knows the position of a magic artifact</item>
+        <item>Knows how to get to the lair of a bandit group</item>
+        <item>Knows how to get to the lair of a powerful dark wizard</item>
+        <item>Knows the secret code to get to an exclusive club/base</item>
+        <item>Is planning on robbing/killing someone very soon</item>
+        <item>Is a spy for a foreign power</item>
+        <item>Is a doppelganger in disguide</item>
+        <item>Know the road to an unknown place of power</item>
+        <item>Knows a secret about an important figure in a nearby village/town</item>
+    </string-array>
+
+    <string-array name="NPC_characteristics">
+        <item>Has a glass eye</item>
+        <item>Walks with an oddly long cane</item>
+        <item>Cannot talk because of a spell</item>
+        <item>Speaks very slow</item>
+        <item>Speaks very fast</item>
+        <item>Does not speak common</item>
+        <item>Has a scar on his/her face</item>
+        <item>Has a wooden leg</item>
+        <item>Has very long hair</item>
+        <item>Has an ear cut off</item>
+        <item>Is very beautiful</item>
+        <item>Is really ugly</item>
+        <item>Bites his/her nails</item>
+        <item>Has very long fingers</item>
+        <item>Is almost naked</item>
+        <item>Refers to him/herself with his/her name</item>
+        <item>Smokes a pipe</item>
+        <item>Wears very big glasses</item>
+        <item>Has bright blue hair</item>
+        <item>Wears oversized clothes</item>
+        <item>Smells wonderful</item>
+        <item>Smells bad</item>
+        <item>Has a dog follower</item>
+        <item>Has a cat follower</item>
+        <item>Animals always stay near him/her</item>
+        <item>Has a very soft and calm voice</item>
+        <item>Only talks with a few words</item>
+        <item>Is always angry/irritated</item>
+    </string-array>
+
+    <string-array name="NPC_useful_info">
+        <item>Was friends with the last king of the land</item>
+        <item>Used to live in a now gone city and knows it's history</item>
+        <item>Can point to a secret magic shop</item>
+        <item>Can point to a druid's shop in the woods</item>
+        <item>Can give the characters info on the surrounding woods</item>
+        <item>Can give the characters info on the political situation in a nearby town</item>
+        <item>Knows about the type of monsters that lurk around the area he/she lives</item>
+        <item>Knows another adventuring party and their location</item>
+        <item>Knows people that have quests for the party</item>
+        <item>Knows lore about a historical event of the land</item>
+        <item>Knows a famous song</item>
+        <item>Knows a famous fairytale of the land</item>
+        <item>Knows about an old prophecy</item>
+    </string-array>
+
     <string name="positive_button">OK</string>
     <string name="negative_button">Cancel</string>
 
