@@ -4,6 +4,8 @@
     <color name="colorBackground">#483c46</color>
     <color name="colorPrimaryDark">#3f256f</color>
     <color name="colorAccent">#136F63</color>
+    <color name="colorTableDark">#0C463E</color>
+    <color name="colorTableLight">#136F63</color>
 <!--    9FD356-->
 <!--    #f46036-->
     <color name="colorEnemy">#d7263d</color>

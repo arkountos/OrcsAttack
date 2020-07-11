@@ -19,33 +19,218 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView11"
+    <Button
+        android:id="@+id/generate_NPC_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="90dp" />
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="Generate"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/NPC_table"
+        app:layout_constraintStart_toStartOf="@+id/NPC_table"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_table" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="409dp"
+    <TableLayout
+        android:id="@+id/NPC_table"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="118dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_details">
 
-        <com.google.android.material.tabs.TabItem
+        <TableRow
+            android:id="@+id/NPC_table_name_row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTableLight">
+
+            <TextView
+                android:id="@+id/NPC_table_name_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Name"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_name_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/NPC_table_gender_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:background="@color/colorTableDark">
 
-        <com.google.android.material.tabs.TabItem
+            <TextView
+                android:id="@+id/NPC_table_gender_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_gender_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/NPC_table_race_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            android:background="@color/colorTableLight">
 
-        <com.google.android.material.tabs.TabItem
+            <TextView
+                android:id="@+id/NPC_table_race_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Race"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_race_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/NPC_table_usefulinfo_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wednesday" />
-    </com.google.android.material.tabs.TabLayout>
+            android:background="@color/colorTableDark">
+
+            <TextView
+                android:id="@+id/NPC_table_usefulinfo_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Useful Info"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_usefulinfo_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/NPC_table_characteristic_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTableLight">
+
+            <TextView
+                android:id="@+id/NPC_table_characteristic_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Characteristic"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_characteristic_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/NPC_table_secret_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTableDark">
+
+            <TextView
+                android:id="@+id/NPC_table_secret_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Secret"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_secret_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/NPC_table_proneto_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTableLight">
+
+            <TextView
+                android:id="@+id/NPC_table_proneto_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prone to"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_proneto_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/NPC_table_strongagainst_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTableDark">
+
+            <TextView
+                android:id="@+id/NPC_table_strongagainst_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Strong Against"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_strongagainst_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/NPC_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="NPC Details:"
+        app:layout_constraintStart_toStartOf="@+id/NPCGeneratorTitle"
+        app:layout_constraintTop_toBottomOf="@+id/NPCGeneratorTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

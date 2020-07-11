@@ -41,6 +41,12 @@
         <item>Wizard</item>
     </string-array>
 
+    <string-array name="NPC_gender">
+        <item>Female</item>
+        <item>Male</item>
+        <item>Can\'t tell</item>
+    </string-array>
+
     <string-array name="NPC_races">
         <item>Human</item>
         <item>Elf</item>
@@ -259,9 +265,9 @@
 
     <string-array name="NPC_useful_info">
         <item>Was friends with the last king of the land</item>
-        <item>Used to live in a now gone city and knows it's history</item>
+        <item>Used to live in a now gone city and knows its history</item>
         <item>Can point to a secret magic shop</item>
-        <item>Can point to a druid's shop in the woods</item>
+        <item>Can point to a druid\'s shop in the woods</item>
         <item>Can give the characters info on the surrounding woods</item>
         <item>Can give the characters info on the political situation in a nearby town</item>
         <item>Knows about the type of monsters that lurk around the area he/she lives</item>
