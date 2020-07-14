@@ -104,6 +104,91 @@ class NPCGeneratorActivity : AppCompatActivity() {
                 NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
             }
         }
+
+        NPC_name.setOnClickListener {
+            if (NPC_race.text == "Human"){
+                if (NPC_gender.text == "Female"){
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_human_female)
+                }
+                else if (NPC_gender.text == "Male") {
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_human_male)
+                }
+                else{
+                    NPC_name_array = if ((0..1).random() == 1) applicationContext.resources.getStringArray(R.array.NPC_names_human_female)
+                    else applicationContext.resources.getStringArray(R.array.NPC_names_human_male)
+                }
+            }
+            else if (NPC_race.text == "Elf"){
+                if (NPC_gender.text == "Female"){
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_elf_female)
+                }
+                else if (NPC_gender.text == "Male") {
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_elf_male)
+                }
+                else{
+                    NPC_name_array = if ((0..1).random() == 1) applicationContext.resources.getStringArray(R.array.NPC_names_elf_female)
+                    else applicationContext.resources.getStringArray(R.array.NPC_names_elf_male)
+                }
+            }
+            else if (NPC_race.text == "Dwarf"){
+                if (NPC_gender.text == "Female"){
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_dwarf_female)
+                }
+                else if (NPC_gender.text == "Male") {
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_dwarf_male)
+                }
+                else{
+                    NPC_name_array = if ((0..1).random() == 1) applicationContext.resources.getStringArray(R.array.NPC_names_dwarf_female)
+                    else applicationContext.resources.getStringArray(R.array.NPC_names_dwarf_male)
+                }
+            }
+            else if (NPC_race.text == "Halfling"){
+                if (NPC_gender.text == "Female"){
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_halfling_female)
+                }
+                else if (NPC_gender.text == "Male") {
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_halfling_male)
+                }
+                else{
+                    NPC_name_array = if ((0..1).random() == 1) applicationContext.resources.getStringArray(R.array.NPC_names_halfling_female)
+                    else applicationContext.resources.getStringArray(R.array.NPC_names_halfling_male)
+                }
+            }
+            else{
+                if (NPC_gender.text == "Female"){
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_gnome_female)
+                }
+                else if (NPC_gender.text == "Male") {
+                    NPC_name_array = applicationContext.resources.getStringArray(R.array.NPC_names_gnome_male)
+                }
+                else{
+                    NPC_name_array = if ((0..1).random() == 1) applicationContext.resources.getStringArray(R.array.NPC_names_gnome_female)
+                    else applicationContext.resources.getStringArray(R.array.NPC_names_gnome_male)
+                }
+            }
+
+            NPC_name.text = NPC_name_array[(NPC_name_array.indices).random()]
+        }
+
+        NPC_gender.setOnClickListener{
+            NPC_gender.text = NPC_genders_array[(NPC_genders_array.indices).random()]
+        }
+        NPC_race.setOnClickListener{
+            NPC_race.text = NPC_race_names_array[(NPC_race_names_array.indices).random()]
+        }
+        NPC_characteristic.setOnClickListener{
+            NPC_characteristic.text = NPC_characteristics_array[(NPC_characteristics_array.indices).random()]
+        }
+        NPC_secret.setOnClickListener{
+            NPC_secret.text = NPC_secrets_array[(NPC_secrets_array.indices).random()]
+        }
+        NPC_prone_to.setOnClickListener{
+            NPC_prone_to.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
+        }
+        NPC_strong_against.setOnClickListener{
+            NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
+        }
+
     }
 
 

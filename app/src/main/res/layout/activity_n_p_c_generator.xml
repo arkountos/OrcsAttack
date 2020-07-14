@@ -64,6 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
 
@@ -87,6 +89,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
         </TableRow>
@@ -109,6 +113,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
         </TableRow>
@@ -131,6 +137,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
         </TableRow>
@@ -153,6 +161,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
         </TableRow>
@@ -175,6 +185,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
         </TableRow>
@@ -197,14 +209,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
         </TableRow>
 
         <TableRow
             android:id="@+id/NPC_table_strongagainst_row"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@color/colorTableDark">
 
             <TextView
@@ -219,9 +233,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
+
         </TableRow>
+
+        <TableRow
+            android:id="@+id/NPC_table_notes_row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTableLight">
+
+            <TextView
+                android:id="@+id/NPC_table_notes_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Notes"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/NPC_table_notes_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
+                android:fontFamily="@font/blkchry"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+        </TableRow>
+
     </TableLayout>
 
     <TextView
