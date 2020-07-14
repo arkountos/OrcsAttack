@@ -17,4 +17,6 @@ For now the project consists of a dynamic initiative tracker and a random encoun
 
 Hopefully you can get the app on Google's Playstore!
 
+<a href='https://play.google.com/store/apps/details?id=com.arkountos.orcsattack&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+
 This is a project I work on for fun and is a work in progress!
