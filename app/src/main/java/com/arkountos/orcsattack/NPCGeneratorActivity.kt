@@ -3,6 +3,7 @@ package com.arkountos.orcsattack
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 
 class NPCGeneratorActivity : AppCompatActivity() {
@@ -28,6 +29,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
         var NPC_secret = findViewById<TextView>(R.id.NPC_table_secret_value)
         var NPC_prone_to = findViewById<TextView>(R.id.NPC_table_proneto_value)
         var NPC_strong_against = findViewById<TextView>(R.id.NPC_table_strongagainst_value)
+        var NPC_notes = findViewById<EditText>(R.id.NPC_table_notes_value)
 
 
         var generateButton = findViewById<Button>(R.id.generate_NPC_button)
@@ -169,7 +171,6 @@ class NPCGeneratorActivity : AppCompatActivity() {
 
             NPC_name.text = NPC_name_array[(NPC_name_array.indices).random()]
         }
-
         NPC_gender.setOnClickListener{
             NPC_gender.text = NPC_genders_array[(NPC_genders_array.indices).random()]
         }
@@ -188,6 +189,18 @@ class NPCGeneratorActivity : AppCompatActivity() {
         NPC_strong_against.setOnClickListener{
             NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
         }
+
+
+        var NPC_character = NPCCharacter(NPC_name.text as String,
+            NPC_gender.text as String,
+            NPC_race.text as String,
+            NPC_useful_info.text as String,
+            NPC_characteristic.text as String,
+            NPC_secret.text as String,
+            NPC_prone_to.text as String,
+            NPC_strong_against.text as String,
+            NPC_notes.text.toString()
+        )
 
     }
 

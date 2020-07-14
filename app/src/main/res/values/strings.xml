@@ -261,6 +261,7 @@
         <item>Has a very soft and calm voice</item>
         <item>Only talks with a few words</item>
         <item>Is always angry/irritated</item>
+        <item>Wears a funny hat</item>
     </string-array>
 
     <string-array name="NPC_useful_info">
@@ -277,6 +278,12 @@
         <item>Knows a famous song</item>
         <item>Knows a famous fairytale of the land</item>
         <item>Knows about an old prophecy</item>
+        <item>Knows when and who crosses the road we are on</item>
+    </string-array>
+
+    <string-array name="Encounters">
+        <item>A man challenges one member of a party to a duel in a quest to become the strongest duelist in the land. If he loses he invites the party to a tournament he will also be attending for the title of the best duelist in the land, and promises to meet again with the party. Can be used as a recurring encounter.</item>
+        <item>The party notices a tall obelisk by the side of the road about a kilometer away. If they decide to investigate they stumble accross a group of bandits who use the obelisk to set up ambushes to adventurers. They have never been to the obelisk, they only stay near it because it attracts adventurers. Near the camp they used they have stashed some treasure, and one of them keeps a buried low-level magic item buried nearby. If the party gets close to the obelisk they see writing on the obelisk in a non common language (e.g. Giant). The first member to touch the obelisk gains a permanent (or temporary up to you) +1 to a a stat (roll a d6 for the stat).</item>
     </string-array>
 
     <string name="positive_button">OK</string>
