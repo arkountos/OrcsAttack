@@ -30,7 +30,7 @@
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="@+id/NPC_table"
         app:layout_constraintStart_toStartOf="@+id/NPC_table"
-        app:layout_constraintTop_toBottomOf="@+id/NPC_table" />
+        app:layout_constraintTop_toBottomOf="@+id/NPC_str_stat" />
 
     <TableLayout
         android:id="@+id/NPC_table"
@@ -165,6 +165,7 @@
                 android:focusable="auto"
                 android:gravity="center"
                 android:textSize="20sp" />
+
         </TableRow>
 
         <TableRow
@@ -278,5 +279,194 @@
         android:text="NPC Details:"
         app:layout_constraintStart_toStartOf="@+id/NPCGeneratorTitle"
         app:layout_constraintTop_toBottomOf="@+id/NPCGeneratorTitle" />
+
+    <TextView
+        android:id="@+id/NPC_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="NPC Stats:"
+        app:layout_constraintStart_toStartOf="@+id/NPC_str_stat"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_table" />
+
+    <LinearLayout
+        android:id="@+id/NPC_str_stat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorTableLight"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_dex_stat"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_stats">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STR"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/NPC_str_stat_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="10"
+            android:textAlignment="gravity"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/NPC_dex_stat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/colorTableDark"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_con_stat"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_str_stat"
+        app:layout_constraintTop_toTopOf="@+id/NPC_str_stat">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DEX"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/NPC_dex_stat_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="10"
+            android:textAlignment="gravity"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/NPC_con_stat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/colorTableLight"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_int_stat"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_dex_stat"
+        app:layout_constraintTop_toTopOf="@+id/NPC_dex_stat">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CON"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/NPC_con_stat_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="10"
+            android:textAlignment="gravity"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/NPC_int_stat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/colorTableDark"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_wis_stat"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_con_stat"
+        app:layout_constraintTop_toTopOf="@+id/NPC_con_stat">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INT"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/NPC_int_stat_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="10"
+            android:textAlignment="gravity"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/NPC_wis_stat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/colorTableLight"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_cha_stat"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_int_stat"
+        app:layout_constraintTop_toTopOf="@+id/NPC_int_stat">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WIS"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/NPC_wis_stat_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="10"
+            android:textAlignment="gravity"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/NPC_cha_stat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/colorTableDark"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_wis_stat"
+        app:layout_constraintTop_toTopOf="@+id/NPC_wis_stat">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CHA"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/NPC_cha_stat_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="10"
+            android:textAlignment="gravity"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

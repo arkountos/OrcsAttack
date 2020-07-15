@@ -1,6 +1,8 @@
 package com.arkountos.orcsattack
 
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import java.util.Collections.min
 
 class NPCCharacter (input_name: String,
@@ -40,7 +42,7 @@ class NPCCharacter (input_name: String,
         for (i in (0 until 6)){
             var rolls = intArrayOf(6, 6, 6, 6)
             while (j < 4){
-                rolls[j] = (0..20).random()
+                rolls[j] = (0..6).random()
                 j++
             }
             j = 0
@@ -54,7 +56,16 @@ class NPCCharacter (input_name: String,
         intelligence = stats[3]
         wisdom = stats[4]
         charisma = stats[5]
-
     }
+
+    fun setStats(str: TextView, dex: TextView, con: TextView, int: TextView, wis: TextView, cha: TextView){
+        str.text = strength.toString()
+        dex.text = dexterity.toString()
+        con.text = constitution.toString()
+        int.text = intelligence.toString()
+        wis.text = wisdom.toString()
+        cha.text = charisma.toString()
+    }
+
 
 }

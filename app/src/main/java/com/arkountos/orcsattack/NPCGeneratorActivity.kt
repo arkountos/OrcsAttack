@@ -105,6 +105,29 @@ class NPCGeneratorActivity : AppCompatActivity() {
             while (NPC_prone_to.text == NPC_strong_against.text){
                 NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
             }
+
+            var NPC_character = NPCCharacter(NPC_name.text as String,
+                NPC_gender.text as String,
+                NPC_race.text as String,
+                NPC_useful_info.text as String,
+                NPC_characteristic.text as String,
+                NPC_secret.text as String,
+                NPC_prone_to.text as String,
+                NPC_strong_against.text as String,
+                NPC_notes.text.toString()
+            )
+
+
+
+            NPC_character.rollStats()
+            NPC_character.setStats(findViewById(R.id.NPC_str_stat_value),
+                findViewById(R.id.NPC_dex_stat_value),
+                findViewById(R.id.NPC_con_stat_value),
+                findViewById(R.id.NPC_int_stat_value),
+                findViewById(R.id.NPC_wis_stat_value),
+                findViewById(R.id.NPC_cha_stat_value)
+            )
+
         }
 
         NPC_name.setOnClickListener {
@@ -191,16 +214,6 @@ class NPCGeneratorActivity : AppCompatActivity() {
         }
 
 
-        var NPC_character = NPCCharacter(NPC_name.text as String,
-            NPC_gender.text as String,
-            NPC_race.text as String,
-            NPC_useful_info.text as String,
-            NPC_characteristic.text as String,
-            NPC_secret.text as String,
-            NPC_prone_to.text as String,
-            NPC_strong_against.text as String,
-            NPC_notes.text.toString()
-        )
 
     }
 
