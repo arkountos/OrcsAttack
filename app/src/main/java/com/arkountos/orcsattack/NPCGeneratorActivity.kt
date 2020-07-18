@@ -1,12 +1,20 @@
 package com.arkountos.orcsattack
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import com.google.gson.Gson
 
 class NPCGeneratorActivity : AppCompatActivity() {
+    val gson = Gson()
+
+    lateinit var NPC_character: NPCCharacter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_n_p_c_generator)
@@ -106,7 +114,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
                 NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
             }
 
-            var NPC_character = NPCCharacter(NPC_name.text as String,
+            NPC_character = NPCCharacter(NPC_name.text as String,
                 NPC_gender.text as String,
                 NPC_race.text as String,
                 NPC_useful_info.text as String,
@@ -128,6 +136,11 @@ class NPCGeneratorActivity : AppCompatActivity() {
                 findViewById(R.id.NPC_cha_stat_value)
             )
 
+        }
+
+        var saveButton = findViewById<Button>(R.id.save_NPC_button)
+        saveButton.setOnClickListener {
+            save(NPC_character)
         }
 
         NPC_name.setOnClickListener {
@@ -203,6 +216,9 @@ class NPCGeneratorActivity : AppCompatActivity() {
         NPC_characteristic.setOnClickListener{
             NPC_characteristic.text = NPC_characteristics_array[(NPC_characteristics_array.indices).random()]
         }
+        NPC_useful_info.setOnClickListener{
+            NPC_useful_info.text = NPC_useful_info_array[(NPC_characteristics_array.indices).random()]
+        }
         NPC_secret.setOnClickListener{
             NPC_secret.text = NPC_secrets_array[(NPC_secrets_array.indices).random()]
         }
@@ -215,6 +231,36 @@ class NPCGeneratorActivity : AppCompatActivity() {
 
 
 
+    }
+
+    fun save(NPC_character: NPCCharacter){
+        val sharedPreferences : SharedPreferences = getSharedPreferences(GlobalsActivity.SHARED_PREFS, Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = sharedPreferences.edit()
+
+        // Jsonify
+//        val char = Character(name, initiative, myclass, hitpoints.toInt())
+        val jsonchar = gson.toJson(NPC_character)
+
+        // Get string set with chars
+        var NPCs: Set<String>
+        if (sharedPreferences.getStringSet("saved_NPC_characters", null) != null){
+            NPCs = sharedPreferences.getStringSet("saved_NPC_characters", null)!!
+        }
+        else{
+            NPCs = mutableSetOf()
+            editor.putStringSet("saved_NPC_characters", NPCs)
+            editor.apply()
+            NPCs = sharedPreferences.getStringSet("saved_NPC_characters", null)!!
+        }
+
+        // Put new hero to heroes
+        NPCs.add(jsonchar)
+
+        // Put new heroes to shared prefs
+        editor.putStringSet("save_NPC_characters", NPCs)
+        editor.apply()
+
+        Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT)
     }
 
 

@@ -7,6 +7,19 @@
     android:background="@drawable/black_pixelwall"
     tools:context="com.arkountos.orcsattack.NPCGeneratorActivity">
 
+    <Button
+        android:id="@+id/save_NPC_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="Save"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/generate_NPC_button"
+        app:layout_constraintStart_toStartOf="@+id/generate_NPC_button"
+        app:layout_constraintTop_toBottomOf="@+id/generate_NPC_button" />
+
     <TextView
         android:id="@+id/NPCGeneratorTitle"
         android:layout_width="wrap_content"
