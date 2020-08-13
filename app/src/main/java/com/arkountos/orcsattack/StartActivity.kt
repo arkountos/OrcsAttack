@@ -2,12 +2,15 @@ package com.arkountos.orcsattack
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.arkountos.orcsattack.debug.BackgroundMusicService
 import kotlin.system.exitProcess
@@ -86,6 +89,32 @@ class StartActivity : AppCompatActivity() {
             finish();
             exitProcess(0);
         }
+        val musicButton = findViewById<ImageView>(R.id.musicButton)
+        musicButton.setOnClickListener{
+
+            val sharedPreferences : SharedPreferences = getSharedPreferences(GlobalsActivity.SHARED_PREFS, Context.MODE_PRIVATE)
+            val editor : SharedPreferences.Editor = sharedPreferences.edit()
+            if (sharedPreferences.getInt("music", 1) == null){
+                editor.putInt("music", 0)
+                editor.apply()
+            }
+            if (sharedPreferences.getInt("music", 1) == 1){
+                musicButton.setImageResource(R.drawable.ic_baseline_music_off_24)
+                stopService(Intent(applicationContext, BackgroundMusicService::class.java))
+                editor.putInt("music", 0)
+                editor.apply()
+                Toast.makeText(this, "first", Toast.LENGTH_LONG).show()
+            }
+            else{
+                musicButton.setImageResource(R.drawable.ic_baseline_music_note_24)
+                startService(Intent(applicationContext, BackgroundMusicService::class.java))
+                editor.putInt("music", 1)
+                editor.apply()
+                Toast.makeText(this, "sec", Toast.LENGTH_LONG).show()
+            }
+
+        }
+
     }
 
     private fun openInitiativeActivity(){
