@@ -2,23 +2,27 @@ package com.arkountos.orcsattack
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.arkountos.orcsattack.debug.BackgroundMusicService
 import kotlin.system.exitProcess
 
 
 class StartActivity : AppCompatActivity() {
-
-//    @RequiresApi(Build.VERSION_CODES.O)
+    //    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         super.onCreate(savedInstanceState)
+        var musicServiceIntent = Intent(applicationContext, BackgroundMusicService::class.java)
+        startService(musicServiceIntent)
+
         setContentView(R.layout.activity_start)
         val initiativeButton: Button = findViewById(R.id.gotoInit)
         initiativeButton.setOnClickListener{
