@@ -14,7 +14,8 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoadNPCActivity"></activity>
+        <activity android:name=".NPCStatblockActivity"></activity>
+        <activity android:name=".LoadNPCActivity" />
         <activity android:name=".NPCGeneratorActivity" />
         <activity android:name=".LoadEncounterActivity" />
         <activity android:name=".AboutActivity" />

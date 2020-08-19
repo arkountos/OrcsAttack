@@ -1,6 +1,7 @@
 package com.arkountos.orcsattack
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -138,11 +139,6 @@ class NPCGeneratorActivity : AppCompatActivity() {
 
         }
 
-        var saveButton = findViewById<Button>(R.id.save_NPC_button)
-        saveButton.setOnClickListener {
-            save(NPC_character)
-        }
-
         NPC_name.setOnClickListener {
             if (NPC_race.text == "Human"){
                 if (NPC_gender.text == "Female"){
@@ -229,6 +225,16 @@ class NPCGeneratorActivity : AppCompatActivity() {
             NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
         }
 
+        // Go to Statblock button functionality
+        var goToStatblockButton = findViewById<Button>(R.id.goToStatblock_NPC_button)
+        goToStatblockButton.setOnClickListener {
+            var NPC_Statblock_intent: Intent = Intent(this, NPCStatblockActivity::class.java)
+
+            //TODO: Add intent contents
+
+            startActivity(NPC_Statblock_intent)
+        }
+
 
 
     }
@@ -257,7 +263,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
         NPCs.add(jsonchar)
 
         // Put new heroes to shared prefs
-        editor.putStringSet("save_NPC_characters", NPCs)
+        editor.putStringSet("saved_NPC_characters", NPCs)
         editor.apply()
 
         Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT)
