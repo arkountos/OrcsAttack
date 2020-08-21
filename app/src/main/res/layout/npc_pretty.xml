@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/parchment_background">
+    android:background="@drawable/parchment_background"
+    android:id="@+id/statblock_root_view">
 
     <TextView
         android:id="@+id/statblock_name"
@@ -14,20 +15,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/statblock_alignment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/statblock_name"
-        app:layout_constraintTop_toBottomOf="@+id/statblock_name" />
-
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginTop="16dp"
         android:background="@color/colorEnemy"
-        app:layout_constraintTop_toBottomOf="@+id/statblock_alignment" />
+        app:layout_constraintTop_toBottomOf="@+id/statblock_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
