@@ -44,13 +44,15 @@ class NPCStatblockActivity : AppCompatActivity() {
         var secret_title = findViewById<TextView>(R.id.NPC_statblock_secret_title)
         var prone_to_title = findViewById<TextView>(R.id.NPC_statblock_prone_to_title)
         var strong_against_title = findViewById<TextView>(R.id.NPC_statblock_strong_against_title)
+        var notes_title = findViewById<TextView>(R.id.NPC_statblock_notes_title)
+
 
         var useful_info_value = findViewById<TextView>(R.id.NPC_statblock_useful_info_value)
         var characteristic_value = findViewById<TextView>(R.id.NPC_statblock_characteristic_value)
         var secret_value = findViewById<TextView>(R.id.NPC_statblock_secret_value)
         var prone_to_value = findViewById<TextView>(R.id.NPC_statblock_prone_to_value)
         var strong_against_value = findViewById<TextView>(R.id.NPC_statblock_strong_against_value)
-
+        var notes_value = findViewById<TextView>(R.id.NPC_statblock_notes_value)
 
         name.text = NPC_name.toString()
         name.textSize = 50F
@@ -104,6 +106,14 @@ class NPCStatblockActivity : AppCompatActivity() {
         strong_against_value.text = NPC_strong_against.toString()
         strong_against_value.typeface = bookinsanity
         strong_against_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        notes_title.text = "Notes"
+        notes_title.typeface = bookinsanitybold
+        notes_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        notes_value.text = NPC_notes.toString()
+        notes_value.typeface = bookinsanity
+        notes_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
 
 

@@ -5,16 +5,170 @@
     android:id="@+id/statblock_root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/parchment_background">
+    android:background="@drawable/parchment_background"
+    android:minHeight="L">
+
+    <TextView
+        android:id="@+id/NPC_statblock_intelligence_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/NPC_statblock_intelligence_title"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_constitution_title"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_intelligence_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_intelligence_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_dexterity_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/NPC_statblock_dexterity_title"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_dexterity_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_dexterity_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_constitution_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/NPC_statblock_constitution_title"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_dexterity_title"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_constitution_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_constitution_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_strength_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/NPC_statblock_strength_title"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_strength_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_strength_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_charisma_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/NPC_statblock_charisma_title"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_charisma_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_charisma_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_wisdom_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/NPC_statblock_wisdom_title"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_wisdom_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_wisdom_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_strength_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        android:text="STR"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_statblock_dexterity_title"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_dexterity_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        android:text="DEX"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_statblock_constitution_title"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_strength_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_strength_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_constitution_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        android:text="CON"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_statblock_intelligence_title"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_dexterity_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_dexterity_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_intelligence_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        android:text="INT"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_statblock_wisdom_title"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_constitution_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_constitution_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_charisma_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        android:text="CHA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_wisdom_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_wisdom_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_notes_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_strong_against_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_strong_against_value" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_notes_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/NPC_statblock_prone_to_value"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_notes_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_notes_title" />
 
     <View
         android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorEnemy"
-        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_strong_against_title"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginTop="12dp"
+        android:background="@color/colorStatblockRed"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_notes_value"
+        tools:layout_editor_absoluteX="77dp" />
 
     <TextView
         android:id="@+id/statblock_name"
@@ -32,7 +186,7 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorEnemy"
+        android:background="@color/colorStatblockRed"
         app:layout_constraintTop_toBottomOf="@+id/statblock_alignment" />
 
     <TextView
@@ -145,5 +299,20 @@
         app:layout_constraintEnd_toEndOf="@+id/NPC_statblock_prone_to_value"
         app:layout_constraintStart_toEndOf="@+id/NPC_statblock_strong_against_title"
         app:layout_constraintTop_toTopOf="@+id/NPC_statblock_strong_against_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_wisdom_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        android:text="WIS"
+        app:layout_constraintEnd_toStartOf="@+id/NPC_statblock_charisma_title"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_intelligence_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_intelligence_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
