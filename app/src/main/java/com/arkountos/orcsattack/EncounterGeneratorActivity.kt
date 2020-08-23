@@ -57,7 +57,7 @@ class EncounterGeneratorActivity : AppCompatActivity(), GridAdapter.OnItemClickL
         setContentView(R.layout.activity_grid)
 
 
-        val encounterName = intent.getStringExtra("EXTRA_ENCOUNTER_NAME")
+            val encounterName = intent.getStringExtra("EXTRA_ENCOUNTER_NAME")
         val name_view = findViewById<TextView>(R.id.map_name)
         name_view.text = encounterName
 
