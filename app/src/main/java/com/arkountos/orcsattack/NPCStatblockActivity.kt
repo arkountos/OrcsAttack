@@ -2,10 +2,12 @@ package com.arkountos.orcsattack
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
+import kotlin.math.floor
 
 class NPCStatblockActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +34,8 @@ class NPCStatblockActivity : AppCompatActivity() {
         var rootView = findViewById<ConstraintLayout>(R.id.statblock_root_view)
 
         var nodestocapscondensed: Typeface? = ResourcesCompat.getFont(this, R.font.nodestocapscondensed)
-        var bookinsanity: Typeface? = ResourcesCompat.getFont(this, R.font.bookinsanity)
-        var bookinsanitybold: Typeface? = ResourcesCompat.getFont(this, R.font.bookinsanitybold)
+        var bookinsanity: Typeface? = ResourcesCompat.getFont(this, R.font.scalysans)
+        var bookinsanitybold: Typeface? = ResourcesCompat.getFont(this, R.font.scalysansbold)
         var bookinsanityitalic: Typeface? = ResourcesCompat.getFont(this, R.font.bookinsanityitalic)
 
         var name = findViewById<TextView>(R.id.statblock_name)
@@ -59,7 +61,7 @@ class NPCStatblockActivity : AppCompatActivity() {
         name.typeface = nodestocapscondensed
         name.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
-        alignment.text = "Medium undead, chaotic evil"
+        alignment.text = "Medium " + NPC_race.toString()
         alignment.typeface = bookinsanityitalic
         alignment.setTextColor(resources.getColor(R.color.colorBlack))
 
@@ -114,7 +116,107 @@ class NPCStatblockActivity : AppCompatActivity() {
         notes_value.text = NPC_notes.toString()
         notes_value.typeface = bookinsanity
         notes_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+        if (notes_value.text == ""){
+            notes_title.visibility = View.GONE
+            notes_value.visibility = View.GONE
+        }
 
+
+        var NPC_strength_title = findViewById<TextView>(R.id.NPC_statblock_strength_title)
+        var NPC_dexterity_title = findViewById<TextView>(R.id.NPC_statblock_dexterity_title)
+        var NPC_constitution_title = findViewById<TextView>(R.id.NPC_statblock_constitution_title)
+        var NPC_intelligence_title = findViewById<TextView>(R.id.NPC_statblock_intelligence_title)
+        var NPC_wisdom_title = findViewById<TextView>(R.id.NPC_statblock_wisdom_title)
+        var NPC_charisma_title = findViewById<TextView>(R.id.NPC_statblock_charisma_title)
+
+
+        var NPC_strength_value = findViewById<TextView>(R.id.NPC_statblock_strength_value)
+        var NPC_dexterity_value = findViewById<TextView>(R.id.NPC_statblock_dexterity_value)
+        var NPC_constitution_value = findViewById<TextView>(R.id.NPC_statblock_constitution_value)
+        var NPC_intelligence_value = findViewById<TextView>(R.id.NPC_statblock_intelligence_value)
+        var NPC_wisdom_value = findViewById<TextView>(R.id.NPC_statblock_wisdom_value)
+        var NPC_charisma_value = findViewById<TextView>(R.id.NPC_statblock_charisma_value)
+
+        var NPC_strength_modifier: String = if (((NPC_strength.toString().toInt() - 10) /2) > 0)
+            "+" + (NPC_strength.toString().toInt() - 10) / 2
+        else
+        ((NPC_strength.toString().toInt() - 10) / 2).toString()
+        var NPC_dexterity_modifier: String = if (((NPC_dexterity.toString().toInt() - 10) /2) > 0)
+            "+" + (NPC_dexterity.toString().toInt() - 10) / 2
+        else
+            ((NPC_dexterity.toString().toInt() - 10) / 2).toString()
+        var NPC_constitution_modifier: String = if (((NPC_constitution.toString().toInt() - 10) /2) > 0)
+            "+" + (NPC_constitution.toString().toInt() - 10) / 2
+        else
+            ((NPC_constitution.toString().toInt() - 10) / 2).toString()
+        var NPC_intelligence_modifier: String = if (((NPC_intelligence.toString().toInt() - 10) /2) > 0)
+            "+" + (NPC_intelligence.toString().toInt() - 10) / 2
+        else
+            ((NPC_intelligence.toString().toInt() - 10) / 2).toString()
+        var NPC_wisdom_modifier: String = if (((NPC_wisdom.toString().toInt() - 10) /2) > 0)
+            "+" + (NPC_wisdom.toString().toInt() - 10) / 2
+        else
+            ((NPC_wisdom.toString().toInt() - 10) / 2).toString()
+        var NPC_charisma_modifier: String = if (((NPC_charisma.toString().toInt() - 10) /2) > 0)
+            "+" + (NPC_charisma.toString().toInt() - 10) / 2
+        else
+            ((NPC_charisma.toString().toInt() - 10) / 2).toString()
+
+
+
+        NPC_strength_title.text = "STR"
+        NPC_strength_title.typeface = bookinsanitybold
+        NPC_strength_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+
+        NPC_strength_value.text = NPC_strength.toString() + "(" + NPC_strength_modifier + ")"
+        NPC_strength_value.typeface = bookinsanitybold
+        NPC_strength_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+
+        NPC_dexterity_title.text = "DEX"
+        NPC_dexterity_title.typeface = bookinsanitybold
+        NPC_dexterity_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        NPC_dexterity_value.text = NPC_dexterity.toString() + "(" + NPC_dexterity_modifier + ")"
+        NPC_dexterity_value.typeface = bookinsanitybold
+        NPC_dexterity_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+
+        NPC_constitution_title.text = "CON"
+        NPC_constitution_title.typeface = bookinsanitybold
+        NPC_constitution_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        NPC_constitution_value.text = NPC_constitution.toString() + "(" + NPC_constitution_modifier + ")"
+        NPC_constitution_value.typeface = bookinsanitybold
+        NPC_constitution_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+
+        NPC_intelligence_title.text = "INT"
+        NPC_intelligence_title.typeface = bookinsanitybold
+        NPC_intelligence_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        NPC_intelligence_value.text = NPC_intelligence.toString() + "(" + NPC_intelligence_modifier + ")"
+        NPC_intelligence_value.typeface = bookinsanitybold
+        NPC_intelligence_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+
+        NPC_wisdom_title.text = "WIS"
+        NPC_wisdom_title.typeface = bookinsanitybold
+        NPC_wisdom_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        NPC_wisdom_value.text = NPC_wisdom.toString() + "(" + NPC_wisdom_modifier + ")"
+        NPC_wisdom_value.typeface = bookinsanitybold
+        NPC_wisdom_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+
+        NPC_charisma_title.text = "CHA"
+        NPC_charisma_title.typeface = bookinsanitybold
+        NPC_charisma_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        NPC_charisma_value.text = NPC_charisma.toString() + "(" + NPC_charisma_modifier + ")"
+        NPC_charisma_value.typeface = bookinsanitybold
+        NPC_charisma_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
 
 
