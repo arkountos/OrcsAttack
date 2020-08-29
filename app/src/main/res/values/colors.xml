@@ -10,4 +10,6 @@
 <!--    #f46036-->
     <color name="colorEnemy">#d7263d</color>
     <color name="colorFriend">#3c6e71</color>
+    <color name="colorStatblockRed">#922610</color>
+    <color name="colorBlack">#000000</color>
 </resources>

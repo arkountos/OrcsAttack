@@ -67,5 +67,9 @@ class NPCCharacter (input_name: String,
         cha.text = charisma.toString()
     }
 
+    fun getNPCStats(): IntArray {
+        return intArrayOf(strength, dexterity, constitution, intelligence, wisdom, charisma)
+    }
+
 
 }

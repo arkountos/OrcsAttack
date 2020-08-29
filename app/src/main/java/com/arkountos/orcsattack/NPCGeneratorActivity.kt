@@ -1,6 +1,7 @@
 package com.arkountos.orcsattack
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -138,11 +139,6 @@ class NPCGeneratorActivity : AppCompatActivity() {
 
         }
 
-        var saveButton = findViewById<Button>(R.id.save_NPC_button)
-        saveButton.setOnClickListener {
-            save(NPC_character)
-        }
-
         NPC_name.setOnClickListener {
             if (NPC_race.text == "Human"){
                 if (NPC_gender.text == "Female"){
@@ -229,6 +225,34 @@ class NPCGeneratorActivity : AppCompatActivity() {
             NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
         }
 
+        // Go to Statblock button functionality
+        var goToStatblockButton = findViewById<Button>(R.id.goToStatblock_NPC_button)
+        goToStatblockButton.setOnClickListener {
+            var NPC_Statblock_intent: Intent = Intent(this, NPCStatblockActivity::class.java)
+
+            //TODO: Add intent contents
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_NAME", NPC_name.text)
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_RACE", NPC_race.text)
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_GENDER", NPC_gender.text)
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_USEFUL_INFO", NPC_useful_info.text)
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_CHARACTERISTIC", NPC_characteristic.text)
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_SECRET", NPC_secret.text)
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_PRONE_TO", NPC_prone_to.text)
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_STRONG_AGAINST", NPC_strong_against.text)
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_NOTES", NPC_notes.text)
+
+            var stats = NPC_character.getNPCStats()
+
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_STRENGTH", stats[0])
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_DEXTERITY", stats[1])
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_CONSTITUTION", stats[2])
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_INTELLIGENCE", stats[3])
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_WISDOM", stats[4])
+            NPC_Statblock_intent.putExtra("EXTRA_NPC_CHARISMA", stats[5])
+
+            startActivity(NPC_Statblock_intent)
+        }
+
 
 
     }
@@ -257,7 +281,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
         NPCs.add(jsonchar)
 
         // Put new heroes to shared prefs
-        editor.putStringSet("save_NPC_characters", NPCs)
+        editor.putStringSet("saved_NPC_characters", NPCs)
         editor.apply()
 
         Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT)

@@ -14,11 +14,7 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service
-            android:name=".debug.BackgroundMusicService"
-            android:enabled="true"
-            android:exported="true"></service>
-
+        <activity android:name=".NPCStatblockActivity"></activity>
         <activity android:name=".LoadNPCActivity" />
         <activity android:name=".NPCGeneratorActivity" />
         <activity android:name=".LoadEncounterActivity" />
