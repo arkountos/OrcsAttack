@@ -1,13 +1,22 @@
 package com.arkountos.orcsattack
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Typeface
+import android.icu.util.Calendar
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
-import kotlin.math.floor
+import kotlinx.android.synthetic.main.npc_pretty.*
+import java.io.File
+import java.io.FileOutputStream
+
 
 class NPCStatblockActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -218,9 +227,63 @@ class NPCStatblockActivity : AppCompatActivity() {
         NPC_charisma_value.typeface = bookinsanitybold
         NPC_charisma_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
+        var export_button = findViewById<Button>(R.id.NPC_statblock_export_button)
+        export_button.setOnClickListener {
+            val fileName: String =
+                java.lang.String.valueOf(Calendar.getInstance().timeInMillis)
+// generate the image path
+// generate the image path
+            val imagePath: String = Environment.getExternalStorageDirectory()
+                .toString() + File.separator.toString() + fileName + ".png"
 
+            try {
 
+                // save the image as png
+                val out = FileOutputStream(imagePath)
+                // compress the image to png and pass it to the output stream
+                loadBitmapFromView(statblock_root_view)!!.compress(Bitmap.CompressFormat.PNG, 90, out)
 
+                // save the image
+                out.flush()
+                out.close()
+            } catch (error: Exception) {
+                Log.e("Error saving image", error.message)
+            }
+        }
 
     }
+
+    // As seen on: https://www.myandroidsolutions.com/2013/02/10/android-get-view-drawimage-and-save-it/
+    fun loadBitmapFromView(view: View): Bitmap? {
+
+        // width measure spec
+        val widthSpec = View.MeasureSpec.makeMeasureSpec(
+            view.measuredWidth, View.MeasureSpec.EXACTLY
+        )
+        // height measure spec
+        val heightSpec = View.MeasureSpec.makeMeasureSpec(
+            view.measuredHeight, View.MeasureSpec.EXACTLY
+        )
+        // measure the view
+        view.measure(widthSpec, heightSpec)
+        // set the layout sizes
+        view.layout(
+            view.left,
+            view.top,
+            view.measuredWidth + view.left,
+            view.measuredHeight + view.top
+        )
+        // create the bitmap
+        val bitmap =
+            Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+        // create a canvas used to get the view's image and draw it on the bitmap
+        val c = Canvas(bitmap)
+        // position the image inside the canvas
+        c.translate((-view.scrollX).toFloat(), (-view.scrollY).toFloat())
+        // get the canvas
+        view.draw(c)
+        return bitmap
+    }
+
+
 }
