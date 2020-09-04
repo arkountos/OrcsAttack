@@ -218,21 +218,20 @@ class NPCStatblockActivity : AppCompatActivity() {
         NPC_wisdom_value.typeface = bookinsanitybold
         NPC_wisdom_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
-
         NPC_charisma_title.text = "CHA"
         NPC_charisma_title.typeface = bookinsanitybold
         NPC_charisma_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
         NPC_charisma_value.text = NPC_charisma.toString() + "(" + NPC_charisma_modifier + ")"
         NPC_charisma_value.typeface = bookinsanitybold
+
         NPC_charisma_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
         var export_button = findViewById<Button>(R.id.NPC_statblock_export_button)
         export_button.setOnClickListener {
             val fileName: String =
                 java.lang.String.valueOf(Calendar.getInstance().timeInMillis)
-// generate the image path
-// generate the image path
+            // generate the image path
             val imagePath: String = Environment.getExternalStorageDirectory()
                 .toString() + File.separator.toString() + fileName + ".png"
 

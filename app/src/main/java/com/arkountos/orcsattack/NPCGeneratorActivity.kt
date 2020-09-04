@@ -230,27 +230,33 @@ class NPCGeneratorActivity : AppCompatActivity() {
         goToStatblockButton.setOnClickListener {
             var NPC_Statblock_intent: Intent = Intent(this, NPCStatblockActivity::class.java)
 
-            //TODO: Add intent contents
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_NAME", NPC_name.text)
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_RACE", NPC_race.text)
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_GENDER", NPC_gender.text)
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_USEFUL_INFO", NPC_useful_info.text)
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_CHARACTERISTIC", NPC_characteristic.text)
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_SECRET", NPC_secret.text)
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_PRONE_TO", NPC_prone_to.text)
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_STRONG_AGAINST", NPC_strong_against.text)
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_NOTES", NPC_notes.text)
+            if (NPC_name.text == "" || NPC_race.text == "" || NPC_gender.text == ""  || NPC_useful_info.text == ""  || NPC_characteristic.text == ""  || NPC_secret.text == ""  || NPC_prone_to.text == ""  || NPC_strong_against.text == ""){
+                Toast.makeText(this, "Generate an NPC first!",
+                    Toast.LENGTH_SHORT).show();
+            }
+            else {
+                //TODO: Add intent contents
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_NAME", NPC_name.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_RACE", NPC_race.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_GENDER", NPC_gender.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_USEFUL_INFO", NPC_useful_info.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_CHARACTERISTIC", NPC_characteristic.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_SECRET", NPC_secret.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_PRONE_TO", NPC_prone_to.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_STRONG_AGAINST", NPC_strong_against.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_NOTES", NPC_notes.text)
 
-            var stats = NPC_character.getNPCStats()
+                var stats = NPC_character.getNPCStats()
 
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_STRENGTH", stats[0])
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_DEXTERITY", stats[1])
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_CONSTITUTION", stats[2])
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_INTELLIGENCE", stats[3])
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_WISDOM", stats[4])
-            NPC_Statblock_intent.putExtra("EXTRA_NPC_CHARISMA", stats[5])
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_STRENGTH", stats[0])
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_DEXTERITY", stats[1])
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_CONSTITUTION", stats[2])
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_INTELLIGENCE", stats[3])
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_WISDOM", stats[4])
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_CHARISMA", stats[5])
 
-            startActivity(NPC_Statblock_intent)
+                startActivity(NPC_Statblock_intent)
+            }
         }
 
 
