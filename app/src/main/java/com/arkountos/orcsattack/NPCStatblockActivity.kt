@@ -1,5 +1,6 @@
 package com.arkountos.orcsattack
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Typeface
@@ -19,12 +20,14 @@ import java.io.FileOutputStream
 
 
 class NPCStatblockActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.npc_pretty)
 
         var NPC_name = intent.extras?.get("EXTRA_NPC_NAME")
         var NPC_race = intent.extras?.get("EXTRA_NPC_RACE")
+        var NPC_alignment = intent.extras?.get("EXTRA_NPC_ALIGNMENT")
         var NPC_gender = intent.extras?.get("EXTRA_NPC_GENDER")
         var NPC_useful_info = intent.extras?.get("EXTRA_NPC_USEFUL_INFO")
         var NPC_characteristic = intent.extras?.get("EXTRA_NPC_CHARACTERISTIC")
@@ -70,7 +73,7 @@ class NPCStatblockActivity : AppCompatActivity() {
         name.typeface = nodestocapscondensed
         name.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
-        alignment.text = "Medium " + NPC_race.toString()
+        alignment.text = "Medium " + NPC_race.toString() + ", " + NPC_alignment.toString()
         alignment.typeface = bookinsanityitalic
         alignment.setTextColor(resources.getColor(R.color.colorBlack))
 

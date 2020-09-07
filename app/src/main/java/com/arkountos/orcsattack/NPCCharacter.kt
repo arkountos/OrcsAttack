@@ -8,6 +8,7 @@ import java.util.Collections.min
 class NPCCharacter (input_name: String,
                     input_gender: String,
                     input_race: String,
+                    input_alignment: String,
                     input_useful_info: String,
                     input_characteristic: String,
                     input_secret: String,
@@ -18,6 +19,7 @@ class NPCCharacter (input_name: String,
     var name: String = input_name.capitalize()
     var gender = input_gender
     var race = input_race
+    var alignment : String = input_alignment
     var useful_info = input_useful_info
     var characteristic = input_characteristic
     var secret = input_secret

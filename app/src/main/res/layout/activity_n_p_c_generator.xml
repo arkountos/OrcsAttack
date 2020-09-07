@@ -133,10 +133,37 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/NPC_table_alignment_row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTableDark">
+
+            <TextView
+                android:id="@+id/NPC_table_alignment_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Alignment"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/NPC_table_alignment_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="auto"
+                android:gravity="center"
+                android:textSize="20sp" />
+
+        </TableRow>
+
+
+        <TableRow
             android:id="@+id/NPC_table_usefulinfo_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorTableDark">
+            android:background="@color/colorTableLight">
 
             <TextView
                 android:id="@+id/NPC_table_usefulinfo_textview"
@@ -160,7 +187,7 @@
             android:id="@+id/NPC_table_characteristic_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorTableLight">
+            android:background="@color/colorTableDark">
 
             <TextView
                 android:id="@+id/NPC_table_characteristic_textview"
@@ -185,7 +212,7 @@
             android:id="@+id/NPC_table_secret_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorTableDark">
+            android:background="@color/colorTableLight">
 
             <TextView
                 android:id="@+id/NPC_table_secret_textview"
@@ -209,7 +236,7 @@
             android:id="@+id/NPC_table_proneto_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorTableLight">
+            android:background="@color/colorTableDark">
 
             <TextView
                 android:id="@+id/NPC_table_proneto_textview"
@@ -233,7 +260,7 @@
             android:id="@+id/NPC_table_strongagainst_row"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorTableDark">
+            android:background="@color/colorTableLight">
 
             <TextView
                 android:id="@+id/NPC_table_strongagainst_textview"
@@ -258,7 +285,7 @@
             android:id="@+id/NPC_table_notes_row"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorTableLight">
+            android:background="@color/colorTableDark">
 
             <TextView
                 android:id="@+id/NPC_table_notes_textview"

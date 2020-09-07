@@ -8,7 +8,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="-34dp"
+        tools:layout_editor_absoluteY="26dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -16,84 +18,101 @@
 
             <Button
                 android:id="@+id/gotoInit"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:alpha="0.9"
                 android:background="@color/colorAccent"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="Dynamic Initiative Tracker"
                 android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="@+id/textView6"
-                app:layout_constraintStart_toStartOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
+                app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <Button
                 android:id="@+id/gotoSettings"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:alpha="0.9"
                 android:background="@color/colorAccent"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="Settings"
                 android:textSize="17sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
                 app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
-                app:layout_constraintTop_toBottomOf="@+id/gotoNPCGeneratorButton" />
+                app:layout_constraintTop_toBottomOf="@+id/gotoNPCGeneratorButton"
+                tools:alpha="0.75" />
 
             <Button
                 android:id="@+id/gotoAbout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:alpha="0.9"
                 android:background="@color/colorAccent"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="About"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="@+id/gotoSettings"
                 app:layout_constraintStart_toStartOf="@+id/gotoSettings"
-                app:layout_constraintTop_toBottomOf="@+id/gotoSettings" />
+                app:layout_constraintTop_toBottomOf="@+id/gotoSettings"
+                tools:alpha="0.75" />
 
             <Button
                 android:id="@+id/gotoExit"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:alpha="0.9"
                 android:background="@color/colorAccent"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="Exit"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/gotoAbout"
                 app:layout_constraintStart_toStartOf="@+id/gotoAbout"
-                app:layout_constraintTop_toBottomOf="@+id/gotoAbout" />
+                app:layout_constraintTop_toBottomOf="@+id/gotoAbout"
+                tools:alpha="0.75" />
 
             <Button
                 android:id="@+id/gotoGenerator"
-                android:layout_width="wrap_content"
+                android:layout_width="255dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:alpha="0.9"
                 android:background="@color/colorAccent"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="Random Encounter Map Generator"
                 android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="@+id/gotoInit"
-                app:layout_constraintStart_toStartOf="@+id/gotoInit"
-                app:layout_constraintTop_toBottomOf="@+id/gotoInit" />
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintStart_toStartOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/gotoInit"
+                tools:alpha="0.75" />
 
             <Button
                 android:id="@+id/gotoNPCGeneratorButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:alpha="0.9"
                 android:background="@color/colorAccent"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="NPC Generator"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
                 app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
-                app:layout_constraintTop_toBottomOf="@+id/gotoGenerator" />
+                app:layout_constraintTop_toBottomOf="@+id/gotoGenerator"
+                tools:alpha="0.75" />
 
             <TextView
                 android:id="@+id/textView5"

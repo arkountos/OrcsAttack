@@ -24,6 +24,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
 
         val NPC_genders_array = applicationContext.resources.getStringArray(R.array.NPC_gender)
         val NPC_race_names_array = applicationContext.resources.getStringArray(R.array.NPC_races)
+        val NPC_alignments_array = applicationContext.resources.getStringArray(R.array.NPC_alignment)
         val NPC_useful_info_array = applicationContext.resources.getStringArray(R.array.NPC_useful_info)
         val NPC_secrets_array = applicationContext.resources.getStringArray(R.array.NPC_secrets)
         val NPC_characteristics_array = applicationContext.resources.getStringArray(R.array.NPC_characteristics)
@@ -33,6 +34,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
         val NPC_name = findViewById<TextView>(R.id.NPC_table_name_value)
         val NPC_gender = findViewById<TextView>(R.id.NPC_table_gender_value)
         val NPC_race = findViewById<TextView>(R.id.NPC_table_race_value)
+        val NPC_alignment = findViewById<TextView>(R.id.NPC_table_alignment_value)
         val NPC_characteristic = findViewById<TextView>(R.id.NPC_table_characteristic_value)
         val NPC_useful_info = findViewById<TextView>(R.id.NPC_table_usefulinfo_value)
         val NPC_secret = findViewById<TextView>(R.id.NPC_table_secret_value)
@@ -106,6 +108,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
                 }
             }
             NPC_name.text = NPC_name_array[(NPC_name_array.indices).random()]
+            NPC_alignment.text = NPC_alignments_array[(NPC_alignments_array.indices).random()]
             NPC_characteristic.text = NPC_characteristics_array[(NPC_characteristics_array.indices).random()]
             NPC_useful_info.text = NPC_useful_info_array[(NPC_useful_info_array.indices).random()]
             NPC_secret.text = NPC_secrets_array[(NPC_secrets_array.indices).random()]
@@ -118,6 +121,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
             NPC_character = NPCCharacter(NPC_name.text as String,
                 NPC_gender.text as String,
                 NPC_race.text as String,
+                NPC_alignment.text as String,
                 NPC_useful_info.text as String,
                 NPC_characteristic.text as String,
                 NPC_secret.text as String,
@@ -129,7 +133,8 @@ class NPCGeneratorActivity : AppCompatActivity() {
 
 
             NPC_character.rollStats()
-            NPC_character.setStats(findViewById(R.id.NPC_str_stat_value),
+            NPC_character.setStats(
+                findViewById(R.id.NPC_str_stat_value),
                 findViewById(R.id.NPC_dex_stat_value),
                 findViewById(R.id.NPC_con_stat_value),
                 findViewById(R.id.NPC_int_stat_value),
@@ -209,6 +214,9 @@ class NPCGeneratorActivity : AppCompatActivity() {
         NPC_race.setOnClickListener{
             NPC_race.text = NPC_race_names_array[(NPC_race_names_array.indices).random()]
         }
+        NPC_alignment.setOnClickListener {
+            NPC_alignment.text = NPC_alignments_array[(NPC_alignments_array.indices).random()]
+        }
         NPC_characteristic.setOnClickListener{
             NPC_characteristic.text = NPC_characteristics_array[(NPC_characteristics_array.indices).random()]
         }
@@ -230,7 +238,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
         goToStatblockButton.setOnClickListener {
             var NPC_Statblock_intent: Intent = Intent(this, NPCStatblockActivity::class.java)
 
-            if (NPC_name.text == "" || NPC_race.text == "" || NPC_gender.text == ""  || NPC_useful_info.text == ""  || NPC_characteristic.text == ""  || NPC_secret.text == ""  || NPC_prone_to.text == ""  || NPC_strong_against.text == ""){
+            if (NPC_name.text == "" || NPC_race.text == "" || NPC_gender.text == ""  || NPC_alignment.text == "" || NPC_useful_info.text == ""  || NPC_characteristic.text == ""  || NPC_secret.text == ""  || NPC_prone_to.text == ""  || NPC_strong_against.text == ""){
                 Toast.makeText(this, "Generate an NPC first!",
                     Toast.LENGTH_SHORT).show();
             }
@@ -238,6 +246,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
                 //TODO: Add intent contents
                 NPC_Statblock_intent.putExtra("EXTRA_NPC_NAME", NPC_name.text)
                 NPC_Statblock_intent.putExtra("EXTRA_NPC_RACE", NPC_race.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_ALIGNMENT", NPC_alignment.text)
                 NPC_Statblock_intent.putExtra("EXTRA_NPC_GENDER", NPC_gender.text)
                 NPC_Statblock_intent.putExtra("EXTRA_NPC_USEFUL_INFO", NPC_useful_info.text)
                 NPC_Statblock_intent.putExtra("EXTRA_NPC_CHARACTERISTIC", NPC_characteristic.text)
@@ -290,7 +299,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
         editor.putStringSet("saved_NPC_characters", NPCs)
         editor.apply()
 
-        Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT)
+        Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show()
     }
 
 

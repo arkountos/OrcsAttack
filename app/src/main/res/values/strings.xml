@@ -197,6 +197,17 @@
         <item>Sarhana</item>
     </string-array>
 
+    <string-array name="NPC_alignment">
+        <item>Lawful Good</item>
+        <item>Neutral Good</item>
+        <item>Chaotic Good</item>
+        <item>Lawful Neutral</item>
+        <item>True Neutral</item>
+        <item>Chaotic Neutral</item>
+        <item>Lawful Evil</item>
+        <item>Neutral Evil</item>
+        <item>Chaotic Evil</item>
+    </string-array>
 
     <string-array name="NPC_charisma_checks">
         <item>Deception</item>
