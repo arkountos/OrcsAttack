@@ -7,6 +7,35 @@
     android:layout_height="match_parent"
     android:background="@drawable/parchment_background">
 
+    <TextView
+        android:id="@+id/NPC_statblock_hit_points_value"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_hit_points_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_hit_points_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_armor_class_value"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_armor_class_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_armor_class_title" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorStatblockRed"
+        app:layout_constraintTop_toBottomOf="@+id/statblock_alignment"
+        tools:layout_editor_absoluteX="0dp" />
+
     <Button
         android:id="@+id/NPC_statblock_export_button"
         android:layout_width="0dp"
@@ -195,10 +224,10 @@
         android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:background="@color/colorStatblockRed"
-        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_notes_value"
-        tools:layout_editor_absoluteX="77dp" />
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_speed_title"
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:id="@+id/statblock_name"
@@ -215,9 +244,10 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@color/colorStatblockRed"
-        app:layout_constraintTop_toBottomOf="@+id/statblock_alignment" />
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_strength_value"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/statblock_alignment"
@@ -287,6 +317,16 @@
         app:layout_constraintTop_toTopOf="@+id/NPC_statblock_useful_info_title" />
 
     <TextView
+        android:id="@+id/NPC_statblock_speed_value"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/NPC_statblock_speed_title"
+        app:layout_constraintTop_toTopOf="@+id/NPC_statblock_speed_title" />
+
+    <TextView
         android:id="@+id/NPC_statblock_characteristic_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -345,5 +385,32 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/NPC_statblock_intelligence_title"
         app:layout_constraintTop_toTopOf="@+id/NPC_statblock_intelligence_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_armor_class_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/statblock_alignment"
+        app:layout_constraintTop_toBottomOf="@+id/line" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_hit_points_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_armor_class_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_armor_class_title" />
+
+    <TextView
+        android:id="@+id/NPC_statblock_speed_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/NPC_statblock_hit_points_title"
+        app:layout_constraintTop_toBottomOf="@+id/NPC_statblock_hit_points_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,6 +42,8 @@ class NPCGeneratorActivity : AppCompatActivity() {
         val NPC_strong_against = findViewById<TextView>(R.id.NPC_table_strongagainst_value)
         val NPC_notes = findViewById<EditText>(R.id.NPC_table_notes_value)
 
+//        val NPC_armor_class
+
 
         var generateButton = findViewById<Button>(R.id.generate_NPC_button)
         generateButton.setOnClickListener{
@@ -221,7 +223,7 @@ class NPCGeneratorActivity : AppCompatActivity() {
             NPC_characteristic.text = NPC_characteristics_array[(NPC_characteristics_array.indices).random()]
         }
         NPC_useful_info.setOnClickListener{
-            NPC_useful_info.text = NPC_useful_info_array[(NPC_characteristics_array.indices).random()]
+            NPC_useful_info.text = NPC_useful_info_array[(NPC_useful_info_array.indices).random()]
         }
         NPC_secret.setOnClickListener{
             NPC_secret.text = NPC_secrets_array[(NPC_secrets_array.indices).random()]
