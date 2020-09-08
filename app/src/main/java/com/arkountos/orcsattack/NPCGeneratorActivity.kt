@@ -42,7 +42,9 @@ class NPCGeneratorActivity : AppCompatActivity() {
         val NPC_strong_against = findViewById<TextView>(R.id.NPC_table_strongagainst_value)
         val NPC_notes = findViewById<EditText>(R.id.NPC_table_notes_value)
 
-//        val NPC_armor_class
+        val NPC_armor_class = findViewById<TextView>(R.id.NPC_table_armor_class_value)
+        val NPC_hit_points = findViewById<TextView>(R.id.NPC_table_hit_points_value)
+        val NPC_speed = findViewById<TextView>(R.id.NPC_table_speed_value)
 
 
         var generateButton = findViewById<Button>(R.id.generate_NPC_button)
@@ -120,6 +122,11 @@ class NPCGeneratorActivity : AppCompatActivity() {
                 NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
             }
 
+            var NPC_difficulty_level = (1..10).random()
+            NPC_armor_class.text = (10 + NPC_difficulty_level + (-1..1).random()).toString()
+            NPC_hit_points.text = (10 + (5 * NPC_difficulty_level) + (-3..3).random()).toString()
+            NPC_speed.text = if (NPC_race.text == "Dwarf" || NPC_race.text == "Halfling") 25.toString() else 30.toString()
+
             NPC_character = NPCCharacter(NPC_name.text as String,
                 NPC_gender.text as String,
                 NPC_race.text as String,
@@ -129,7 +136,10 @@ class NPCGeneratorActivity : AppCompatActivity() {
                 NPC_secret.text as String,
                 NPC_prone_to.text as String,
                 NPC_strong_against.text as String,
-                NPC_notes.text.toString()
+                NPC_notes.text.toString(),
+                NPC_armor_class.text as String,
+                NPC_hit_points.text as String,
+                NPC_speed.text as String
             )
 
 

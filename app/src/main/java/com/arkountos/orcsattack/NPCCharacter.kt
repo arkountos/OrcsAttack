@@ -14,7 +14,10 @@ class NPCCharacter (input_name: String,
                     input_secret: String,
                     input_prone_to: String,
                     input_strong_agains: String,
-                    input_notes: String
+                    input_notes: String,
+                    input_armor_class: String,
+                    input_hit_points: String,
+                    input_speed: String
 ){
     var name: String = input_name.capitalize()
     var gender = input_gender
@@ -26,6 +29,9 @@ class NPCCharacter (input_name: String,
     var prone_to = input_prone_to
     var strong_against = input_strong_agains
     var notes = input_notes
+    var armor_class = input_armor_class
+    var hit_points= input_hit_points
+    var speed = input_speed
 
     var myclass: String = ""
 
