@@ -1,6 +1,9 @@
 package com.arkountos.orcsattack
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Typeface
@@ -8,20 +11,24 @@ import android.icu.util.Calendar
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import kotlinx.android.synthetic.main.npc_pretty.*
-import org.w3c.dom.Text
 import java.io.File
 import java.io.FileOutputStream
 
 
 class NPCStatblockActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
+
+    var STORAGE_PERMISSION_CODE = 101
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.npc_pretty)
@@ -270,25 +277,55 @@ class NPCStatblockActivity : AppCompatActivity() {
 
         var export_button = findViewById<Button>(R.id.NPC_statblock_export_button)
         export_button.setOnClickListener {
-            val fileName: String =
-                java.lang.String.valueOf(Calendar.getInstance().timeInMillis)
-            // generate the image path
-            val imagePath: String = Environment.getExternalStorageDirectory()
-                .toString() + File.separator.toString() + fileName + ".png"
+            Log.d("checkPermission:", "before")
+            checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE)
+            Log.d("checkPermission:", "after")
 
-            try {
+            var fileName: String = ""
 
-                // save the image as png
-                val out = FileOutputStream(imagePath)
-                // compress the image to png and pass it to the output stream
-                loadBitmapFromView(statblock_root_view)!!.compress(Bitmap.CompressFormat.PNG, 90, out)
+            val alertDialog = Dialog(this)
+            var inflater = LayoutInflater.from(this)
+            val view: View = inflater.inflate(R.layout.npc_save_path_dialog, null)
+            val pathEdittext = view.findViewById<EditText>(R.id.npc_save_path_dialog_edittext)
+            val okButton = view.findViewById<Button>(R.id.npc_save_path_dialog_ok_button)
+            okButton.setOnClickListener {
+                Log.d("Btn", "Clicked!" + "")
+                fileName = pathEdittext.text.toString()
+                // generate the image path
+                val imagePath: String = Environment.getExternalStorageDirectory()
+                    .toString() + File.separator.toString() + fileName + ".png"
 
-                // save the image
-                out.flush()
-                out.close()
-            } catch (error: Exception) {
-                Log.e("Error saving image", error.message)
+                try {
+
+                    // save the image as png
+                    val out = FileOutputStream(imagePath)
+                    // compress the image to png and pass it to the output stream
+                    loadBitmapFromView(statblock_root_view)!!.compress(
+                        Bitmap.CompressFormat.PNG,
+                        90,
+                        out
+                    )
+
+                    // save the image
+                    out.flush()
+                    out.close()
+
+                    Toast.makeText(this, "Saved as $imagePath", Toast.LENGTH_LONG).show()
+                } catch (error: Exception) {
+                    Log.e("Error saving image", error.message)
+                }
+                alertDialog.dismiss()
             }
+            val cancelButton = view.findViewById<Button>(R.id.npc_save_path_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                Log.d("Btn", "Clicked Cancel!")
+                alertDialog.dismiss()
+            }
+            alertDialog.setContentView(view)
+            alertDialog.show()
+
+
+
         }
 
     }
@@ -323,6 +360,42 @@ class NPCStatblockActivity : AppCompatActivity() {
         // get the canvas
         view.draw(c)
         return bitmap
+    }
+
+
+    // Function to check and request permission
+    private fun checkPermission(permission: String, requestCode: Int) {
+        // Checking if permission is not granted
+        if (ContextCompat.checkSelfPermission(this,permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, arrayOf(permission),requestCode)
+        }
+        else {
+            Toast.makeText(this,"Permission already granted",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun openInitiativeDialog(): String {
+        val alertDialog = Dialog(this)
+        var inflater = LayoutInflater.from(this)
+        val view: View = inflater.inflate(R.layout.npc_save_path_dialog, null)
+        val pathEdittext = view.findViewById<EditText>(R.id.npc_save_path_dialog_edittext)
+        val okButton = view.findViewById<Button>(R.id.npc_save_path_dialog_ok_button)
+        var result: String = ""
+        okButton.setOnClickListener {
+            Log.d("Btn", "Clicked!" + "")
+//            mcharacters.get(position).initiative = finalNumberPicker.value
+//            holder.initiative_rolled.text = "Initiative: " + mcharacters.get(position).initiative
+            result = pathEdittext.text.toString()
+            alertDialog.dismiss()
+        }
+        val cancelButton = view.findViewById<Button>(R.id.npc_save_path_dialog_cancel_button)
+        cancelButton.setOnClickListener {
+            Log.d("Btn", "Clicked Cancel!")
+            alertDialog.dismiss()
+        }
+        alertDialog.setContentView(view)
+        alertDialog.show()
+        return result
     }
 
 
