@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import kotlinx.android.synthetic.main.npc_pretty.*
+import org.w3c.dom.Text
 import java.io.File
 import java.io.FileOutputStream
 
@@ -36,6 +37,10 @@ class NPCStatblockActivity : AppCompatActivity() {
         var NPC_strong_against = intent.extras?.get("EXTRA_NPC_STRONG_AGAINST")
         var NPC_notes = intent.extras?.get("EXTRA_NPC_NOTES")
 
+        var NPC_armor_class = intent.extras?.get("EXTRA_NPC_ARMOR_CLASS")
+        var NPC_hit_points = intent.extras?.get("EXTRA_NPC_HIT_POINTS")
+        var NPC_speed = intent.extras?.get("EXTRA_NPC_SPEED")
+
         var NPC_strength = intent.extras?.get("EXTRA_NPC_STRENGTH")
         var NPC_dexterity = intent.extras?.get("EXTRA_NPC_DEXTERITY")
         var NPC_constitution = intent.extras?.get("EXTRA_NPC_CONSTITUTION")
@@ -52,6 +57,14 @@ class NPCStatblockActivity : AppCompatActivity() {
 
         var name = findViewById<TextView>(R.id.statblock_name)
         var alignment = findViewById<TextView>(R.id.statblock_alignment)
+
+        var armor_class_title = findViewById<TextView>(R.id.NPC_statblock_armor_class_title)
+        var hit_points_title = findViewById<TextView>(R.id.NPC_statblock_hit_points_title)
+        var speed_title = findViewById<TextView>(R.id.NPC_statblock_speed_title)
+
+        var armor_class_value = findViewById<TextView>(R.id.NPC_statblock_armor_class_value)
+        var hit_points_value = findViewById<TextView>(R.id.NPC_statblock_hit_points_value)
+        var speed_value = findViewById<TextView>(R.id.NPC_statblock_speed_value)
 
         var useful_info_title = findViewById<TextView>(R.id.NPC_statblock_useful_info_title)
         var characteristic_title = findViewById<TextView>(R.id.NPC_statblock_characteristic_title)
@@ -76,6 +89,31 @@ class NPCStatblockActivity : AppCompatActivity() {
         alignment.text = "Medium " + NPC_race.toString() + ", " + NPC_alignment.toString()
         alignment.typeface = bookinsanityitalic
         alignment.setTextColor(resources.getColor(R.color.colorBlack))
+
+        armor_class_title.text = "Armor Class"
+        armor_class_title.typeface = bookinsanitybold
+        armor_class_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        armor_class_value.text = NPC_armor_class.toString()
+        armor_class_value.typeface = bookinsanity
+        armor_class_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        hit_points_title.text = "Hit Points"
+        hit_points_title.typeface = bookinsanitybold
+        hit_points_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        hit_points_value.text = NPC_hit_points.toString()
+        hit_points_value.typeface = bookinsanity
+        hit_points_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        speed_title.text = "Speed"
+        speed_title.typeface = bookinsanitybold
+        speed_title.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
+        speed_value.text = NPC_speed.toString() + "ft"
+        speed_value.typeface = bookinsanity
+        speed_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
+
 
         useful_info_title.text = "Useful Info"
         useful_info_title.typeface = bookinsanitybold

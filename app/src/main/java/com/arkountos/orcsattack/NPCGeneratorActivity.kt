@@ -267,6 +267,11 @@ class NPCGeneratorActivity : AppCompatActivity() {
                 NPC_Statblock_intent.putExtra("EXTRA_NPC_STRONG_AGAINST", NPC_strong_against.text)
                 NPC_Statblock_intent.putExtra("EXTRA_NPC_NOTES", NPC_notes.text)
 
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_ARMOR_CLASS", NPC_armor_class.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_HIT_POINTS", NPC_hit_points.text)
+                NPC_Statblock_intent.putExtra("EXTRA_NPC_SPEED", NPC_speed.text)
+
+
                 var stats = NPC_character.getNPCStats()
 
                 NPC_Statblock_intent.putExtra("EXTRA_NPC_STRENGTH", stats[0])
