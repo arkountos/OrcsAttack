@@ -38,6 +38,8 @@
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize" />
 
+        <service android:name=".BackgroundMusicService"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

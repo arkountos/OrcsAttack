@@ -3,7 +3,6 @@ package com.arkountos.orcsattack
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
@@ -12,7 +11,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.arkountos.orcsattack.debug.BackgroundMusicService
 import kotlin.system.exitProcess
 
 
@@ -23,10 +21,46 @@ class StartActivity : AppCompatActivity() {
         val vibrator: Vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         super.onCreate(savedInstanceState)
-        var musicServiceIntent = Intent(applicationContext, BackgroundMusicService::class.java)
-        startService(musicServiceIntent)
-
         setContentView(R.layout.activity_start)
+
+        val sharedPreferences : SharedPreferences = getSharedPreferences(GlobalsActivity.SHARED_PREFS, Context.MODE_PRIVATE)
+        val musicButton = findViewById<ImageView>(R.id.musicButton)
+
+        if (sharedPreferences.getInt("music", 1) == 1) {
+            musicButton.setImageResource(R.drawable.ic_baseline_music_note_24)
+            var musicServiceIntent = Intent(applicationContext, BackgroundMusicService::class.java)
+            startService(musicServiceIntent)
+        }
+        else{
+            musicButton.setImageResource(R.drawable.ic_baseline_music_off_24)
+        }
+
+        musicButton.setOnClickListener{
+            val editor : SharedPreferences.Editor = sharedPreferences.edit()
+            if (sharedPreferences.getInt("music", 1) == null){
+                editor.putInt("music", 0)
+                editor.apply()
+            }
+            if (sharedPreferences.getInt("music", 1) == 1){
+                musicButton.setImageResource(R.drawable.ic_baseline_music_off_24)
+                stopService(Intent(applicationContext, BackgroundMusicService::class.java))
+                editor.putInt("music", 0)
+                editor.apply()
+                var intent = Intent(this, BackgroundMusicService::class.java)
+                stopService(intent)
+            }
+            else{
+                musicButton.setImageResource(R.drawable.ic_baseline_music_note_24)
+                startService(Intent(applicationContext, BackgroundMusicService::class.java))
+                editor.putInt("music", 1)
+                editor.apply()
+                var intent = Intent(this, BackgroundMusicService::class.java)
+                startService(intent)
+            }
+
+        }
+
+
         val initiativeButton: Button = findViewById(R.id.gotoInit)
         initiativeButton.setOnClickListener{
             if (Build.VERSION.SDK_INT >= 26) {
@@ -88,31 +122,6 @@ class StartActivity : AppCompatActivity() {
             }
             finish();
             exitProcess(0);
-        }
-        val musicButton = findViewById<ImageView>(R.id.musicButton)
-        musicButton.setOnClickListener{
-
-            val sharedPreferences : SharedPreferences = getSharedPreferences(GlobalsActivity.SHARED_PREFS, Context.MODE_PRIVATE)
-            val editor : SharedPreferences.Editor = sharedPreferences.edit()
-            if (sharedPreferences.getInt("music", 1) == null){
-                editor.putInt("music", 0)
-                editor.apply()
-            }
-            if (sharedPreferences.getInt("music", 1) == 1){
-                musicButton.setImageResource(R.drawable.ic_baseline_music_off_24)
-                stopService(Intent(applicationContext, BackgroundMusicService::class.java))
-                editor.putInt("music", 0)
-                editor.apply()
-                Toast.makeText(this, "first", Toast.LENGTH_LONG).show()
-            }
-            else{
-                musicButton.setImageResource(R.drawable.ic_baseline_music_note_24)
-                startService(Intent(applicationContext, BackgroundMusicService::class.java))
-                editor.putInt("music", 1)
-                editor.apply()
-                Toast.makeText(this, "sec", Toast.LENGTH_LONG).show()
-            }
-
         }
 
     }
