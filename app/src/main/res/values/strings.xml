@@ -25,6 +25,7 @@
     If no campfire is present, all the characters appear randomly. You can set the max distance from the fire that ally characters can spawn, as well as the minimum distance from the campfire for enemies to spawn from the settings tab.</string>
 
     <string name="artwork_jason">The background images were created by Jason Milios!</string>
+    <string name="music_john">Music written and performed by John Skoufoulas!</string>
 
     <string-array name="classes">
         <item>Barbarian</item>
