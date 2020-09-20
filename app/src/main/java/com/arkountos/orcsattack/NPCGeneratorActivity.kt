@@ -1,20 +1,25 @@
 package com.arkountos.orcsattack
 
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
+import org.w3c.dom.Text
+
 
 class NPCGeneratorActivity : AppCompatActivity() {
+    // Initializations needed later in the code
     val gson = Gson()
-
     lateinit var NPC_character: NPCCharacter
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +50,13 @@ class NPCGeneratorActivity : AppCompatActivity() {
         val NPC_armor_class = findViewById<TextView>(R.id.NPC_table_armor_class_value)
         val NPC_hit_points = findViewById<TextView>(R.id.NPC_table_hit_points_value)
         val NPC_speed = findViewById<TextView>(R.id.NPC_table_speed_value)
+
+        val NPC_strength = findViewById<TextView>(R.id.NPC_str_stat_value)
+        val NPC_dexterity = findViewById<TextView>(R.id.NPC_dex_stat_value)
+        val NPC_constitution = findViewById<TextView>(R.id.NPC_con_stat_value)
+        val NPC_intelligence = findViewById<TextView>(R.id.NPC_int_stat_value)
+        val NPC_wisdom = findViewById<TextView>(R.id.NPC_wis_stat_value)
+        val NPC_charisma = findViewById<TextView>(R.id.NPC_cha_stat_value)
 
 
         var generateButton = findViewById<Button>(R.id.generate_NPC_button)
@@ -124,8 +136,68 @@ class NPCGeneratorActivity : AppCompatActivity() {
 
             var NPC_difficulty_level = (1..10).random()
             NPC_armor_class.text = (10 + NPC_difficulty_level + (-1..1).random()).toString()
+            NPC_armor_class.setOnLongClickListener {
+                val alertDialog = Dialog(this)
+                var inflater = layoutInflater
+                val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+                alertDialog.setContentView(view)
+
+                var new_NPC_armor_class = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+                val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+                okButton.setOnClickListener {
+                    NPC_armor_class.text = new_NPC_armor_class.text
+                    alertDialog.dismiss()
+                }
+                val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+                cancelButton.setOnClickListener {
+                    alertDialog.dismiss()
+                }
+
+                alertDialog.show()
+                true
+            }
             NPC_hit_points.text = (10 + (5 * NPC_difficulty_level) + (-3..3).random()).toString()
+            NPC_hit_points.setOnLongClickListener {
+                val alertDialog = Dialog(this)
+                var inflater = layoutInflater
+                val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+                alertDialog.setContentView(view)
+
+                var new_NPC_hit_points = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+                val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+                okButton.setOnClickListener {
+                    NPC_hit_points.text = new_NPC_hit_points.text
+                    alertDialog.dismiss()
+                }
+                val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+                cancelButton.setOnClickListener {
+                    alertDialog.dismiss()
+                }
+
+                alertDialog.show()
+                true
+            }
             NPC_speed.text = if (NPC_race.text == "Dwarf" || NPC_race.text == "Halfling") 25.toString() else 30.toString()
+            NPC_speed.setOnLongClickListener {
+                val alertDialog = Dialog(this)
+                var inflater = layoutInflater
+                val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+                alertDialog.setContentView(view)
+
+                var new_NPC_speed = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+                val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+                okButton.setOnClickListener {
+                    NPC_speed.text = new_NPC_speed.text
+                    alertDialog.dismiss()
+                }
+                val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+                cancelButton.setOnClickListener {
+                    alertDialog.dismiss()
+                }
+
+                alertDialog.show()
+                true
+            }
 
             NPC_character = NPCCharacter(NPC_name.text as String,
                 NPC_gender.text as String,
@@ -220,29 +292,330 @@ class NPCGeneratorActivity : AppCompatActivity() {
 
             NPC_name.text = NPC_name_array[(NPC_name_array.indices).random()]
         }
+        NPC_name.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_name = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_name.text = new_NPC_name.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
         NPC_gender.setOnClickListener{
             NPC_gender.text = NPC_genders_array[(NPC_genders_array.indices).random()]
+        }
+        NPC_gender.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_gender = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_gender.text = new_NPC_gender.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
         }
         NPC_race.setOnClickListener{
             NPC_race.text = NPC_race_names_array[(NPC_race_names_array.indices).random()]
         }
+        NPC_race.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_race = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_race.text = new_NPC_race.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
         NPC_alignment.setOnClickListener {
             NPC_alignment.text = NPC_alignments_array[(NPC_alignments_array.indices).random()]
+        }
+        NPC_alignment.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_alignment = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_alignment.text = new_NPC_alignment.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
         }
         NPC_characteristic.setOnClickListener{
             NPC_characteristic.text = NPC_characteristics_array[(NPC_characteristics_array.indices).random()]
         }
+        NPC_characteristic.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_characteristic = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_characteristic.text = new_NPC_characteristic.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
         NPC_useful_info.setOnClickListener{
             NPC_useful_info.text = NPC_useful_info_array[(NPC_useful_info_array.indices).random()]
+        }
+        NPC_useful_info.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_useful_info = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_useful_info.text = new_NPC_useful_info.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
         }
         NPC_secret.setOnClickListener{
             NPC_secret.text = NPC_secrets_array[(NPC_secrets_array.indices).random()]
         }
+        NPC_secret.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_secret = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_secret.text = new_NPC_secret.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
         NPC_prone_to.setOnClickListener{
             NPC_prone_to.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
         }
+        NPC_prone_to.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_prone_to = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_prone_to.text = new_NPC_prone_to.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
         NPC_strong_against.setOnClickListener{
             NPC_strong_against.text = NPC_charisma_checks_array[(NPC_charisma_checks_array.indices).random()]
+        }
+        NPC_strong_against.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_strong_against = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_strong_against.text = new_NPC_strong_against.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
+
+        NPC_strength.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_strength = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_strength.text = new_NPC_strength.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
+        NPC_dexterity.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_dexterity = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_dexterity.text = new_NPC_dexterity.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
+        NPC_constitution.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_constitution = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_constitution.text = new_NPC_constitution.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
+        NPC_intelligence.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_intelligence = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_intelligence.text = new_NPC_intelligence.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
+        NPC_wisdom.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_wisdom = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_wisdom.text = new_NPC_wisdom.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
+        }
+        NPC_charisma.setOnLongClickListener {
+            val alertDialog = Dialog(this)
+            var inflater = layoutInflater
+            val view: View = inflater.inflate(com.arkountos.orcsattack.R.layout.npc_generator_custom_entry_dialog, null)
+            alertDialog.setContentView(view)
+
+            var new_NPC_charisma = alertDialog.findViewById<EditText>(R.id.custom_entry_edittext)
+            val okButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_ok_button)
+            okButton.setOnClickListener {
+                NPC_charisma.text = new_NPC_charisma.text
+                alertDialog.dismiss()
+            }
+            val cancelButton = alertDialog.findViewById<Button>(R.id.npc_custom_entry_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+            true
         }
 
         // Go to Statblock button functionality

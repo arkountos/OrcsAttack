@@ -203,9 +203,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:clickable="true"
-                        android:focusable="auto"
                         android:gravity="center"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:focusable="auto" />
 
                 </TableRow>
 
@@ -601,6 +601,15 @@
                 android:text="NPC Stats:"
                 app:layout_constraintStart_toStartOf="@+id/NPC_str_stat"
                 app:layout_constraintTop_toBottomOf="@+id/NPC_table" />
+
+            <TextView
+                android:id="@+id/npc_generator_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="* Long press on anything on this page to custom set a value! ** Click on the NPC Details to get another random trait!"
+                app:layout_constraintStart_toStartOf="@+id/NPC_str_stat"
+                app:layout_constraintTop_toBottomOf="@+id/NPC_str_stat" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
