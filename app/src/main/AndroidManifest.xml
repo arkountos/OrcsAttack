@@ -3,7 +3,7 @@
     package="com.arkountos.orcsattack">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".GlobalsActivity"
@@ -15,7 +15,8 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NPCStatblockActivity"></activity>
+        <activity android:name=".ScrollGeneratorActivity"></activity>
+        <activity android:name=".NPCStatblockActivity" />
         <activity android:name=".LoadNPCActivity" />
         <activity android:name=".NPCGeneratorActivity" />
         <activity android:name=".LoadEncounterActivity" />
@@ -38,7 +39,7 @@
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize" />
 
-        <service android:name=".BackgroundMusicService"/>
+        <service android:name=".BackgroundMusicService" />
 
         <meta-data
             android:name="preloaded_fonts"

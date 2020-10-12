@@ -9,7 +9,6 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.system.exitProcess
 
@@ -92,6 +91,16 @@ class StartActivity : AppCompatActivity() {
             }
             openNPCGeneratorActivity()
         }
+        val scrollGeneratorButton: Button = findViewById(R.id.gotoScrollGeneratorButton)
+        scrollGeneratorButton.setOnClickListener{
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
+            openScrollGeneratorActivity()
+        }
         val settingsButton: Button = findViewById(R.id.gotoSettings)
         settingsButton.setOnClickListener {
             if (Build.VERSION.SDK_INT >= 26) {
@@ -148,6 +157,11 @@ class StartActivity : AppCompatActivity() {
 
     private fun openAboutActivity(){
         val intent: Intent = Intent(this, AboutActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun openScrollGeneratorActivity(){
+        val intent: Intent = Intent(this, ScrollGeneratorActivity::class.java)
         startActivity(intent)
     }
 }

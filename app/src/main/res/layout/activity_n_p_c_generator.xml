@@ -8,7 +8,7 @@
     tools:context="com.arkountos.orcsattack.NPCGeneratorActivity">
 
     <TextView
-        android:id="@+id/NPCGeneratorTitle"
+        android:id="@+id/ScrollGeneratorTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toTopOf="@+id/generate_NPC_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NPCGeneratorTitle"
+        app:layout_constraintTop_toBottomOf="@+id/ScrollGeneratorTitle"
         app:layout_constraintVertical_weight="0.2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
