@@ -427,7 +427,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:focusable="true"
-                        android:fontFamily="@font/blkchry"
+                        android:fontFamily="@font/blackchancery"
                         android:gravity="center"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />

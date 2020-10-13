@@ -15,13 +15,13 @@
     </style>
 
     <style name="MyCustomAlertDialogStyle">
-        <item name="android:fontFamily">@font/blkchry</item>
+        <item name="android:fontFamily">@font/blackchancery</item>
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
 
     <style name="MyCustomFontStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/blkchry</item>
+        <item name="android:fontFamily">@font/blackchancery</item>
     </style>
 
     <style name="MyCustomPopupMenuStyle">

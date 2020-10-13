@@ -7,6 +7,18 @@
     android:background="@drawable/black_pixelwall"
     tools:context=".ScrollGeneratorActivity">
 
+    <Button
+        android:id="@+id/gotoParchmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:padding="15dp"
+        android:text="Go to parchment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/ScrollGeneratorTitle"
         android:layout_width="wrap_content"
@@ -24,9 +36,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Choose a parchment background:"
+        android:text="Customize text font and size:"
         app:layout_constraintStart_toStartOf="@+id/ScrollGeneratorTitle"
         app:layout_constraintTop_toBottomOf="@+id/ScrollGeneratorTitle" />
+
+    <TextView
+        android:id="@+id/lorem_ipsum"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/lorem_ipsum"
+        app:layout_constraintBottom_toTopOf="@+id/gotoParchmentButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/font_spinner" />
+
+    <Spinner
+        android:id="@+id/font_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/ScrollGeneratorChooseParchment"
+        app:layout_constraintStart_toStartOf="@+id/ScrollGeneratorChooseParchment"
+        app:layout_constraintTop_toBottomOf="@+id/ScrollGeneratorChooseParchment" />
+
+    <Spinner
+        android:id="@+id/font_size_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintStart_toEndOf="@+id/font_spinner"
+        app:layout_constraintTop_toTopOf="@+id/font_spinner" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

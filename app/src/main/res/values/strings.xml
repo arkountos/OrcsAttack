@@ -27,6 +27,18 @@
     <string name="artwork_jason">The background images were created by Jason Milios!</string>
     <string name="music_john">Music written and performed by John Skoufoulas!</string>
 
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequatur consequuntur culpa delectus eligendi error est, et eveniet fugiat inventore itaque iure iusto laborum mollitia nam nihil officiis omnis reiciendis sapiente sit, tempora totam voluptas! Accusantium consequuntur eligendi est excepturi fuga ipsam iusto, molestiae, perspiciatis quae reprehenderit tempore veniam vero!</string>
+
+    <string-array name="fonts">
+        <item name="blkchry">Black Chancery</item>
+        <item name="bookinsanity">Book Insanity</item>
+        <item name="mreavessmallcaps">Mr Eaves Small Caps</item>
+        <item name="nodestocapscondensed">Nodesto Caps Condensed</item>
+        <item name="scalysans">Scaly Sans</item>
+        <item name="solberaimitation">Solbera Imitation</item>
+        <item name="zatannamisdirection">Zatanna Misdirection</item>
+    </string-array>
+
     <string-array name="classes">
         <item>Barbarian</item>
         <item>Bard</item>
