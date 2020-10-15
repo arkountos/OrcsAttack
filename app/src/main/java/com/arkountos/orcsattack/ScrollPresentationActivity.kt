@@ -1,6 +1,7 @@
 package com.arkountos.orcsattack
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -8,10 +9,13 @@ import android.graphics.Canvas
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +23,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import kotlinx.android.synthetic.main.activity_scroll_presentation.*
+import java.io.File
+import java.io.FileOutputStream
 
 
 class ScrollPresentationActivity : AppCompatActivity() {
@@ -62,59 +68,63 @@ class ScrollPresentationActivity : AppCompatActivity() {
         note.textSize = font_size_result.toFloat()
         note.typeface = fontnametouri[font_result]
 
-        var export_button = findViewById<Button>(R.id.scroll_presentation_export)
-        export_button.setOnClickListener {
+        var saveas_button = findViewById<Button>(R.id.scroll_presentation_saveas)
+        saveas_button.setOnClickListener {
 
             checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE)
-            share_image(note_constraint_layout)
 
-//            var fileName: String = ""
-//
-//            val alertDialog = Dialog(this)
-//            var inflater = LayoutInflater.from(this)
-//            val view: View = inflater.inflate(R.layout.npc_save_path_dialog, null)
-//            val pathEdittext = view.findViewById<EditText>(R.id.npc_save_path_dialog_edittext)
-//            val okButton = view.findViewById<Button>(R.id.npc_save_path_dialog_ok_button)
-//            okButton.setOnClickListener {
-//                Log.d("Btn", "Clicked!" + "")
-//                fileName = pathEdittext.text.toString()
-//                // generate the image path
-//                val imagePath: String = Environment.getExternalStorageDirectory()
-//                    .toString() + File.separator.toString() + fileName + ".png"
-//
-//                try {
-//
-//                    // save the image as png
-//                    val out = FileOutputStream(imagePath)
-//                    // compress the image to png and pass it to the output stream
-//
-//                    loadBitmapFromView(note_constraint_layout)!!.compress(
-//                        Bitmap.CompressFormat.PNG,
-//                        90,
-//                        out
-//                    )
-//
-//                    // save the image
-//                    out.flush()
-//                    out.close()
-//
-//                    Toast.makeText(this, "Saved as $imagePath", Toast.LENGTH_LONG).show()
-//                } catch (error: Exception) {
-//                    Log.e("Error saving image", error.message)
-//                }
-//                alertDialog.dismiss()
-//            }
-//            val cancelButton = view.findViewById<Button>(R.id.npc_save_path_dialog_cancel_button)
-//            cancelButton.setOnClickListener {
-//                Log.d("Btn", "Clicked Cancel!")
-//                alertDialog.dismiss()
-//            }
-//            alertDialog.setContentView(view)
-//            alertDialog.show()
+            var fileName: String = ""
+
+            val alertDialog = Dialog(this)
+            var inflater = LayoutInflater.from(this)
+            val view: View = inflater.inflate(R.layout.npc_save_path_dialog, null)
+            val pathEdittext = view.findViewById<EditText>(R.id.npc_save_path_dialog_edittext)
+            val okButton = view.findViewById<Button>(R.id.npc_save_path_dialog_ok_button)
+            okButton.setOnClickListener {
+                Log.d("Btn", "Clicked!" + "")
+                fileName = pathEdittext.text.toString()
+                // generate the image path
+                val imagePath: String = Environment.getExternalStorageDirectory()
+                    .toString() + File.separator.toString() + fileName + ".png"
+
+                try {
+
+                    // save the image as png
+                    val out = FileOutputStream(imagePath)
+                    // compress the image to png and pass it to the output stream
+
+                    loadBitmapFromView(note_constraint_layout)!!.compress(
+                        Bitmap.CompressFormat.PNG,
+                        90,
+                        out
+                    )
+
+                    // save the image
+                    out.flush()
+                    out.close()
+
+                    Toast.makeText(this, "Saved as $imagePath", Toast.LENGTH_LONG).show()
+                } catch (error: Exception) {
+                    Log.e("Error saving image", error.message)
+                }
+                alertDialog.dismiss()
+            }
+            val cancelButton = view.findViewById<Button>(R.id.npc_save_path_dialog_cancel_button)
+            cancelButton.setOnClickListener {
+                Log.d("Btn", "Clicked Cancel!")
+                alertDialog.dismiss()
+            }
+            alertDialog.setContentView(view)
+            alertDialog.show()
+        }
+
+        var share_button = findViewById<Button>(R.id.scroll_presentation_share)
+        share_button.setOnClickListener {
+            shareImage(note_constraint_layout)
         }
     }
 
-    fun loadBitmapFromView(view: View): Bitmap? {
+    private fun loadBitmapFromView(view: View): Bitmap? {
 
         // width measure spec
         val widthSpec = View.MeasureSpec.makeMeasureSpec(
@@ -159,12 +169,7 @@ class ScrollPresentationActivity : AppCompatActivity() {
 
 
     // As seen on https://stackoverflow.com/questions/7661875/how-to-use-share-image-using-sharing-intent-to-share-images-in-android
-    fun share_image(view: View) {
-        /* ACTION_SEND: Deliver some data to someone else.
-        createChooser (Intent target, CharSequence title): Here, target- The Intent that the user will be selecting an activity to perform.
-            title- Optional title that will be displayed in the chooser.
-        Intent.EXTRA_TEXT: A constant CharSequence that is associated with the Intent, used with ACTION_SEND to supply the literal data to be sent.
-        */
+    private fun shareImage(view: View) {
 
         val mBitmap: Bitmap = loadBitmapFromView(note_constraint_layout)!!
 
@@ -176,6 +181,5 @@ class ScrollPresentationActivity : AppCompatActivity() {
         intent.type = "image/png"
         intent.putExtra(Intent.EXTRA_STREAM, uri)
         startActivity(Intent.createChooser(intent, "Share Image"))
-
     }
 }

@@ -30,25 +30,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/scroll_presentation_share"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorStatblockRed"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Share"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/scroll_presentation_saveas"
+            app:layout_constraintTop_toTopOf="@+id/scroll_presentation_saveas" />
+
+        <Button
+            android:id="@+id/scroll_presentation_saveas"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:background="@color/colorStatblockRed"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Save As..."
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/scroll_presentation_share"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/scroll_presentation_export"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@color/colorStatblockRed"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Export"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
