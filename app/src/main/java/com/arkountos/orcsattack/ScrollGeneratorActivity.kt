@@ -76,6 +76,7 @@ class ScrollGeneratorActivity : AppCompatActivity() {
         var sizes_array = arrayOf(10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30)
 
         var seekBar = findViewById<SeekBar>(R.id.seekBar)
+        font_size_result = seekBar.max / 2
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 font_size_result = progress
