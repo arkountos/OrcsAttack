@@ -11,7 +11,9 @@
         android:id="@+id/statblock_root_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/parchment_background">
+        android:background="@drawable/parchment_background"
+        tools:layout_editor_absoluteX="-127dp"
+        tools:layout_editor_absoluteY="131dp">
 
         <TextView
             android:id="@+id/NPC_statblock_hit_points_value"
@@ -402,23 +404,35 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/NPC_statblock_export_button"
-        android:layout_width="0dp"
+        android:id="@+id/npc_pretty_saveas"
+        android:layout_width="183dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
         android:background="@color/colorStatblockRed"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Export"
+        android:text="Save As..."
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/npc_pretty_share"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/npc_pretty_share"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@color/colorStatblockRed"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Share"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/npc_pretty_saveas"
+        app:layout_constraintTop_toTopOf="@+id/npc_pretty_saveas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

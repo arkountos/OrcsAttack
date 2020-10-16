@@ -3,13 +3,15 @@ package com.arkountos.orcsattack
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Typeface
-import android.icu.util.Calendar
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +21,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import kotlinx.android.synthetic.main.activity_scroll_presentation.*
 import kotlinx.android.synthetic.main.npc_pretty.*
 import java.io.File
 import java.io.FileOutputStream
@@ -275,8 +278,8 @@ class NPCStatblockActivity : AppCompatActivity() {
 
         NPC_charisma_value.setTextColor(resources.getColor(R.color.colorStatblockRed))
 
-        var export_button = findViewById<Button>(R.id.NPC_statblock_export_button)
-        export_button.setOnClickListener {
+        var saveasButton = findViewById<Button>(R.id.npc_pretty_saveas)
+        saveasButton.setOnClickListener {
             Log.d("checkPermission:", "before")
             checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE)
             Log.d("checkPermission:", "after")
@@ -328,10 +331,16 @@ class NPCStatblockActivity : AppCompatActivity() {
 
         }
 
+        var shareButton = findViewById<Button>(R.id.npc_pretty_share)
+        shareButton.setOnClickListener {
+            shareImage(statblock_root_view)
+        }
+
     }
 
+    // These functions should be in a library or something as they are being used in multiple activities (NPCStatblockActivity and ScrollPresentationActivity) !
     // As seen on: https://www.myandroidsolutions.com/2013/02/10/android-get-view-drawimage-and-save-it/
-    fun loadBitmapFromView(view: View): Bitmap? {
+    private fun loadBitmapFromView(view: View): Bitmap? {
 
         // width measure spec
         val widthSpec = View.MeasureSpec.makeMeasureSpec(
@@ -372,6 +381,21 @@ class NPCStatblockActivity : AppCompatActivity() {
         else {
             Toast.makeText(this,"Permission already granted",Toast.LENGTH_SHORT).show()
         }
+    }
+
+    // As seen on https://stackoverflow.com/questions/7661875/how-to-use-share-image-using-sharing-intent-to-share-images-in-android
+    private fun shareImage(view: View) {
+
+        val mBitmap: Bitmap = loadBitmapFromView(view)!!
+
+        val path: String =
+            MediaStore.Images.Media.insertImage(contentResolver, mBitmap, "Image Description", null)
+        val uri = Uri.parse(path)
+
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "image/png"
+        intent.putExtra(Intent.EXTRA_STREAM, uri)
+        startActivity(Intent.createChooser(intent, "Share Image"))
     }
 
     private fun openInitiativeDialog(): String {
