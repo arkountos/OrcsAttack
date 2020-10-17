@@ -15,7 +15,8 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScrollPresentationActivity"></activity>
+        <activity android:name=".InitiativeTrackerSwipeController"/>
+        <activity android:name=".ScrollPresentationActivity" />
         <activity android:name=".ScrollGeneratorActivity" />
         <activity android:name=".NPCStatblockActivity" />
         <activity android:name=".LoadNPCActivity" />

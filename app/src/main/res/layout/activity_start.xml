@@ -123,7 +123,7 @@
                 android:background="@color/colorAccent"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Scroll Generator"
+                android:text="Parchment Note Generator"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
                 app:layout_constraintHorizontal_bias="0.0"
