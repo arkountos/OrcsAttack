@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".GlobalsActivity"
@@ -15,7 +16,7 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InitiativeTrackerSwipeController"/>
+        <activity android:name=".MagicItemGenerator" />
         <activity android:name=".ScrollPresentationActivity" />
         <activity android:name=".ScrollGeneratorActivity" />
         <activity android:name=".NPCStatblockActivity" />

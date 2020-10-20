@@ -86,15 +86,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.menu1:
-                                Log.d(TAG, "Clicked Remove!!!");
-                                int newPosition = holder.getAdapterPosition();
-                                mcharacters.remove(newPosition);
-                                notifyItemRemoved(newPosition);
-                                notifyItemRangeChanged(newPosition, mcharacters.size());
-                                //handle menu1 click
+//                                Log.d(TAG, "Clicked Remove!!!");
+                                removeAt(holder.getAdapterPosition());
                                 break;
                             case R.id.menu2:
-                                Log.d(TAG, "Clicked Set Initiative!!!");
+//                                Log.d(TAG, "Clicked Set Initiative!!!");
                                 openInitiativeDialog(holder, position);
                                 break;
                         }
@@ -203,6 +199,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {
         return mcharacters.size();
+    }
+
+    public void removeAt(int position){
+        removeItemAt(position);
+    }
+
+    public void removeItemAt(int position){
+        Log.d("mcharacters Before:", mcharacters.toString());
+        mcharacters.remove(position);
+        Log.d("mcharacters After:", mcharacters.toString());
+        Log.d("Delete", "OK");
+        Log.d("Size", String.valueOf(mcharacters.size()));
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, mcharacters.size());
+        Log.d("mchara After Notify:", mcharacters.toString());
+        Log.d("Delete", "Notified");
+        Log.d("Size", String.valueOf(mcharacters.size()));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

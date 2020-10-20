@@ -45,7 +45,7 @@
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
                 app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
-                app:layout_constraintTop_toBottomOf="@+id/gotoScrollGeneratorButton"
+                app:layout_constraintTop_toBottomOf="@+id/gotoMagicItemGenerator"
                 tools:alpha="0.75" />
 
             <Button
@@ -129,6 +129,23 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
                 app:layout_constraintTop_toBottomOf="@+id/gotoNPCGeneratorButton"
+                tools:alpha="0.75" />
+
+            <Button
+                android:id="@+id/gotoMagicItemGenerator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:alpha="0.9"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Random SRD Magic Item Generator"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="@+id/gotoGenerator"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/gotoGenerator"
+                app:layout_constraintTop_toBottomOf="@+id/gotoScrollGeneratorButton"
                 tools:alpha="0.75" />
 
             <TextView

@@ -9,11 +9,12 @@ import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arkountos.orcsattack.GlobalsActivity.Companion.SHARED_PREFS
@@ -194,9 +195,19 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.OnInitiativeSetLis
 
     private fun initRecyclerView(){
         val recyclerView: RecyclerView = findViewById(R.id.my_recycler_view)
-        val adapter = RecyclerViewAdapter(this, characters, this.supportFragmentManager)
-        recyclerView.adapter = adapter;
-        recyclerView.layoutManager = LinearLayoutManager(this);
+        val myAdapter = RecyclerViewAdapter(this, characters, this.supportFragmentManager)
+        recyclerView.adapter = myAdapter;
+        recyclerView.layoutManager = LinearLayoutManager(this)
+//        Log.d("Adapter from Main", myAdapter.toString())
+//        // Swipe Handler declaration and attachment
+//        val swipeHandler = object : InitiativeTrackerSwipeController(mContext = this){
+//            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+//                myAdapter.removeAt(viewHolder.adapterPosition)
+////                onInitiativeSet()
+//            }
+//        }
+//        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+//        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
     override fun onInitiativeSet() {

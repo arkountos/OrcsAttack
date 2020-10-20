@@ -101,6 +101,16 @@ class StartActivity : AppCompatActivity() {
             }
             openScrollGeneratorActivity()
         }
+        val magicItemGeneratorButton: Button = findViewById(R.id.gotoMagicItemGenerator)
+        magicItemGeneratorButton.setOnClickListener{
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else{
+                vibrator.vibrate(20);
+            }
+            openMagicItemGeneratorActivity()
+        }
         val settingsButton: Button = findViewById(R.id.gotoSettings)
         settingsButton.setOnClickListener {
             if (Build.VERSION.SDK_INT >= 26) {
@@ -147,6 +157,11 @@ class StartActivity : AppCompatActivity() {
 
     private fun openNPCGeneratorActivity(){
         val intent: Intent = Intent(this, NPCGeneratorActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun openMagicItemGeneratorActivity(){
+        val intent: Intent = Intent(this, MagicItemGenerator::class.java)
         startActivity(intent)
     }
 
